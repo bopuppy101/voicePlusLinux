@@ -49,6 +49,18 @@ Touch alone does not establish premium television picture quality. For example, 
 
 For Ubuntu, evaluate these as an external screen plus input device driven by the existing computer. The ViewSonic manual documents HDMI for video and a paired USB TOUCH connection back to the computer. Its general Linux guidance says most ViewSonic touch monitors use the kernel's HID driver; that is not verification of every gesture or this exact Ubuntu setup. Check touch mapping, large controls, sleep/reconnect, and operation without vendor cloud software. [ViewSonic connections](https://manuals.viewsonic.com/IFP6550-5_Introduction), [ViewSonic Linux guidance](https://support.viewsonic.com/en/support/solutions/articles/33000222292-does-viewsonic-provide-linux-drivers-for-monitors-).
 
+### Amazon voice-enabled televisions — September 19, 2026
+
+Mike suggested Amazon televisions because Amazon has its own AI assistant. **Amazon Ember Mini-LED, in 65 or 75 inches**, is a relevant display research candidate. Amazon renamed the Fire TV Omni Mini-LED line to Ember Mini-LED without changing functionality; this is a current product name, not evidence of a new hardware generation. Amazon documents built-in microphones, HDMI inputs, and hands-free Alexa use. The line advertises a 144 Hz gaming mode. [Amazon setup and naming clarification](https://digprjsurvey.amazon.com/csad/help/node/T5EjefyX7LhxLCQARN), [Amazon Mini-LED features](https://www.aboutamazon.com/news/devices/amazon-new-fire-tv-omni-soundbar-4-series).
+
+Keep three capabilities distinct:
+
+- **TV voice control:** built-in far-field microphones support Amazon's Alexa experience. That demonstrates an integrated voice/TV product, not measured recognition at Mike's 15-foot target.
+- **Computer display:** HDMI makes the TV a candidate screen for the existing Ubuntu computer. Actual text clarity and NVIDIA display modes still need testing.
+- **Lonzo input and touch:** no documented interface was found that exposes the TV's built-in microphones to the Ubuntu host. No touchscreen capability was established for this line. Alexa support does not establish either capability. Amazon's motion-responsive “Interactive Art” uses radar, not a touch panel.
+
+Amazon's assistant is not a selected implementation for the open-source Lonzo service. An Amazon display could still be considered with host-connected microphones and VPLinuxAI running on the existing computer. Do not choose it on the assumption that its microphones, AI, or radar are available to our OS. Current price, seller stock, and delivery to 32937 were not verified, so this remains a research candidate rather than a purchase recommendation.
+
 ## Display arrangements to compare
 
 | Option | Fit with the requirement | Questions and tradeoffs to test |
