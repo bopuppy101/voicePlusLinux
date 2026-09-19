@@ -18,11 +18,13 @@ Speech-to-text remains a separate upstream responsibility: a deterministic rule 
 
 ### Jev as a reference to investigate
 
-Research checked September 19, 2026. A likely match for Mike's “jev” is **Jev from TypeSafe AI**. Its official documentation describes typed choices, scores, and probability outputs rather than generated prose. This makes it relevant to bounded intent selection, but it is a learned probabilistic decision model, not an explicit rule engine. Repeatable execution, constrained output types, and correct interpretation are different properties; one does not prove the others. [TypeSafe: introduction](https://docs.typesafe.ai/introduction)
+Research checked September 19, 2026. Mike’s follow-up identifies **Jev from TypeSafe AI**, matching the categorization model found in the research. Its official documentation describes typed choices, scores, and probability outputs rather than generated prose. This makes it relevant to bounded intent selection, but it is a learned probabilistic decision model, not an explicit rule engine. Repeatable execution, constrained output types, and correct interpretation are different properties; one does not prove the others. [TypeSafe: introduction](https://docs.typesafe.ai/introduction)
 
 TypeSafe documents confidence-based routing and says thresholds must be tested for the intended use case. We have not verified repeatability, confidence calibration, or performance on VPLinuxAI commands. [TypeSafe: confidence](https://docs.typesafe.ai/confidence)
 
-The reviewed materials do not establish an open-source, self-hostable Jev model that meets our requirements. Treat it as a reference, not a selected dependency. Any implementation of this approach must satisfy the OS's open-source and runtime-independence requirements; an open SDK alone would not establish model openness. No API calls, installations, or model downloads are authorized by this investigation.
+The official quick start documents hosted API access. TypeSafe publishes MIT-licensed Python and JavaScript SDKs, but its public repositories reviewed here do not provide a Jev model release, weights, or an open-source model license. As of this review, no open-source, self-hostable Jev release was found. The SDKs are API clients, not the model. [TypeSafe: quick start](https://docs.typesafe.ai/introduction/quickstart), [TypeSafe: official repositories](https://github.com/typesafe-ai)
+
+Treat Jev as an architectural reference, not an eligible core dependency on the evidence available. Any implementation of this approach must satisfy the OS's open-source and runtime-independence requirements. No API calls, installations, or model downloads are authorized by this investigation.
 
 ## What the AI is responsible for
 
