@@ -13,16 +13,17 @@
 | D007 | Distinct architectural, developer, QA, and review agents; component-level tests | Mike's explicit development-role instruction |
 | D008 | One high-level documentation map; update existing chapters instead of proliferating documents | Mike's documentation correction |
 | D009 | Conversation tracking, hand-off context, and recovery of previous conversations are critical OS capabilities; their architecture requires deliberate review | Mike's explicit OS continuity requirement; details and format deferred |
+| D010 | Others may fork VPLinuxAI and resell modified versions | Mike's latest licensing clarification; no specific license selected |
 
 ## Licensing goal to resolve
 
-Mike wants VPLinuxAI completely open source, while preventing others from taking the work and repackaging it for sale. Record both intentions; no license or resale restriction has been adopted.
+Mike wants VPLinuxAI completely open source. He initially requested a prohibition on resale, then explicitly accepted that others may fork the product and resell modified versions. D010 supersedes the earlier prohibition for modified forks. His position on resale of unchanged copies still needs clarification; do not assume that this narrower permission settles it. No license or resale restriction has been adopted.
 
-These goals conflict under the standard Open Source Definition, which requires permission for commercial redistribution. A source-available license prohibiting resale would not satisfy that definition. [Open Source Initiative: Open Source Definition](https://opensource.org/osd)
+The standard Open Source Definition requires permission for commercial redistribution. Any remaining restriction on resale must be resolved consistently with the open-source goal before license selection. [Open Source Initiative: Open Source Definition](https://opensource.org/osd)
 
 Copyleft is a possible way to protect continued openness of distributed covered code and modifications, but it does not prohibit charging for copies. GPL obligations and source availability would apply within the license's scope; this is not a promise that every separate component in a distribution must use the same license. Existing Linux and reused V2T components retain their own licensing obligations. [GNU GPL v3](https://www.gnu.org/licenses/gpl.en.html), [GNU: selling free software](https://www.gnu.org/philosophy/selling.en.html)
 
-Mike's direction on this tradeoff and a compatibility review are needed before selecting licensing terms. Do not describe the requested resale restriction as already enforceable or silently replace it with a copyleft decision.
+Clarification about unchanged copies and a compatibility review are needed before selecting licensing terms. Do not treat acceptance of modified-fork resale as selection of GPL, another license, or a particular copyleft policy.
 
 ## Experimental choices made in this design pass
 

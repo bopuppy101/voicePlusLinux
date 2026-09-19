@@ -26,4 +26,4 @@ We also wrote experimental code for connecting to an AI service running on the s
 
 There is no installable VPLinuxAI OS or measured voice-quality result yet. The Linux base and production technology choices remain open for review with Mike.
 
-Licensing remains unresolved: Mike wants complete openness and protection against others repackaging the work for sale. Standard open-source licensing permits resale, so these goals need reconciliation before a license is selected. The discussion is recorded in [/home/mike/git/voicePlusLinux/docs/High-Level-Design/decisions.md](docs/High-Level-Design/decisions.md#licensing-goal-to-resolve).
+Mike wants VPLinuxAI completely open source and accepts that others may fork it and sell modified versions. The license remains to be selected; his position on resale of unchanged copies still needs clarification. The discussion is recorded in [/home/mike/git/voicePlusLinux/docs/High-Level-Design/decisions.md](docs/High-Level-Design/decisions.md#licensing-goal-to-resolve).
