@@ -1,4 +1,4 @@
-# VPLinuxAI — Voice Plus Linux and AI OS
+# VPLinuxAI — Vision-high-level description
 
 ## Vision
 

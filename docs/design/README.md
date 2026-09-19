@@ -23,7 +23,7 @@ This is the proposed main flow. AI could also help with transcription. Linux pro
 
 | Read | What it answers |
 | --- | --- |
-| [Vision](../high-level-description.md) | **What does Mike want to build, and why?** |
+| Vision-high-level description — [/home/mike/git/voicePlusLinux/docs/vision-high-level-description.md](../vision-high-level-description.md) | **What does Mike want to build, and why?** |
 | [Implementation plan](../implementation-plan.md) | **What are the major steps to get there?** Includes the language discussion. |
 | **This project map** | **How do the parts and supporting documents fit together?** |
 

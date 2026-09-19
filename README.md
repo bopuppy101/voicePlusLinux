@@ -13,7 +13,7 @@ Start with the project map. It shows the system flow, the reading order, and whi
 | Document | Full path and filename |
 | --- | --- |
 | **Project map — start here** | [/home/mike/git/voicePlusLinux/docs/design/README.md](docs/design/README.md) |
-| Vision | [/home/mike/git/voicePlusLinux/docs/high-level-description.md](docs/high-level-description.md) |
+| Vision-high-level description | [/home/mike/git/voicePlusLinux/docs/vision-high-level-description.md](docs/vision-high-level-description.md) |
 | Implementation plan | [/home/mike/git/voicePlusLinux/docs/implementation-plan.md](docs/implementation-plan.md) |
 | Developer guide-check commands | [/home/mike/git/voicePlusLinux/developer-guide-check-commands.md](developer-guide-check-commands.md) |
 | V2T source review | [/home/mike/git/voicePlusLinux/docs/v2t-source-review.md](docs/v2t-source-review.md) |
