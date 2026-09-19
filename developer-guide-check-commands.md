@@ -36,18 +36,20 @@ model quality, voice parity, or an installable OS.
 
 ## Check the current work
 
+`/home/mike/git/voicePlusLinux/tools/` contains repository development utilities. Its check script verifies experimental code and documentation links; it does not generate documentation or provide an OS runtime component.
+
 From the repository root, using Python 3.10 or later and no third-party packages:
 
 ```bash
-python3 -B check.py
+python3 -B tools/check.py
 git diff --check
 ```
 
-The single [check entry point](check.py) validates local documentation links and
+The single [/home/mike/git/voicePlusLinux/tools/check.py](tools/check.py) validates local documentation links and
 Python syntax, runs the admission fixtures and intent cases, and runs every
 established component's unit/integration suite in a separate process. It fails
 on an empty suite, a failing check, or a check taking longer than 60 seconds.
-Use `python3 -B check.py --component session` for a focused change; the other
+Use `python3 -B tools/check.py --component session` for a focused change; the other
 component names are `admission`, `intent`, and `executor`. Component READMEs retain
 their direct test/demo commands. Paused, unintegrated drafts are not included.
 

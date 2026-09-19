@@ -10,7 +10,7 @@ import sys
 import unittest
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 COMPONENTS = {
     "admission": ROOT / "experiments/contract_reference",
     "intent": ROOT / "experiments/intent_evaluation",
