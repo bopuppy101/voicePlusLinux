@@ -10,6 +10,8 @@ The operating system will be constructed through the combined contributions of l
 
 The system will have built-in capabilities to accept spoken input. Initially, that input will at least be transcribed into text. How the resulting text can be used throughout the operating system remains to be defined.
 
+Mike's existing open-source Python project, [dbdude-v2t](https://github.com/bopuppy101/dbdude-v2t), is available as a source of reusable transcription code. It has implementations for Windows, macOS, and Ubuntu and currently uses Whisper-family models. Mike has explicitly authorized reusing and adapting its code for this OS and is open to other transcription models. See [V2T source review and reuse direction](v2t-source-review.md) for the initial review; integration has not yet been designed.
+
 ## AI capabilities
 
 At least one AI component will listen to or receive voice-derived input, interpret it, and take actions based on it. The AI may operate after transcription, participate in transcription itself, or work alongside the transcription process. The timing and relationship between listening, transcription, interpretation, and action remain to be defined.
