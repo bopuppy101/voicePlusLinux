@@ -17,8 +17,19 @@ The current architecture is a proposal. “OS harness” is optional terminology
 | --- | --- | --- |
 | User outcomes and scope | [Requirements](requirements.md) | Trace outcomes to acceptance evidence |
 | System responsibilities | [Architecture](architecture.md) | Define boundaries, lifecycle, and failure behavior |
+| Linux foundation and openness | [Linux platform](linux-platform.md) | Admission records and hardware/base gates |
+| Development languages | [Language strategy](languages.md) | Compare prototype shapes before selecting production languages |
+| Recognition and V2T reuse | [Voice input](voice-input.md) | Capture, transcript revisions, and delivery semantics |
+| Natural-language understanding | [AI interpretation](ai-interpretation.md) | Context, engine/model separation, and model evaluation |
+| Authority and execution | [Actions and recovery](actions-and-recovery.md) | Capability contracts, retries, and interrupted effects |
+| Desktop and single-key use | [Desktop/accessibility](desktop-and-accessibility.md) | Activation, insertion, correction, and session boundaries |
+| Configuration and persistence | [Configuration/state](configuration-and-state.md) | Retention, grants, journals, and updates in flight |
+| Acceptance evidence | [Evaluation](evaluation.md) | V2T parity, language outcomes, and recovery tests |
+| Distribution and maintenance | [Packaging/release](packaging-and-release.md) | Build, install, update, rollback, and provenance |
+| Work order | [Implementation backlog](implementation-backlog.md) | Bounded experiments and decision dependencies |
+| Executable message examples | [Contracts](contracts.md) | Static admission fixture checker and limits |
 
-Additional subject documents will be added as the design is refined. The project is at design stage: no model, language, Linux base, numeric performance target, or runtime integration has been selected.
+The project is at design stage: no production model, language, Linux base, numeric performance target, or runtime integration has been selected. Small reference experiments may use an available language to check the design without selecting the production stack.
 
 ## Working sequence
 

@@ -93,4 +93,4 @@ Produce a reproducible build and bootable/installable VPLinuxAI image, including
 
 Save each meaningful planning or implementation increment to disk. Commit small, coherent project changes and push checkpoints to the project repository. Maintain local context snapshots for session handoffs, including completed work, current state, decisions, verification results, and exact next steps. Save before lengthy experiments and at session end.
 
-LLM contributions should include enough explanation and verification for another LLM or a person to continue. The next planning step is to define the first task set and V2T baseline; implementing the full OS is outside this planning pass.
+LLM contributions should include enough explanation and verification for another LLM or a person to continue. Mike has authorized continuing from this high-level plan into progressively refined design and bounded development experiments, with frequent saved handoffs. The [design notebook](design/README.md) tracks the detailed subjects, open decisions, and implementation backlog. The OS itself has not yet been implemented.

@@ -1,0 +1,1523 @@
+[
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "valid-create",
+    "expected": {
+      "decision": "allow",
+      "code": "accepted"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Jardin \u00e9t\u00e9"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "unicode-leaf",
+    "expected": {
+      "decision": "allow",
+      "code": "accepted"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": true,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "cancelled",
+    "expected": {
+      "decision": "deny",
+      "code": "cancelled"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": false,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "active",
+    "expected": {
+      "decision": "deny",
+      "code": "inactive_session"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": false,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "input_final",
+    "expected": {
+      "decision": "deny",
+      "code": "input_not_final"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "dictation"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "mode",
+    "expected": {
+      "decision": "deny",
+      "code": "not_command"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-b",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "proposal-session_id-session-b",
+    "expected": {
+      "decision": "deny",
+      "code": "identity_mismatch"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-2",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "proposal-request_id-request-2",
+    "expected": {
+      "decision": "deny",
+      "code": "identity_mismatch"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 1,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "proposal-request_revision-1",
+    "expected": {
+      "decision": "deny",
+      "code": "stale_revision"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 2,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "proposal-policy_epoch-2",
+    "expected": {
+      "decision": "deny",
+      "code": "stale_policy"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 2,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "proposal-schema_version-2",
+    "expected": {
+      "decision": "deny",
+      "code": "unsupported_version"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": true,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "proposal-schema_version-true",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_proposal"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2.0,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "proposal-request_revision-2.0",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_proposal"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [],
+    "name": "no-grant",
+    "expected": {
+      "decision": "deny",
+      "code": "missing_grant"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "private",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "wrong-scope",
+    "expected": {
+      "decision": "deny",
+      "code": "missing_grant"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ],
+      "approved": true
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "model-self-approval",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_proposal"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "shell.execute",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "unknown-capability",
+    "expected": {
+      "decision": "deny",
+      "code": "unknown_capability"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": [],
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "capability-as-list",
+    "expected": {
+      "decision": "deny",
+      "code": "unknown_capability"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "../Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "invalid-name-traversal",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_arguments"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "."
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "invalid-name-dot",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_arguments"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "x\\y"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "invalid-name-backslash",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_arguments"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "bad\u0000name"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "invalid-name-nul",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_arguments"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "  "
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "invalid-name-blank",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_arguments"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "\ud800"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "invalid-name-surrogate",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_arguments"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "invalid-name-oversize",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_arguments"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "/home/mike",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "path-in-root",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_arguments"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden",
+            "overwrite": true
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "argument-extra-field",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_arguments"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": []
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "empty-plan",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_proposal"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        },
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        },
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        },
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        },
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        },
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        },
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        },
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        },
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "too-many-steps",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_proposal"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        },
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "duplicate-operation",
+    "expected": {
+      "decision": "deny",
+      "code": "duplicate_operation"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": true,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "bool-session-revision",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_session"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": []
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "invalid-session-mode",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_session"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents",
+        "approved": true
+      }
+    ],
+    "name": "invalid-grant-shape",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_grants"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        },
+        {
+          "operation_id": "op-2",
+          "capability": "file.search",
+          "arguments": {
+            "root_id": "documents",
+            "query": "garden notes"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      },
+      {
+        "capability": "file.search",
+        "root_id": "documents"
+      }
+    ],
+    "name": "valid-two-steps",
+    "expected": {
+      "decision": "allow",
+      "code": "accepted"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-1",
+          "capability": "directory.create",
+          "arguments": {
+            "root_id": "documents",
+            "name": "Garden"
+          }
+        },
+        {
+          "operation_id": "op-2",
+          "capability": "file.search",
+          "arguments": {
+            "root_id": "documents",
+            "query": "garden notes"
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "second-step-denied",
+    "expected": {
+      "decision": "deny",
+      "code": "missing_grant"
+    }
+  },
+  {
+    "session": {
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "active": true,
+      "cancelled": false,
+      "input_final": true,
+      "mode": "command"
+    },
+    "proposal": {
+      "schema_version": 1,
+      "session_id": "session-a",
+      "request_id": "request-1",
+      "request_revision": 2,
+      "policy_epoch": 3,
+      "steps": [
+        {
+          "operation_id": "op-2",
+          "capability": "file.search",
+          "arguments": {
+            "root_id": "documents",
+            "query": ""
+          }
+        }
+      ]
+    },
+    "grants": [
+      {
+        "capability": "directory.create",
+        "root_id": "documents"
+      }
+    ],
+    "name": "empty-search-query",
+    "expected": {
+      "decision": "deny",
+      "code": "invalid_arguments"
+    }
+  }
+]
