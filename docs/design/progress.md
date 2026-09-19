@@ -10,6 +10,7 @@ This records work completed during the first sustained refinement pass on 2026-0
 - Primary-source investigation supporting candidate evaluation; no candidate is declared the production winner.
 - A pure-data admission reference: 36 fixtures pass, plus eight boundary tests.
 - An intent evaluation scaffold: 25 public development cases validate, and eight scorer integrity tests pass. There are no real-model predictions or scores.
+- A disposable workflow prototype creates/searches fixture files, rechecks grants/cancellation, freezes proposals, and reconciles a simulated interruption. Its 11 integration tests pass; no real model or desktop is involved.
 - Public documentation, reference code, and coherent commits pushed to the project repository. Local handoffs remain outside Git.
 
 ## What remains unimplemented or unmeasured
@@ -19,7 +20,7 @@ This records work completed during the first sustained refinement pass on 2026-0
 | Core request admission | Static fixture checker only | Authenticated transport, full lifecycle, production policy |
 | AI interpretation | Development cases and scorer | Candidate admission, real model adapter, held-out evaluation |
 | Voice input | V2T source inspection and pipeline proposal | Authorized corpus, measured baseline, live adapter |
-| System actions | Capability and recovery specifications | Sandboxed executor, fault injection, filesystem semantics |
+| System actions | Disposable create/search prototype and simulated interruption tests | Production executor/journal, broader fault injection, filesystem semantics |
 | Desktop integration | Portal/source research and workflow cases | Selected desktop spike, target-safe insertion, app verification |
 | Accessibility | Single-key requirements and proposed UX | Real controls and Mike's usability trial |
 | Open-source completeness | Admission criteria and source records for candidates | Project license choice and full shipped-component audit |
@@ -33,6 +34,6 @@ All benchmark performance values remain unknown. A synthetic reference echo pass
 
 ## Next concrete increment
 
-Implement the M2 sandboxed typed-request slice against the documented contracts, with a fake inference adapter for deterministic tests, before integrating a real model. Start with directory creation and read-only search in disposable fixtures. Keep file moves disabled until the recovery and concurrent-target questions are resolved. Make the prototype-language choice explicit and scoped; current reference Python does not silently select the production stack.
+Extend the M2 fixture workflow into a real typed-request/coordinator interface, then connect a vetted open-source model. The current demo prints example requests and supplies predetermined proposals; it does not interpret user text. Keep file moves disabled until the recovery and concurrent-target questions are resolved. Prototype Python choices are scoped in the decision register and do not silently select the production stack.
 
 In parallel as independent planning work, collect target hardware and first-task priorities, decide artifact admission policy, and prepare the V2T comparison corpus. No further broad outline is needed before these bounded experiments.

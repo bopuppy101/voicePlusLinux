@@ -6,11 +6,13 @@ Mike supplies the initial design direction; development is carried out with LLMs
 
 ## Current state
 
-Design and early contract experiments. There is no installable OS, selected production model/language stack, or measured voice benchmark yet.
+Detailed design, contract/evaluation tools, and a disposable create/search workflow prototype. There is no installable OS, selected production model/language stack, or measured voice benchmark yet.
 
 - [Vision](docs/high-level-description.md)
 - [High-level implementation plan](docs/implementation-plan.md)
 - [Detailed design notebook](docs/design/README.md)
 - [V2T source review and reuse direction](docs/v2t-source-review.md)
+- [Progress and verification boundaries](docs/design/progress.md)
+- [Run the reference experiments](CONTRIBUTING.md)
 
 Design proposals are distinguished from Mike's requirements. Project licensing is a pending decision; V2T's existing license/provenance is documented in the source review. An open-source goal is not a claim that this repository already contains a complete licensing and dependency audit.

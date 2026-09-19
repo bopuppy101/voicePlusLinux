@@ -11,10 +11,12 @@ python3 experiments/contract_reference/check_contracts.py
 python3 -B -m unittest discover -s experiments/contract_reference -p 'test_*.py'
 python3 experiments/intent_evaluation/score.py --validate-cases
 python3 -B -m unittest discover -s experiments/intent_evaluation -p 'test_*.py'
+python3 -B experiments/sandbox_workflow/demo.py
+python3 -B -m unittest discover -s experiments/sandbox_workflow -p 'test_*.py'
 git diff --check
 ```
 
-Contract and scorer tests use synthetic data. A passing result is evidence about the reference tools, not evidence that an AI understands English or that the OS can accept voice input. Unit tests for the scorer create only disposable temporary files.
+Contract and scorer tests use synthetic data. A passing result is evidence about the reference tools, not evidence that an AI understands English or that the OS can accept voice input. The scorer tests and sandbox workflow create only disposable temporary files. The sandbox demo performs create/search operations inside its generated workspace and removes the workspace afterward.
 
 ## Work in reviewable increments
 

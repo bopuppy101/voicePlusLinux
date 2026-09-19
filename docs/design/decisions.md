@@ -19,6 +19,8 @@
 
 **E-D03 — Narrow initial capability sample.** Implement only data checks for folder creation and scoped search in the reference. Keep moves, text delivery, approval prompts, IPC, and durable execution pending until their actual semantics are specified. This is experiment scope, not the intended limit of VPLinuxAI.
 
+**E-D04 — Python for the disposable workflow experiment.** Extend the reference work with temporary-directory creation/search adapters, a small experimental journal, and fault injection. This is a bounded Python prototype choice because it reuses the admission checker and needs no added dependencies. It is not a production-language decision, a production journal, or a real AI integration. No real target-directory argument is exposed.
+
 ## Proposed directions awaiting evidence
 
 | ID | Proposal | What would decide it |
