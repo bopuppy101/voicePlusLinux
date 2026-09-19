@@ -59,6 +59,8 @@ The [typed console](experiments/session_coordinator/README.md) supports sequenti
 
 Mike wants a small, understandable documentation structure. Use the existing chapters before adding documents. Keep the [project map](docs/design/README.md) current, explain how each subject fits the overall flow, and keep technical appendices optional for high-level readers.
 
+When presenting a document to Mike, display its full path and filename in the visible text. A descriptive label such as “Vision” alone, or a path visible only on hover, is insufficient. Navigation tables should keep the path visible; link targets may remain relative for repository portability.
+
 State the user outcome, the current limitation, and the exact experiment or change. Keep source provenance, decision scope, verification evidence, and known limitations with the code/design. Do not introduce a model provider, production language, or runtime dependency just because a development tool uses it.
 
 Update the design when code reveals a different boundary or failure case. Preserve language-neutral examples so another implementation can be checked against the same behavior. Avoid expanding capability authority as a side effect of adding a convenient adapter.
