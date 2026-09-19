@@ -4,11 +4,14 @@ import http.client
 import ipaddress
 import json
 import math
+from pathlib import Path
 import socket
+import sys
 import time
 from urllib.parse import urlsplit
 
-from coordinator import valid_outcome
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from experiments.intent_evaluation.score import valid_outcome
 from experiments.contract_reference.check_contracts import strict_object, reject_constant
 
 
