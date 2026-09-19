@@ -16,6 +16,7 @@ from experiments.contract_reference.check_contracts import strict_object, reject
 
 
 MAX_BYTES = 65_536
+INFERENCE_ERRORS = {"inference_timeout", "inference_unavailable", "inference_invalid_response"}
 SYSTEM_PROMPT = """Interpret the user's operating-system request into JSON only.
 You do not execute actions or grant permissions. The only capabilities are:
 directory.create with arguments root_id and name (one directory leaf name),
@@ -37,12 +38,19 @@ Do not perform a command when the input mode is dictation; the host normally byp
 
 class InferenceError(ValueError):
     def __init__(self, code):
-        self.code = code
-        super().__init__(code)
+        self.code = failure_code(code)
+        super().__init__(self.code)
+
+
+def failure_code(value):
+    return value if type(value) is str and value in INFERENCE_ERRORS else "inference_invalid_response"
 
 
 def decode_json(raw):
-    return json.loads(raw, object_pairs_hook=strict_object, parse_constant=reject_constant)
+    try:
+        return json.loads(raw, object_pairs_hook=strict_object, parse_constant=reject_constant)
+    except RecursionError:
+        raise ValueError("JSON nesting exceeds parser limit") from None
 
 
 def build_messages(job):
@@ -89,7 +97,7 @@ class LocalChatInterpreter:
             request = {"model": self.model, "messages": build_messages(job), "stream": False,
                        "temperature": 0, "max_tokens": 512, "response_format": {"type": "json_object"}}
             payload = json.dumps(request, ensure_ascii=True, allow_nan=False).encode("utf-8")
-        except (TypeError, ValueError, UnicodeError):
+        except (TypeError, ValueError, UnicodeError, RecursionError):
             raise InferenceError("inference_invalid_response") from None
         if len(payload) > MAX_BYTES:
             raise InferenceError("inference_invalid_response")
@@ -110,6 +118,9 @@ class LocalChatInterpreter:
             length = response.getheader("Content-Length")
             if length is not None and (not length.isdigit() or int(length) > MAX_BYTES):
                 raise InferenceError("inference_invalid_response")
+            transfer = response.getheader("Transfer-Encoding")
+            if transfer is not None and (transfer.lower() != "chunked" or length is not None):
+                raise InferenceError("inference_invalid_response")
             data = bytearray()
             while True:
                 if time.monotonic() - started > self.timeout:
@@ -120,6 +131,10 @@ class LocalChatInterpreter:
                 data.extend(chunk)
                 if len(data) > MAX_BYTES:
                     raise InferenceError("inference_invalid_response")
+            if length is not None and len(data) != int(length):
+                # read1() may return EOF without raising IncompleteRead. Valid JSON
+                # alone cannot establish that the declared HTTP entity completed.
+                raise InferenceError("inference_invalid_response")
             outer = decode_json(data.decode("utf-8"))
             if type(outer) is not dict or type(outer.get("choices")) is not list or len(outer["choices"]) != 1:
                 raise InferenceError("inference_invalid_response")

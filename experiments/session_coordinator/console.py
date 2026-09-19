@@ -27,7 +27,7 @@ class Console:
 
     @property
     def prompt(self):
-        return "Replacement request: " if self.entering == "revision" else "Text: " if self.entering else "> "
+        return "Replacement request (c cancel, q quit): " if self.entering == "revision" else "Text: " if self.entering else "> "
 
     def show(self, request):
         view = report(self.coordinator, request, self.interpreter)
@@ -36,7 +36,8 @@ class Console:
         return view
 
     def schedule(self):
-        if self.coordinator.snapshot(self.current)["state"] != "received":
+        view = self.coordinator.snapshot(self.current)
+        if view["state"] != "received" or not view["input_final"]:
             return []
         job = self.coordinator.begin_interpretation(self.current)
         try:
@@ -53,16 +54,15 @@ class Console:
         if self.closed:
             return []
         try:
-            if self.entering:
-                purpose, self.entering = self.entering, None
+            if self.entering == "revision" and line.strip().casefold() in {"c", "q"}:
+                self.entering = None  # Single-key escape without submitting text.
+            elif self.entering:
+                purpose = self.entering
                 if purpose == "revision":
-                    old = self.tickets.get(self.current)
-                    self.coordinator.revise(self.current, line)
-                    if old:
-                        self.worker.cancel(old)
-                        self.tickets.pop(self.current, None)
+                    self.coordinator.finalize_input(self.current, line)
                 else:
                     self.current = self.coordinator.submit(line, mode=purpose)
+                self.entering = None
                 self.presented_digest = None
                 return [*self.schedule(), self.show(self.current)]
             action = line.strip().casefold()
@@ -77,8 +77,14 @@ class Console:
             if self.current is None:
                 return ["No current request. Use n or d."]
             if action == "r":
+                view = self.coordinator.snapshot(self.current)
+                self.coordinator.revise(self.current, view["text"], input_final=False)
+                old = self.tickets.pop(self.current, None)
+                if old:
+                    self.worker.cancel(old)
+                self.presented_digest = None
                 self.entering = "revision"
-                return []
+                return [self.show(self.current)]
             if action == "c":
                 self.coordinator.cancel(self.current)
                 ticket = self.tickets.get(self.current)

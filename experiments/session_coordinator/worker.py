@@ -9,7 +9,7 @@ import json
 import queue
 import threading
 
-from inference import InferenceError, MAX_BYTES
+from inference import InferenceError, MAX_BYTES, failure_code
 
 
 class InferenceWorker:
@@ -84,7 +84,7 @@ class InferenceWorker:
                         raise ValueError("Output exceeds worker limit")
                     result["output"] = json.loads(raw)
                 except InferenceError as exc:
-                    result["error"] = exc.code
+                    result["error"] = failure_code(exc.code)
                 except Exception:
                     # Do not print potentially sensitive interpreter exception text.
                     result["error"] = "inference_invalid_response"
@@ -122,5 +122,5 @@ def deliver(coordinator, result):
     if result.get("cancelled"):
         return False
     if "error" in result:
-        return coordinator.fail_interpretation(result["ticket"], result["error"])
+        return coordinator.fail_interpretation(result["ticket"], failure_code(result["error"]))
     return coordinator.accept_interpretation(result["ticket"], result["output"])

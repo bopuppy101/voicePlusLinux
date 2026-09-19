@@ -21,6 +21,10 @@ Without `--text`, the console accepts a single letter followed by Enter for new
 command, dictation, revision, approval, cancellation, status, and quit. This is
 an experimental sequential-key console, not a validated accessible desktop UI.
 Completed requests require a new request; revision applies to pending requests.
+Pressing `r` immediately suspends the current request and invalidates its old job
+and approval, before replacement text arrives. Invalid replacement text leaves
+it suspended; type a new replacement, or use `c` to cancel or `q` to quit at the
+replacement prompt. These two single-letter lines are controls in that prompt.
 Only one current pending request is exposed: revise or cancel it before starting
 another. Inference runs in a worker, so the console can process these controls
 while awaiting a response. Results appear without another keypress. EOF and quit
@@ -59,6 +63,11 @@ or evaluation answers. The coordinator independently validates every proposal.
 Loopback restricts this client's destination; it does not prove that the server
 keeps data local or that its model is open source. Those are admission decisions.
 
+HTTP framing is checked independently of JSON validity: a short declared body or
+an unfinished chunked body is rejected even if the received prefix is valid JSON.
+Ambiguous transfer-encoding/content-length combinations are rejected. Unexpected
+interpreter error codes become a bounded `inference_invalid_response` failure.
+
 ## Controller lifecycle
 
 `submit` returns a request ID. `begin_interpretation` produces a correlated ticket
@@ -79,6 +88,9 @@ Seventeen additional synthetic transcript tests cover the [voice-input boundary]
 bringing this suite to 79 tests. `TranscriptGate` previews partials, accepts one
 final, preserves activation mode, and invalidates a pending command immediately
 when correction starts. No microphone or recognizer is connected.
+Seventeen independent [QA regression tests](test_boundary_regressions.py) bring
+the current suite to 96 tests and cover response framing, error handling, and the
+arrival of old inference results while correction text is being entered.
 No model was evaluated. The existing 11 sandbox tests still cover adapter effects
 and simulated journal recovery separately.
 
@@ -90,6 +102,9 @@ service, general concurrent controller, production persistence layer, or model
 process supervisor. Request states are in memory; the underlying
 sandbox journal does not persist an entire session. Exceptions during dispatch
 are conservatively reported as uncertain, with known earlier effects retained.
+Request history is bounded, but the disposable executor's journal retains prior
+operations for the session and can grow during long runs. Production retention
+and storage limits remain unimplemented.
 
 The worker receives copied bounded data, never a controller/executor reference.
 Only the console's owner thread delivers outcomes and dispatches admitted plans.

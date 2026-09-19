@@ -8,9 +8,8 @@ from pathlib import Path
 import sys
 
 from coordinator import Sandbox, SessionCoordinator
-from inference import InferenceError, LocalChatInterpreter
+from inference import InferenceError, LocalChatInterpreter, decode_json, failure_code
 from console import interactive, report
-from experiments.contract_reference.check_contracts import strict_object, reject_constant
 
 
 EXAMPLES = {
@@ -40,7 +39,7 @@ class FileInterpreter:
             raw = stream.read(65_537)
         if len(raw) > 65_536:
             raise ValueError("Response exceeds 64 KiB")
-        return json.loads(raw.decode("utf-8"), object_pairs_hook=strict_object, parse_constant=reject_constant)
+        return decode_json(raw.decode("utf-8"))
 
 
 def prepare(coordinator, request_id, interpreter):
@@ -50,7 +49,7 @@ def prepare(coordinator, request_id, interpreter):
     try:
         output = interpreter.interpret(job)
     except InferenceError as exc:
-        coordinator.fail_interpretation(job["ticket"], exc.code)
+        coordinator.fail_interpretation(job["ticket"], failure_code(exc.code))
     except (OSError, ValueError):
         coordinator.fail_interpretation(job["ticket"], "inference_invalid_response")
     else:
