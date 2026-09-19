@@ -4,7 +4,9 @@ Status: proposed UX and integration tests. The selected desktop/toolkit is still
 
 ## Interaction surface
 
-Provide a compact panel showing mode, listening/processing state, editable transcript, pending action, and result. Keep the latest meaningful state visible until replaced or dismissed. Do not require the user to watch a transient notification to know whether a file moved.
+Mike's preferred interface is one large wall-mounted or projected display with integrated far-field microphones. The hardware and presentation options are discussed in [/home/mike/git/voicePlusLinux/docs/OS-Integration-Design/visual-and-audio-user-interface-options.md](visual-and-audio-user-interface-options.md).
+
+Provide a view readable from the user's position showing mode, listening/processing state, editable transcript, pending action, and result. A compact panel remains a possible ordinary-desktop presentation, not a requirement for the wall interface. Keep the latest meaningful state visible until replaced or dismissed. Do not require the user to watch a transient notification to know whether a file moved.
 
 All initial operations must be reachable through single-key steps. Sequential keys are acceptable; simultaneous chords, precise mouse positioning, dragging, and text selection are not required. Large controls, stable focus order, and clear labels support Mike's stated needs.
 
