@@ -4,7 +4,7 @@ Status: confirmed voice-interaction requirements with proposed implementation an
 
 ## Interaction surface
 
-The first milestone is voice-only routine operation of Mike’s existing 27-inch monitor and Ubuntu desktop. A larger wall-mounted, projected, or sofa-table display follows after this workflow works. Microphones and speakers may be integrated or placed separately, including on a sofa table; he favors reducing connection complexity, with the layout still undecided. The hardware and presentation options are discussed in [/home/mike/git/voicePlusLinux/docs/OS-Integration-Design/visual-and-audio-user-interface-options.md](visual-and-audio-user-interface-options.md).
+The first milestone is voice-only routine operation of Mike’s existing 27-inch monitor and Ubuntu desktop. Large-screen research is deferred; reconsider a larger display after this workflow works. Microphones and speakers may be integrated or placed separately, including on a sofa table; he favors reducing connection complexity, with the layout still undecided. The hardware and presentation options are discussed in [/home/mike/git/voicePlusLinux/docs/OS-Integration-Design/visual-and-audio-user-interface-options.md](visual-and-audio-user-interface-options.md).
 
 Provide a view readable from the user's position showing mode, listening/processing state, editable transcript, pending action, and result. A compact panel remains a possible ordinary-desktop presentation, not a requirement for the wall interface. Keep the latest meaningful state visible until replaced or dismissed. Do not require the user to watch a transient notification to know whether a file moved.
 
@@ -15,6 +15,10 @@ Routine operations must be voice-accessible. Retain single-key steps as an acces
 Proposed panel actions: activate recording, change mode, review/correct, choose a candidate, confirm when needed, cancel, and inspect the last result. A dedicated configurable global activation key must coexist with ordinary typing. Inside the panel, a focused large control can use Space or Enter without making those keys global triggers.
 
 ## First milestone: concise voice control on the current desktop
+
+**Active scope — September 19:** large-screen selection and room-distance hardware work are deferred. Develop and evaluate voice manipulation on Mike’s current Ubuntu desktop with his **LG 27-inch monitor**, **Sennheiser microphone** (previously identified by Mike as MK 4), **Elgato Wave XLR** audio interface, and **Logitech M720** mouse. Avoid requiring Mike to touch the mouse wherever possible. The display and microphone model details are user-reported; the Wave XLR was observed in earlier host checks.
+
+**Recording activation exception:** preserve the current hold-to-record key behavior for now. Mike explicitly considers holding this key a low priority compared with desktop manipulation. The initial milestone therefore means voice control of desktop actions after manual recording activation, not completely hands-free capture. Do not change activation bindings or enable continuous listening for this milestone. Revisit toggle recording or wake-word activation later. Holding the existing recording key is an accepted exception in milestone evaluation, not a failure of the mouse-free workflow.
 
 **Confirmed by Mike:** start with the existing 27-inch monitor. Routine actions must work through voice alone, using concise commands without lengthy discussion. Complete clear, routine requests directly and show brief status; ask only a short clarification when needed. Existing authorization requirements still apply. Output remains visual initially; this does not authorize spoken playback.
 

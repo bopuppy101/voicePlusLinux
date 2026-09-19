@@ -2,7 +2,7 @@
 
 **This file:** `/home/mike/git/voicePlusLinux/docs/OS-Integration-Design/visual-and-audio-user-interface-options.md`
 
-**Status:** Requirements and options for architectural review. No display, projector, audio hardware, desktop, or UI toolkit selected. No hardware or usability trials performed.
+**Status:** Large-screen hardware research deferred by Mike on September 19. Current work is voice manipulation of the existing LG 27-inch Ubuntu desktop; preserve hold-to-record for now. Requirements and options below are retained for later architectural review. No display, projector, audio hardware, desktop, or UI toolkit selected. No hardware or usability trials performed.
 
 ## Mike's intended experience
 
