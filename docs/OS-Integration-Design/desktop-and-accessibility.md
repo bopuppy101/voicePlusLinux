@@ -4,7 +4,7 @@ Status: proposed UX and integration tests. The selected desktop/toolkit is still
 
 ## Interaction surface
 
-Mike's preferred interface is one large wall-mounted or projected display with integrated far-field microphones. The hardware and presentation options are discussed in [/home/mike/git/voicePlusLinux/docs/OS-Integration-Design/visual-and-audio-user-interface-options.md](visual-and-audio-user-interface-options.md).
+Mike's preferred interface is one large wall-mounted or projected display. Microphones and speakers may be integrated or placed separately, including on a sofa table; he favors reducing connection complexity, with the layout still undecided. The hardware and presentation options are discussed in [/home/mike/git/voicePlusLinux/docs/OS-Integration-Design/visual-and-audio-user-interface-options.md](visual-and-audio-user-interface-options.md).
 
 Provide a view readable from the user's position showing mode, listening/processing state, editable transcript, pending action, and result. A compact panel remains a possible ordinary-desktop presentation, not a requirement for the wall interface. Keep the latest meaningful state visible until replaced or dismissed. Do not require the user to watch a transient notification to know whether a file moved.
 

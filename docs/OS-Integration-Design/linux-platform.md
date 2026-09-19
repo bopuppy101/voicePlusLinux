@@ -24,7 +24,7 @@ A candidate with open weights but missing required training information should b
 
 The first validated machine profile should declare CPU, RAM, graphics, microphone, storage, architecture, and any firmware required for those devices. Publish a capability matrix for known supported hardware rather than promising every PC works.
 
-Propose a CPU-capable reference path so a proprietary GPU stack is not a mandatory dependency. Whether it meets voice and AI latency targets must be measured. Acceleration should be evaluated as a complete driver/runtime/model combination, not by GPU availability alone. The user's current development machine is not automatically the release hardware target.
+Propose a CPU-capable reference path so a proprietary GPU stack is not a mandatory dependency. Whether it meets voice and AI latency targets must be measured. Acceleration should be evaluated as a complete driver/runtime/model combination, not by GPU availability alone. Mike nominates his current computer, reporting powerful CPUs and GPUs including an NVIDIA RTX 4090, as a candidate host for the wall display and voice/AI workloads. Verify its actual configuration and combined-workload performance; this does not automatically make it the minimum release hardware target. Physical placement and connections are discussed in [/home/mike/git/voicePlusLinux/docs/OS-Integration-Design/visual-and-audio-user-interface-options.md](visual-and-audio-user-interface-options.md#computer-placement-and-connections).
 
 If a device requires a component that cannot be included under the project policy, document it as unsupported in the conforming image. Do not quietly add non-open dependencies to satisfy a hardware checklist.
 
