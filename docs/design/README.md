@@ -1,61 +1,65 @@
-# VPLinuxAI design notebook
+# VPLinuxAI — start here
 
-This notebook refines the [implementation plan](../implementation-plan.md). It is a working design, not a claim that an OS has been built or tested.
+This is the map of the project and its documentation. **Read this page first; the detailed documents are references, not a required reading list.**
 
-## How to read decisions
+VPLinuxAI will be an open-source Linux OS where you can speak or type ordinary English, dictate text, and ask AI to carry out system actions. V2T sets the minimum voice-input standard. The finished system must work independently of Codex or any required proprietary service.
 
-- **Requirement:** direction supplied by Mike or an applicable accessibility constraint.
-- **Proposal:** a concrete design to investigate; it can change without contradicting the vision.
-- **Evidence:** an observation from inspected source or an explicitly linked primary reference.
-- **Open:** a decision awaiting experiments or user input. Unknown values are not assumed to pass.
+## How the system fits together
 
-The current architecture is a proposal. “OS harness” is optional terminology for coordination across the OS; independence from Codex is a requirement. The system can be developed with any capable tools without requiring those tools in its runtime.
+```mermaid
+flowchart LR
+    V[Voice] --> T[Text]
+    K[Keyboard] --> T
+    T --> D[Dictation into an application]
+    T --> A[AI understands a request]
+    A --> C[Check permissions and carry out actions]
+    C --> L[Linux services and applications]
+    L --> R[Verify and show the result]
+```
 
-## Refinement map
+This is the proposed main flow. AI could also help with transcription. Linux provides the foundation; voice and AI become part of using it. Simple controls let the user correct or cancel a request. Command lines and configuration files remain available.
 
-| Subject | Document | Next level of detail |
+## The three main documents
+
+| Read | What it answers |
+| --- | --- |
+| [Vision](../high-level-description.md) | **What does Mike want to build, and why?** |
+| [Implementation plan](../implementation-plan.md) | **What are the major steps to get there?** Includes the language discussion. |
+| **This project map** | **How do the parts and supporting documents fit together?** |
+
+Those three are enough for a high-level understanding. The documents below expand particular parts of the plan.
+
+## The supporting chapters, in order
+
+| Part of the project | Main chapter | Open it when you want to understand… |
 | --- | --- | --- |
-| User outcomes and scope | [Requirements](requirements.md) | Trace outcomes to acceptance evidence |
-| System responsibilities | [Architecture](architecture.md) | Define boundaries, lifecycle, and failure behavior |
-| Linux foundation and openness | [Linux platform](linux-platform.md) | Admission records and hardware/base gates |
-| Development languages | [Language strategy](languages.md) | Compare prototype shapes before selecting production languages |
-| Recognition and V2T reuse | [Voice input](voice-input.md) | Capture, transcript revisions, and delivery semantics |
-| Transcript-to-request boundary | [Transcript events](transcript-boundary.md) | Preview-only partials, input finality, and immediate correction invalidation |
-| Natural-language understanding | [AI interpretation](ai-interpretation.md) | Context, engine/model separation, and model evaluation |
-| Authority and execution | [Actions and recovery](actions-and-recovery.md) | Capability contracts, retries, and interrupted effects |
-| Desktop and single-key use | [Desktop/accessibility](desktop-and-accessibility.md) | Activation, insertion, correction, and session boundaries |
-| Configuration and persistence | [Configuration/state](configuration-and-state.md) | Retention, grants, journals, and updates in flight |
-| Acceptance evidence | [Evaluation](evaluation.md) | V2T parity, language outcomes, and recovery tests |
-| Distribution and maintenance | [Packaging/release](packaging-and-release.md) | Build, install, update, rollback, and provenance |
-| Work order | [Implementation backlog](implementation-backlog.md) | Bounded experiments and decision dependencies |
-| Executable message examples | [Contracts](contracts.md) | Static admission fixture checker and limits |
-| Request ordering | [Lifecycle](lifecycle.md) | Corrections, approval binding, deadlines, and cancellation |
-| Transport and failures | [Protocol/errors](protocol-and-errors.md) | Authentication, bounds, compatibility, and error handling |
-| Interrupted filesystem work | [Recovery cases](recovery-cases.md) | Observation tables and fault-injection obligations |
-| User journeys | [Workflow scenarios](workflow-scenarios.md) | Concrete sequences and failure branches |
-| Decision status | [Decision register](decisions.md) | Separate user direction, experiment choices, and proposals |
-| Concrete candidates | [Component investigation](component-candidates.md) | Artifact-level evidence and unresolved admission questions |
-| Current implementation evidence | [Progress](progress.md) | Completed checks, remaining gaps, and the next increment |
+| 1. The foundation | [Linux platform](linux-platform.md) | What existing Linux system we build on and what “completely open source” requires. |
+| 2. The construction choices | [Languages](languages.md) and [architecture](architecture.md) | What we write, possible languages, and how the components communicate. |
+| 3. Voice becomes text | [Voice input](voice-input.md) | V2T reuse, transcription, dictation, and correction. The [V2T review](../v2t-source-review.md) supplies source evidence. |
+| 4. Text becomes an action | [AI interpretation](ai-interpretation.md) → [actions and recovery](actions-and-recovery.md) | How English becomes a proposed action, how it gets checked, and how we establish what actually happened. |
+| 5. The everyday experience | [Desktop and accessibility](desktop-and-accessibility.md) | How a person activates, uses, corrects, and cancels the system. |
+| 6. A usable OS release | [Evaluation](evaluation.md) → [packaging and release](packaging-and-release.md) | How we prove it works at least as well as V2T, then build and distribute it. |
 
-The project is at design stage: no production model, language, Linux base, numeric performance target, or runtime integration has been selected. Small reference experiments may use an available language to check the design without selecting the production stack.
+## Where we actually are
 
-## Working sequence
+**We have a design and small disposable prototypes—not an operating system yet.** Typed requests, corrections, cancellation, and simple folder creation/search work in temporary test files. Synthetic transcript events test the voice-to-text boundary. An inference connection exists, but no real model has been evaluated and no microphone is connected.
 
-1. Describe the desired behavior independently of implementation.
-2. Define responsibilities and the information crossing their boundaries.
-3. Compare real implementation options using primary sources.
-4. Specify bounded experiments with acceptance criteria.
-5. Implement the smallest useful end-to-end slice and measure it.
-6. Revisit the design using observed results before expanding scope.
+The next useful demonstration is one complete voice → text → real open-source AI → verified Linux action workflow. Choosing the final Linux base, models, and production languages remains open. Prototype Python code does not settle those choices.
 
-Each substantial increment is saved and committed. Local session context is stored separately under `.Codex/context-saves/`; it is not part of the public design specification.
+Use [progress](progress.md) for evidence of what works, [decisions](decisions.md) for what is settled versus proposed, and [the backlog](implementation-backlog.md) for the work sequence.
 
-## Runnable reference work
+## Technical appendices — skip these until implementing that part
 
-- [Admission contract checks](../../experiments/contract_reference/README.md): 36 fixtures and eight boundary tests.
-- [Intent evaluation scaffold](../../experiments/intent_evaluation/README.md): 25 public development cases, an offline scorer, and a checkpointed inference runner; 15 scorer/runner tests. No real model evaluated.
-- [Disposable workflow prototype](../../experiments/sandbox_workflow/README.md): fixture create/search actions, simulated interruption recovery, and 11 integration tests. No real AI or desktop integration.
-- [Typed lifecycle and console](../../experiments/session_coordinator/README.md): request revisions, cancellation, proposal-bound confirmation, a bounded inference worker, and an explicit loopback chat adapter; 62 controller/console/worker/fake-HTTP tests.
-- [Benchmark manifest template](benchmark-manifest.template.json): unmeasured fields remain null and results remain `not_evaluated`.
+These existing documents explain details within the chapters above. They are **not additional projects or additional phases**.
 
-See [contribution instructions](../../CONTRIBUTING.md) for reproducible check commands.
+| Belongs to | Supporting detail |
+| --- | --- |
+| Overall design | [Requirements](requirements.md), [worked user scenarios](workflow-scenarios.md), [component candidates](component-candidates.md) |
+| Voice input | [Transcript events and correction ordering](transcript-boundary.md) |
+| AI and actions | [Message contracts](contracts.md), [request lifecycle](lifecycle.md), [transport and errors](protocol-and-errors.md), [interrupted-action recovery](recovery-cases.md) |
+| OS integration | [Configuration and stored state](configuration-and-state.md) |
+| Evaluation | [Benchmark record template](benchmark-manifest.template.json) |
+
+The `experiments/` directory contains code used to test parts of these ideas. Each experiment's README explains how to run it; [CONTRIBUTING](../../CONTRIBUTING.md) collects the check commands. Experiments provide evidence for the design and do not define new product requirements.
+
+Future refinement should update these existing chapters and this map, keeping implementation detail in the appendices rather than growing another layer of design documents.
