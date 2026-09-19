@@ -34,7 +34,9 @@ This is the single hardware shortlist, covering both TVs and interactive display
 
 If touch becomes essential, compare interactive displays before selecting the TV. Manufacturer-advertised refresh rates do not establish the modes available with this computer's Ubuntu/NVIDIA configuration. Neither advertised TV voice control nor built-in speakers establish host-accessible microphones.
 
-At 15 feet, use large text and simple room-view controls; even a 75-inch 4K screen does not make ordinary desktop text readable automatically. Up close, offer detailed desktop interaction and optional touch. How the user switches between those views remains an interface decision; automatic distance sensing has not been selected. Touch must remain optional for core operations.
+**Confirmed OS requirement — automatic text sizing:** VPLinuxAI must use the display's physical size and pixel resolution to choose an appropriate text scale. A higher-resolution screen must not make the same interface physically smaller merely because it has more pixels. Scale controls and reflow the layout with the text so labels, full paths, and actions remain usable. This is required behavior, not an implemented capability or a selected scaling algorithm.
+
+Viewing distance also matters: at 15 feet, use larger text and simple room-view controls; up close, offer detailed desktop interaction and optional touch. Proposed implementation behavior is to combine the display-derived scale with a user-selected viewing distance or near/room profile and a remembered text-size preference. Allow a simple override if automatic sizing is uncomfortable, and manual physical-size entry if display information is unavailable or incorrect. Automatic distance sensing has not been selected. Touch must remain optional for core operations.
 
 ### Compatibility and selection notes
 
@@ -124,7 +126,7 @@ First establish the room: usable wall dimensions, seated/standing positions, vie
 
 Apply these acceptance gates before ranking cost or appearance:
 
-1. **Readable and operable:** Mike can read transcripts, full paths, choices, and results from normal positions in daylight and evening lighting, without precision mouse or touch operation.
+1. **Readable and operable:** automatic text sizing accounts for physical display size and resolution. Compare different sizes at the same resolution and different resolutions at the same physical size; verify layout reflow and user overrides. Mike can read transcripts, full paths, choices, and results from normal positions up to 15 feet in daylight and evening lighting, without precision mouse or touch operation.
 2. **Reliable voice:** the complete audio-to-transcript path meets agreed accuracy, missed-request, and response-time targets at 10 and 15 feet, including off-axis speech and normal room noise. Evaluate sofa-table configurations at their actual microphone distances as well; do not report screen distance as microphone distance.
 3. **Usable authorized audio:** spoken output is intelligible, stops predictably, and does not cause the system to act on its own voice. Test simultaneous speaking if included in the requirements.
 4. **Ubuntu and openness:** the setup integrates with Mike's existing Ubuntu computer; required display, audio, and optional touch features work without Windows or a proprietary assistant, and software, models, and firmware dependencies meet the agreed policy.

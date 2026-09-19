@@ -8,6 +8,8 @@ Mike's preferred interface is one large wall-mounted or projected display. Micro
 
 Provide a view readable from the user's position showing mode, listening/processing state, editable transcript, pending action, and result. A compact panel remains a possible ordinary-desktop presentation, not a requirement for the wall interface. Keep the latest meaningful state visible until replaced or dismissed. Do not require the user to watch a transient notification to know whether a file moved.
 
+**Confirmed requirement:** automatically size text using the display's physical dimensions and pixel resolution, with controls and layout adapting alongside it. Viewing-distance profiles and remembered user overrides are proposed ways to accommodate close work and room viewing up to 15 feet; automatic distance sensing is not selected. The sizing behavior and validation scope are described in [/home/mike/git/voicePlusLinux/docs/OS-Integration-Design/visual-and-audio-user-interface-options.md](visual-and-audio-user-interface-options.md#hardware-shortlist-discussed-with-mike--september-19-2026).
+
 All initial operations must be reachable through single-key steps. Sequential keys are acceptable; simultaneous chords, precise mouse positioning, dragging, and text selection are not required. Large controls, stable focus order, and clear labels support Mike's stated needs.
 
 Proposed panel actions: activate recording, change mode, review/correct, choose a candidate, confirm when needed, cancel, and inspect the last result. A dedicated configurable global activation key must coexist with ordinary typing. Inside the panel, a focused large control can use Space or Enter without making those keys global triggers.
