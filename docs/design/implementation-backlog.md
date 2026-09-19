@@ -14,7 +14,7 @@ Status: proposed sequence. The current authorization is to keep developing/refin
 | M5 | Selected desktop integration | Target-safe insertion, app launch, accessibility and failure trials | Desktop spike and M2–M4 |
 | M6 | Packages and image | Clean build/install/update/recovery with source provenance | Base decision and prior gates |
 
-M3 and M4 need not be sequential once contracts are stable. Mike has authorized distinct architectural, developer, QA, and review agents; their responsibilities and integration rules are in [CONTRIBUTING](../../CONTRIBUTING.md#agent-roles-and-working-flow).
+M3 and M4 need not be sequential once contracts are stable. Mike has authorized distinct architectural, developer, QA, and review agents; their responsibilities and integration rules are in [/home/mike/git/voicePlusLinux/developer-guide-check-commands.md](../../developer-guide-check-commands.md#agent-roles-and-working-flow).
 
 Current checkpoint: M0 is documented. M1 has admission fixtures and in-process lifecycle/approval tests; authenticated transport remains pending. M2 has a disposable create/search executor, experimental journal, and typed console with revisions, cancellation, bounded correction context, background inference, and proposal-bound confirmation. The default interpreter is three deterministic examples, not AI. M3 has a loopback adapter and checkpointed development evaluation runner, but no admitted/evaluated real model or held-out results, so its completion gate remains unmet. Synthetic transcript events exercise M4's input boundary; live voice and M5–M6 remain unimplemented. Each component's code and tests are linked in the [architecture](architecture.md); current counts and results are maintained in [progress](progress.md).
 

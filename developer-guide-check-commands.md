@@ -1,4 +1,4 @@
-# Developing VPLinuxAI
+# Developer guide-check commands
 
 Start with the [design index](docs/design/README.md) and [decision register](docs/design/decisions.md). Mike's requirements are authoritative; proposals are not settled decisions. Existing reference experiments do not select the production language or establish model/voice quality.
 

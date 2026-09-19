@@ -60,7 +60,7 @@ The test links identify each component's behavioral checks; fake HTTP, console
 subprocesses, and filesystem recovery are integration checks in addition to unit
 tests. [QA boundary regressions](../../experiments/session_coordinator/test_boundary_regressions.py)
 also exercise failures across component boundaries.
-[CONTRIBUTING](../../CONTRIBUTING.md) is the single place for repository
+[/home/mike/git/voicePlusLinux/developer-guide-check-commands.md](../../developer-guide-check-commands.md) is the single place for repository
 check commands. Test counts and execution results belong in [progress](progress.md).
 
 ### Gaps between this prototype and the proposed system
