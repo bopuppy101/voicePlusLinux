@@ -28,6 +28,12 @@ Keep the physical mouse and sequential-key controls available for recovery durin
 
 **Current mouse:** Mike identifies a Logitech M720 and is concerned about distance. Logitech specifies a 10 m / 33 ft wireless range, dependent on environment, for its Bluetooth/Unifying connectivity. Ten feet is therefore within the advertised range, but actual reception here has not been tested. Radio range does not solve precise pointing, hand comfort, or distant-screen usability. [Logitech specifications](https://support.logi.com/hc/en-in/articles/360023302794-M720-Triathlon-Technical-Specifications).
 
+## Focus after file-manager actions
+
+**Confirmed requirement:** when Mike asks to open or navigate a folder during the current Codex-mediated voice workflow, leave the requested folder open and return focus to Codex’s message input. Otherwise the next V2T transcript may enter the file manager’s search box. Opening the folder alone does not complete the interaction. Test consecutive spoken folder requests and verify the next transcript reaches the intended input. This requirement is for the current workflow; the independent VPLinuxAI implementation must provide its own reliable command-input routing.
+
+**Observed limitation:** on this Ubuntu Wayland session, a direct `org.gnome.Shell.FocusApp` request was rejected with AccessDenied. The normal `gtk-launch chatgpt` launcher accepted an activation request, but foreground window and message-input focus were not independently verified. Do not treat launcher exit status as proof of correct dictation focus, disable compositor protections, or change recording bindings to work around this.
+
 ## Correction examples
 
 **Before execution:** “Make a folder called Garden” produces a visible target. “Call it Gardening instead” revises the proposal and invalidates any prior approval.
