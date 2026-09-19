@@ -10,7 +10,25 @@ VPLinuxAI should provide a visual and audio interface centered on **one large sc
 
 Carry forward the existing goal of normal speech pickup from **10–15 feet**, measured from the speaker's mouth to the nearest microphone. The visual interface must also be readable and usable from those positions. Screen size alone does not establish readable text or reliable voice capture.
 
-These preferences establish the direction. Screen dimensions, mounting height, room layout, budget, audio placement, and the degree of physical integration remain open. Compare alternatives against the preferred experience rather than silently replacing it with a conventional desktop setup.
+Mike clarified that he wants a **premium television that also works well as a computer monitor**, with **touch as a possible feature**. The minimum size is 55 inches, with 65 or 75 inches preferred initially. Viewing distance will range from close enough to touch the screen out to **15 feet**. His computer is currently on the dining table, and moving the setup off that table is an immediate practical goal. Shopping location: Indian Harbour Beach, Florida 32937.
+
+These preferences establish the direction. Exact screen dimensions, mounting height, room layout, budget, audio placement, and the degree of physical integration remain open. The later premium-display preference supersedes treating lowest price as the main selection criterion.
+
+## Hardware shortlist discussed with Mike — September 19, 2026
+
+These are research candidates, not selected or tested hardware. The TV models below are 2025 models; this is not a claim that they are the newest available products. Prices are snapshots of advertised listings, before tax and installation. Availability and delivery to 32937 have not been verified.
+
+| Candidate | Reason to evaluate | Touch and limitations | Source / price snapshot |
+| --- | --- | --- | --- |
+| Samsung QN90F, 75-inch Mini-LED TV | Premium TV candidate for substantial desktop/document use; manufacturer advertises a glare-reducing screen and refresh rates up to 165 Hz. | No built-in touch. Verify readable computer text and the actual supported Ubuntu/NVIDIA display modes. | [Samsung QN90F specifications](https://www.samsung.com/us/tvs/neo-qled/75-class-neo-qled-4k-tv-qn90f-sku-qn75qn90fafxza/). Purchase price remains to be confirmed. |
+| LG C5 OLED, 65 or 77 inches | Premium mixed TV/computer candidate; manufacturer advertises OLED black levels, 144 Hz, and NVIDIA G-Sync. | No built-in touch. Prolonged static desktop content introduces an OLED image-retention/burn-in consideration. | [LG C5 listing](https://www.lg.com/us/tvs/lg-oled65c5pua-oled-4k-tv): 65-inch **$1,499.99**, 77-inch **$2,199.99** when checked. |
+| ViewSonic ViewBoard IFP6550, Gen 5, 65 inches | A 4K interactive display with touch and built-in speakers; a candidate if native touch becomes a requirement. | Interactive-display category rather than a conventional premium TV. Verify exact model, Ubuntu touch behavior, picture quality, and connection requirements before comparing it as a substitute. | [ViewSonic IFP6550 listing](https://www.viewsonic.com/us/ifp6550.html). Price/quote remains to be obtained. |
+
+**Provisional recommendation:** evaluate a wall-mounted 75-inch premium Mini-LED TV driven by Mike's existing computer first. A 77-inch OLED is an alternative for mixed entertainment and computer use. The Mini-LED preference is an engineering judgment for frequent static desktop content, not a measured comparison. LG describes the relationship between prolonged static images and OLED burn-in in its [OLED reliability guidance](https://www.lg.com/us/experience-tvs/oled-tv/reliability).
+
+If touch becomes essential, compare interactive displays before selecting the TV. Manufacturer-advertised refresh rates do not establish the modes available with this computer's Ubuntu/NVIDIA configuration. Neither advertised TV voice control nor built-in speakers establish host-accessible microphones.
+
+At 15 feet, use large text and simple room-view controls; even a 75-inch 4K screen does not make ordinary desktop text readable automatically. Up close, offer detailed desktop interaction and optional touch. How the user switches between those views remains an interface decision; automatic distance sensing has not been selected. Touch must remain optional for core operations.
 
 ## Display arrangements to compare
 
