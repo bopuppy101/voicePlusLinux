@@ -16,7 +16,7 @@ Status: proposed sequence. The current authorization is to keep developing/refin
 
 M3 and M4 need not be sequential once contracts are stable. They may be pursued independently, but this does not authorize spawning additional agents.
 
-Current checkpoint: M0 is documented. M1 has a limited admission reference with 36 fixtures and eight tests; full lifecycle/approval transport checks are still pending. A 25-case public intent development set and offline scorer are also available, with eight scorer integrity tests. M2 has a disposable fixture workflow with create/search adapters, an experimental journal, and 11 integration tests; real typed interpretation and a production coordinator remain pending. M3–M6 have not been implemented. See [progress and evidence](progress.md).
+Current checkpoint: M0 is documented. M1 has a limited admission reference with 36 fixtures and eight tests plus in-process lifecycle/approval tests; authenticated transport remains pending. M2 has a disposable create/search executor, experimental journal, and typed console with revisions, cancellation, background inference, and proposal-bound confirmation. The default interpreter is three deterministic examples, not AI. There are 11 executor tests and 62 lifecycle/console/worker/fake-HTTP tests. M3 has an explicit loopback adapter and a checkpointed evaluation runner against 25 public cases; 15 scorer/runner tests pass, but no real model is admitted or evaluated and no held-out results exist. M3's completion gate is therefore unmet. M4–M6 remain unimplemented. See [progress and evidence](progress.md).
 
 ## Bounded experiments
 
@@ -40,7 +40,7 @@ Current checkpoint: M0 is documented. M1 has a limited admission reference with 
 | --- | --- | --- |
 | Initial hardware and workflows | Meaningful performance targets | Mike's priorities and machine profile |
 | Strict model openness admission | Shipping a model | Artifact-level source/weights/data-information review |
-| Prototype language | M2 implementation | Small design contract and reuse assessment |
+| Prototype language | M2 implementation | Python scoped to experiments; production choice remains open |
 | Production language allocation | Broad implementation | Prototype measurements and maintenance review |
 | Linux base/desktop | Packaged integration | Capability spike and build experiment |
 | Dictation/command activation behavior | Live usability trial | Single-key interaction trial |

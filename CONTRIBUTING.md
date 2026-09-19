@@ -13,10 +13,14 @@ python3 experiments/intent_evaluation/score.py --validate-cases
 python3 -B -m unittest discover -s experiments/intent_evaluation -p 'test_*.py'
 python3 -B experiments/sandbox_workflow/demo.py
 python3 -B -m unittest discover -s experiments/sandbox_workflow -p 'test_*.py'
+python3 -B -m unittest discover -s experiments/session_coordinator -p 'test_*.py'
+python3 -B experiments/session_coordinator/cli.py --text 'Create a folder called Garden'
 git diff --check
 ```
 
-Contract and scorer tests use synthetic data. A passing result is evidence about the reference tools, not evidence that an AI understands English or that the OS can accept voice input. The scorer tests and sandbox workflow create only disposable temporary files. The sandbox demo performs create/search operations inside its generated workspace and removes the workspace afterward.
+Tests use synthetic data, controlled interpreters, and a temporary loopback HTTP server. A passing result is evidence about the reference tools, not evidence that an AI understands English or that the OS can accept voice input. Tests and sandbox actions use disposable temporary files. The sandbox demo and typed console remove their generated workspace afterward. The console defaults to three deterministic examples, explicitly labelled as not AI; no model server is contacted unless an endpoint and model are supplied.
+
+The [typed console](experiments/session_coordinator/README.md) supports sequential-key controls and bounded background inference. The [evaluation runner](experiments/intent_evaluation/README.md) records an explicitly configured model's development results without executing actions. Running an existing vetted server is separate from these commands; nothing here downloads, installs, or starts one. Default evaluation output is ignored by Git because it contains raw requests and outputs.
 
 ## Work in reviewable increments
 

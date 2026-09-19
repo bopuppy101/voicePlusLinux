@@ -1,6 +1,6 @@
 # Request lifecycle and event ordering
 
-Status: refined coordinator specification. The current admission checker covers some eligibility checks, not this full lifecycle.
+Status: refined coordinator specification. The admission checker covers eligibility, and the [typed lifecycle experiment](../../experiments/session_coordinator/README.md) now exercises revisions, cancellation, proposal-bound confirmation, and delayed inference. This remains an in-process experiment, not a production/authenticated implementation of the full specification.
 
 ## States
 

@@ -52,8 +52,9 @@ Each substantial increment is saved and committed. Local session context is stor
 ## Runnable reference work
 
 - [Admission contract checks](../../experiments/contract_reference/README.md): 36 fixtures and eight boundary tests.
-- [Intent evaluation scaffold](../../experiments/intent_evaluation/README.md): 25 public development cases and an offline scorer with eight integrity tests. No real model evaluated.
+- [Intent evaluation scaffold](../../experiments/intent_evaluation/README.md): 25 public development cases, an offline scorer, and a checkpointed inference runner; 15 scorer/runner tests. No real model evaluated.
 - [Disposable workflow prototype](../../experiments/sandbox_workflow/README.md): fixture create/search actions, simulated interruption recovery, and 11 integration tests. No real AI or desktop integration.
+- [Typed lifecycle and console](../../experiments/session_coordinator/README.md): request revisions, cancellation, proposal-bound confirmation, a bounded inference worker, and an explicit loopback chat adapter; 62 controller/console/worker/fake-HTTP tests.
 - [Benchmark manifest template](benchmark-manifest.template.json): unmeasured fields remain null and results remain `not_evaluated`.
 
 See [contribution instructions](../../CONTRIBUTING.md) for reproducible check commands.
