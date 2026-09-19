@@ -24,6 +24,6 @@ We have planning documents and small experimental programs. In these experiments
 
 We also wrote experimental code for connecting to an AI service running on the same computer and checking its responses. So far, it has only been tested with simulated responses, not an actual AI model. These are development experiments; they do not select the finished OS architecture, programming languages, or AI model.
 
-There is no installable VPLinuxAI OS or measured voice-quality result yet. The Linux base and production technology choices remain open for review with Mike.
+There is no installable VPLinuxAI OS or measured voice-quality result yet. Ubuntu is the current Linux base, as selected by Mike. Its release, desktop, and production technology choices remain open for review.
 
 VPLinuxAI will follow standard open-source licensing principles, including allowing others to redistribute and sell unchanged or modified copies. Exact licenses remain to be selected. The direction is recorded in [/home/mike/git/voicePlusLinux/docs/High-Level-Design/decisions.md](docs/High-Level-Design/decisions.md#licensing-direction).

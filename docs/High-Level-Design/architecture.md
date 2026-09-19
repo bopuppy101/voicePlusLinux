@@ -6,7 +6,7 @@ component index; detailed implementation belongs beside that component's code.
 
 ## Direction
 
-Prototype a user-session system layered on an existing Linux desktop, then package the proven components into an OS image. This avoids making kernel or compositor changes a prerequisite for learning whether the voice-to-action experience works. It does not settle the final distribution or desktop.
+Prototype a user-session system layered on an existing Linux desktop, then package the proven components into an OS image. This avoids making kernel or compositor changes a prerequisite for learning whether the voice-to-action experience works. Mike has selected Ubuntu as the current Linux base; the Ubuntu release and desktop remain open.
 
 Start with logical boundaries; do not create a separate process for every box merely because it appears here. Inference and any privileged action helper have stronger reasons for process isolation than ordinary internal modules.
 
@@ -28,6 +28,12 @@ flowchart TD
 ```
 
 This is one candidate OS harness arrangement. A cohesive application or cooperating desktop services could implement the same responsibilities.
+
+## Native Linux commands and language choices
+
+Shell execution and existing Linux command-line tools are important native OS capabilities. The architecture must support invoking commands and scripts, collecting their results, and integrating them with the same request, permission, correction, and cancellation handling as other actions. Shell scripting is a language option as well as an execution interface; it is not limited to building or installing the OS. The specific shell and command interface remain design choices.
+
+The language comparison is [/home/mike/git/voicePlusLinux/docs/High-Level-Design/languages.md](languages.md). It evaluates shell alongside Python, Rust, Go, C/C++, and UI languages for their respective responsibilities. Ubuntu is the current platform target; the experimental use of Python does not select the production stack.
 
 ## Critical architectural decision: conversation continuity
 
@@ -85,7 +91,7 @@ check commands. Test counts and execution results belong in [progress](progress.
   the intent scorer. That is prototype reuse; a production contract module must be
   owned independently of evaluation tooling and retain its own focused tests.
 
-Production language, Linux base, model, and transport choices remain open. A
+Production language, Ubuntu release/desktop, model, and transport choices remain open. A
 component is not complete merely because its prototype tests pass; its remaining
 integration and evidence gaps must also be closed.
 

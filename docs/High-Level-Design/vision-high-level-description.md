@@ -48,7 +48,7 @@ Mike's reference is the way Claude previously saved session information. This ex
 
 ## Linux foundations
 
-Traditional Linux command lines and configuration files are acceptable foundations for the system. They should remain available and useful unless practical limits require a different approach.
+Ubuntu is the current Linux distribution selected by Mike. The Ubuntu release and desktop remain to be chosen. Native Linux shell execution, command-line tools, and configuration files are important foundations of the OS and should remain available throughout voice and AI integration.
 
 ## Open design questions
 
@@ -59,7 +59,7 @@ The implementation and interaction model have not yet been decided. Questions fo
 - How dictation is distinguished from instructions to take action.
 - How AI participates in transcription and interpretation.
 - Which actions AI can perform and when confirmation is required.
-- Which Linux base, transcription tools, and AI components will be used.
+- Which Ubuntu release and desktop, transcription tools, and AI components will be used.
 
 These questions do not represent settled requirements or implementation choices.
 

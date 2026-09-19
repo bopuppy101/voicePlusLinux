@@ -16,7 +16,7 @@ Each stage should reuse the previous stage's tests. An installer is not evidence
 
 Core coordination and policy; voice adapter and mapping data; inference adapter; desktop interface/integration; optional capability adapters; model artifacts; documentation/tests. These are logical release units, not necessarily one binary package each. Keep large model artifacts identifiable and independently verifiable without letting an untested model update silently change behavior.
 
-The Debian Live Manual documents build customization and image creation and can guide a candidate build experiment. The base remains undecided. [Debian Live Manual](https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html).
+Ubuntu is the current base. Select and validate an Ubuntu-compatible image-building approach after choosing the release and desktop; no build tool or working image has been established.
 
 ## Build inputs
 

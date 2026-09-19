@@ -1,6 +1,6 @@
 # Language strategy and comparison
 
-Status: candidate analysis. No implementation language is selected. The next decision should concern one prototype, not every future OS component.
+Status: candidate analysis for an Ubuntu-based OS. No production language is selected. Native Linux shell execution is an important capability; the exact shell and component language choices remain open.
 
 ## What must be written
 
@@ -14,9 +14,17 @@ Separate original VPLinuxAI code from reused Linux, desktop, and inference softw
 | C/C++ | Is a native extension necessary at a measured bottleneck or integration boundary? | Lifetime/concurrency correctness, review effort, build dependencies |
 | TypeScript/JavaScript | Does a web-based desktop interface materially improve accessible operation? | Browser/runtime footprint, native bridge, permission separation, packaging |
 | Toolkit-native UI code | Can a native interface satisfy single-key interaction with fewer integration layers? | Toolkit/language bindings and screen-reader/keyboard behavior on the selected desktop |
-| Shell | Can a short build/install task be expressed clearly as a script? | Quoting, error handling, portability, and when scripts become too complex |
+| Shell and native Linux commands | How should ordinary English requests invoke commands, pipelines, scripts, and administrative workflows on Ubuntu? | Argument handling, exit status/output, cancellation, permissions, portability, and when persistent state needs another language |
 
 These roles are hypotheses. A language can serve more than one role, and a component can be a module rather than a separate service.
+
+## Shell as a native OS capability
+
+Mike identifies shell execution as an important part of the Linux experience. Include it in everyday voice/AI workflows, as well as build, installation, and administration. Preserve direct terminal use and editable configuration files.
+
+Distinguish the language used to implement the OS coordinator from the commands it invokes: a coordinator written in Python, Rust, Go, or another language can still run native Linux tools and shell scripts. Evaluate direct program invocation for individual commands and explicit shell execution where script syntax or pipelines are needed. Neither choice requires writing the entire OS in shell.
+
+For the command interface, define arguments, working directory, environment, permissions, output/error reporting, exit status, and interruption behavior. Bash versus a portable shell subset remains an implementation choice. The existing prototype does not yet provide general shell execution.
 
 ## Evidence relevant to the choice
 

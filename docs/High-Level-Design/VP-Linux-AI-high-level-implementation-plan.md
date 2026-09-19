@@ -1,6 +1,6 @@
 # VP Linux AI — high-level implementation plan
 
-Status: initial proposal for Mike's review. The requirements below reflect Mike's direction; phases and completion criteria are proposed. No Linux distribution, AI model, implementation language, or detailed architecture has been selected.
+Status: initial proposal for Mike's review. The requirements below reflect Mike's direction; phases and completion criteria are proposed. Mike has selected Ubuntu as the current Linux base. Its release and desktop, AI model, production languages, and detailed architecture remain open.
 
 ## Intended result
 
@@ -20,13 +20,13 @@ Measure V2T on agreed hardware and representative speech before selecting a repl
 
 **Completion:** a short acceptance checklist and repeatable baseline. A replacement must meet or exceed that baseline on the agreed criteria; better accuracy alone does not excuse worse usability or reliability. Numeric thresholds will follow measurement.
 
-## 2. Choose the Linux foundation
+## 2. Establish the Ubuntu foundation
 
-Evaluate an existing Linux distribution as the foundation. Decide the desktop/input environment, initial hardware support, packaging, update approach, and how the project becomes an installable OS. First prove the experience on that base, then build the distribution image.
+Use Ubuntu as the current foundation. Decide the Ubuntu release, desktop/input environment, initial hardware support, packaging, update approach, and how the project becomes an installable OS. First prove the experience on that base, then build the distribution image.
 
 Review source availability, dependency and model licensing, and redistribution requirements as part of component selection, consistent with the completely open-source goal. Decide the project's own license and preserve the provenance of reused code.
 
-**Completion:** brief written decisions for the Linux base and distribution approach, supported by small feasibility experiments where needed.
+**Completion:** brief written decisions for the Ubuntu release, desktop, and distribution approach, supported by small feasibility experiments where needed.
 
 ## 3. Discuss and select development languages
 
@@ -41,7 +41,7 @@ Discuss candidates by responsibility. The following is an initial discussion age
 | Go | Would it simplify service development and distribution? How well would it integrate with the required desktop, audio, and inference components? |
 | C or C++ | Where would existing native libraries or measured low-level requirements justify new code in these languages? What review and maintenance burden would that introduce? |
 | TypeScript/JavaScript or a native UI language | Which approach best supports the chosen desktop interface, accessibility, resource limits, and integration with system services? |
-| Shell scripting | Which build, installation, and administrative tasks warrant small scripts, and where should logic move into a more structured component? |
+| Shell scripting and native commands | How should voice and AI requests invoke native Linux commands, pipelines, and scripts? Which tasks suit shell, and which need another language for reliable state and control? |
 
 Compare a primarily single-language design with a small mixed-language design. Evaluate library and binding availability, performance on target hardware, memory use, maintainability by people and LLMs, testability, dependency management, open-source tooling, and reproducible packaging. For multiple languages, account for the cost of interfaces, debugging, and releases across components.
 

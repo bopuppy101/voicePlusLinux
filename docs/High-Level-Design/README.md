@@ -57,7 +57,7 @@ Those three are enough for a high-level understanding. The documents below expan
 
 **We have a design and small disposable prototypes—not an operating system yet.** Typed requests, corrections, cancellation, and simple folder creation/search work in temporary test files. Synthetic transcript events test the voice-to-text boundary. An inference connection exists, but no real model has been evaluated and no microphone is connected.
 
-The next useful demonstration is one complete voice → text → real open-source AI → verified Linux action workflow. Choosing the final Linux base, models, and production languages remains open. Prototype Python code does not settle those choices.
+The next useful demonstration is one complete voice → text → real open-source AI → verified Linux action workflow. Ubuntu is the current Linux base. Its release and desktop, models, and production languages remain open. Prototype Python code does not settle those choices.
 
 Use [/home/mike/git/voicePlusLinux/docs/High-Level-Design/progress.md](progress.md) for evidence of what works, [/home/mike/git/voicePlusLinux/docs/High-Level-Design/decisions.md](decisions.md) for what is settled versus proposed, and [/home/mike/git/voicePlusLinux/docs/High-Level-Design/implementation-backlog.md](implementation-backlog.md) for the work sequence.
 

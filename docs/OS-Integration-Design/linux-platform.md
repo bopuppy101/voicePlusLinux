@@ -1,16 +1,16 @@
 # Linux foundation and open-source scope
 
-Status: evaluation plan with an initial candidate direction. No distribution or desktop is selected.
+Status: Ubuntu is the current Linux base, selected by Mike. The Ubuntu release, desktop, hardware profile, and image-building approach remain open.
 
 ## Foundation choices
 
 The first experiment should install VPLinuxAI components onto an existing Linux desktop. The later image should integrate those same packages into a repeatable installation. A custom kernel, package manager, or compositor is not currently required by any user outcome.
 
-Debian with a deliberately controlled package set is a candidate for the first image experiment. Its archive policy distinguishes `main` from `contrib`, `non-free`, and `non-free-firmware`; simply choosing a Linux-branded installation does not establish that every shipped component meets this project's requirement. [Debian archive policy](https://www.debian.org/doc/debian-policy/ch-archive.html).
+Use Ubuntu for the first integration and image experiments. This replaces the earlier Debian candidate proposal. Revisit the base only if evidence of a material problem warrants discussing it with Mike; do not maintain competing distributions by default.
 
-Debian's live tools provide a documented path to constructing live systems, making it a concrete option to evaluate. This is a reason to investigate, not evidence that VPLinuxAI already builds successfully. [Debian Live Manual](https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html).
+Choosing Ubuntu does not establish that every package, driver, firmware item, or model meets the project's openness requirements. Select and review the actual components to be shipped. No Ubuntu release, desktop, or image-building tool has been selected, and this decision does not authorize an OS installation.
 
-Other distribution families remain candidates. Before expanding the shortlist, compare a concrete gap in the first candidate: desktop support, hardware compatibility, update behavior, package availability, or source/rebuild requirements. Avoid maintaining several base distributions during the first slice.
+Native shell execution and Linux command-line tools are part of the intended OS experience. Their integration and language tradeoffs are discussed in [/home/mike/git/voicePlusLinux/docs/High-Level-Design/languages.md](../High-Level-Design/languages.md).
 
 ## Completely open source: proposed component admission record
 
@@ -34,7 +34,7 @@ Pick one Wayland compositor/desktop combination for a capability spike. Verify a
 
 Run the coordinator as the signed-in user. Privileged operations, if later added, belong behind narrowly defined helpers and ordinary Linux authorization mechanisms; the AI process does not need a root shell. The first file/application tasks should not require privileged operation.
 
-## Base selection gates
+## Ubuntu validation gates
 
 1. Core packages and model artifacts meet the documented openness policy.
 2. A clean VM can install the components and run the fixture-based workflow.
@@ -42,4 +42,4 @@ Run the coordinator as the signed-in user. Privileged operations, if later added
 4. User-session startup, logout, lock, restart, and update behave predictably.
 5. Source, build inputs, and recovery instructions are available to another developer.
 
-The base decision remains pending these experiments and the hardware choice.
+Ubuntu is the current base decision. These experiments must establish which Ubuntu configuration and hardware profile meet the project requirements.
