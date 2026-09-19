@@ -199,6 +199,8 @@ class SessionCoordinator:
         request = self._get(request_id)
         if request.state != "awaiting_confirmation" or type(digest) is not str or not self.active:
             return False
+        if len(digest) != 64 or any(char not in "0123456789abcdef" for char in digest):
+            return False
         if not hmac.compare_digest(digest, request.confirmation_digest):
             return False
         admission = validate(self._session(request), request.proposal, self.grants)

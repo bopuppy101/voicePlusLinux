@@ -92,6 +92,14 @@ class LifecycleTests(unittest.TestCase):
         self.assertEqual(self.coordinator.execute(request)["state"], "succeeded")
         self.assertFalse((self.sandbox.documents / "Garden").exists())
 
+    def test_malformed_confirmation_token_does_not_raise(self):
+        self.coordinator = SessionCoordinator(self.sandbox, confirmation_required=True)
+        request, _ = self.pending(create())
+        for token in ("é" * 64, "", "0" * 63, True, None, []):
+            with self.subTest(token=token):
+                self.assertFalse(self.coordinator.approve(request, token))
+        self.assertEqual(self.coordinator.snapshot(request)["state"], "awaiting_confirmation")
+
     def test_policy_change_invalidates_pending_inference(self):
         request, job = self.pending()
         self.coordinator.set_grants([])
