@@ -1,4 +1,4 @@
-# VPLinuxAI — high-level implementation plan
+# VP Linux AI — high-level implementation plan
 
 Status: initial proposal for Mike's review. The requirements below reflect Mike's direction; phases and completion criteria are proposed. No Linux distribution, AI model, implementation language, or detailed architecture has been selected.
 

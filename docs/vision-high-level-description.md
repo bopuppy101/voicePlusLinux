@@ -53,4 +53,4 @@ These questions do not represent settled requirements or implementation choices.
 
 ## Implementation planning
 
-See the [high-level implementation plan](implementation-plan.md) for proposed phases, acceptance criteria, and the practice of saving frequent development checkpoints and session handoffs.
+See the [/home/mike/git/voicePlusLinux/docs/VP-Linux-AI-high-level-implementation-plan.md](VP-Linux-AI-high-level-implementation-plan.md) for proposed phases, acceptance criteria, and the practice of saving frequent development checkpoints and session handoffs.

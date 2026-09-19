@@ -24,7 +24,7 @@ This is the proposed main flow. AI could also help with transcription. Linux pro
 | Read | What it answers |
 | --- | --- |
 | Vision-high-level description — [/home/mike/git/voicePlusLinux/docs/vision-high-level-description.md](../vision-high-level-description.md) | **What does Mike want to build, and why?** |
-| [Implementation plan](../implementation-plan.md) | **What are the major steps to get there?** Includes the language discussion. |
+| VP Linux AI-high-level implementation plan — [/home/mike/git/voicePlusLinux/docs/VP-Linux-AI-high-level-implementation-plan.md](../VP-Linux-AI-high-level-implementation-plan.md) | **What are the major steps to get there?** Includes the language discussion. |
 | **This project map** | **How do the parts and supporting documents fit together?** |
 
 Those three are enough for a high-level understanding. The documents below expand particular parts of the plan.
