@@ -10,6 +10,8 @@ The operating system will be constructed through the combined contributions of l
 
 Mike's current workflow demonstrates the basic experience he wants: V2T transcribes his speech into text, he supplies that text to AI through Codex Desktop, and AI interprets the request and uses tools to carry out actions. This is a reference for the user experience, not a prescribed implementation or a claim of an automatic V2T-to-Codex integration.
 
+VPLinuxAI will integrate voice-to-text transcription and AI interpretation of the resulting text throughout the operating system. These capabilities become part of the operating system itself, available across its interface, applications, and system workflows.
+
 VPLinuxAI must provide that voice-to-action experience through a completely open-source system, independent of Codex Desktop, any other version of Codex, or Codex itself. Using Codex or other development tools to help build the project does not make them required components of the resulting OS.
 
 If a coordinating layer is described as a harness, Mike's preferred term is **OS harness**: a layer supporting general operating-system interaction and actions. The term does not limit the project to a coding-agent harness, and adopting a harness architecture is not a requirement. The form of integration remains open.
