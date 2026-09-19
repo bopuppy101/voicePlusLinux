@@ -32,6 +32,7 @@ class Request:
     request_id: str
     text: str
     mode: str
+    input_final: bool = True
     revision: int = 1
     state: str = "received"
     job: dict | None = None
@@ -52,6 +53,7 @@ class SessionCoordinator:
         self.executor = Executor(sandbox)
         self.session_id = uuid4().hex
         self.active = True
+        self.input_epoch = 1
         self.policy_epoch = 1
         self.confirmation_required = confirmation_required
         self.grants = [{"capability": "directory.create", "root_id": "documents"},
@@ -81,7 +83,7 @@ class SessionCoordinator:
         return {"session_id": self.session_id, "request_id": request.request_id,
                 "request_revision": request.revision, "policy_epoch": self.policy_epoch,
                 "active": self.active, "cancelled": request.cancel_requested,
-                "input_final": True, "mode": request.mode}
+                "input_final": request.input_final, "mode": request.mode}
 
     def _fail(self, request, reason):
         request.job = None
@@ -108,20 +110,32 @@ class SessionCoordinator:
             self._event(request, "succeeded", "dictation_ready")
         return request.request_id
 
-    def revise(self, request_id, text):
+    def revise(self, request_id, text, *, input_final=True):
         request = self._get(request_id)
         text = self._text(text)
+        if type(input_final) is not bool:
+            raise ValueError("input_final must be boolean")
         if request.state not in EDITABLE or not self.active:
             raise TransitionError("Only a pending request can be revised")
         request.text = text
+        request.input_final = input_final
         request.revision += 1
         request.job = request.proposal = request.confirmation_digest = request.approved_digest = None
         request.result = None
         self._event(request, "received", "revised")
 
+    def finalize_input(self, request_id, text):
+        request = self._get(request_id)
+        text = self._text(text)
+        if request.state != "received" or request.input_final or not self.active:
+            raise TransitionError("Request is not awaiting final input")
+        request.text = text
+        request.input_final = True
+        self._event(request, "received", "input_finalized")
+
     def begin_interpretation(self, request_id):
         request = self._get(request_id)
-        if request.state != "received" or request.mode != "command" or not self.active:
+        if request.state != "received" or request.mode != "command" or not request.input_final or not self.active:
             raise TransitionError("Request is not ready for interpretation")
         request.job = {"job_id": uuid4().hex, "session_id": self.session_id,
                        "request_id": request.request_id, "request_revision": request.revision,
@@ -230,6 +244,8 @@ class SessionCoordinator:
     def set_active(self, active):
         if type(active) is not bool:
             raise ValueError("active must be boolean")
+        if self.active and not active:
+            self.input_epoch += 1
         self.active = active
         if not active:
             for request in self._requests.values():
@@ -307,5 +323,6 @@ class SessionCoordinator:
         request = self._get(request_id)
         return copy.deepcopy({"request_id": request.request_id, "revision": request.revision,
                               "mode": request.mode, "text": request.text, "state": request.state,
+                              "input_final": request.input_final,
                               "proposal": request.proposal, "confirmation_digest": request.confirmation_digest,
                               "result": request.result, "events": request.events})

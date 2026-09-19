@@ -13,7 +13,7 @@ def report(coordinator, request_id, interpreter):
     view = coordinator.snapshot(request_id)
     return {"backend": interpreter.name, "workspace": "disposable",
             **{key: view[key] for key in ("request_id", "revision", "state", "text", "proposal",
-                                         "confirmation_digest", "result")}}
+                                         "input_final", "confirmation_digest", "result")}}
 
 
 class Console:

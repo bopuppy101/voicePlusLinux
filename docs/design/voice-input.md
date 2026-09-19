@@ -2,6 +2,10 @@
 
 Status: proposed pipeline and evaluation scope, grounded in inspected V2T source. No microphone capture or model execution has been performed for this project.
 
+The [transcript boundary experiment](transcript-boundary.md) now checks partial
+preview, finality, mode authority, and correction/cancellation ordering using
+synthetic events. It does not yet connect a microphone or recognizer.
+
 ## Preserve useful existing behavior
 
 V2T already has recording control, buffering, model loading, transcription, mappings, formatting, and platform-specific text delivery. Reuse should preserve attribution and isolate useful modules rather than copying an entire launcher and its environment assumptions unchanged. See the [source review](../v2t-source-review.md).

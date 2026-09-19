@@ -20,6 +20,7 @@ The current architecture is a proposal. “OS harness” is optional terminology
 | Linux foundation and openness | [Linux platform](linux-platform.md) | Admission records and hardware/base gates |
 | Development languages | [Language strategy](languages.md) | Compare prototype shapes before selecting production languages |
 | Recognition and V2T reuse | [Voice input](voice-input.md) | Capture, transcript revisions, and delivery semantics |
+| Transcript-to-request boundary | [Transcript events](transcript-boundary.md) | Preview-only partials, input finality, and immediate correction invalidation |
 | Natural-language understanding | [AI interpretation](ai-interpretation.md) | Context, engine/model separation, and model evaluation |
 | Authority and execution | [Actions and recovery](actions-and-recovery.md) | Capability contracts, retries, and interrupted effects |
 | Desktop and single-key use | [Desktop/accessibility](desktop-and-accessibility.md) | Activation, insertion, correction, and session boundaries |

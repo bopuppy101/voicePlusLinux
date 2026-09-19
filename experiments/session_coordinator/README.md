@@ -75,6 +75,10 @@ not revive it. Cancellation during execution preserves known completed effects.
 
 Twenty-one controller tests, nine subprocess console tests, six console-state
 tests, fifteen fake-HTTP adapter tests, and eleven worker tests cover these paths.
+Seventeen additional synthetic transcript tests cover the [voice-input boundary](../../docs/design/transcript-boundary.md),
+bringing this suite to 79 tests. `TranscriptGate` previews partials, accepts one
+final, preserves activation mode, and invalidates a pending command immediately
+when correction starts. No microphone or recognizer is connected.
 No model was evaluated. The existing 11 sandbox tests still cover adapter effects
 and simulated journal recovery separately.
 
