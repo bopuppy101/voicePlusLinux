@@ -4,27 +4,9 @@ Status: proposed behavior and evaluation design. No model has been selected, dow
 
 ## Hybrid interpretation: deterministic logic and probabilistic models
 
-Mike proposes combining deterministic and probabilistic processing for the mission-critical voice-to-action path. Evaluate this as an architectural direction; the routing, models, and implementation languages are not yet selected.
+Mike proposes combining deterministic processing with probabilistic interpretation. We may independently develop and open-source a bounded decision model if evaluation shows sufficient value to VPLinuxAI. The architecture and implementation remain open.
 
-| Part | Proposed responsibility |
-| --- | --- |
-| Deterministic logic | Recognize explicitly supported commands and apply defined rules for request state, cancellation, permissions, and argument validation. |
-| Learned decision model | Interpret varied wording into a bounded set of supported intents or targets, with uncertainty reported. |
-| Generative model | Handle broader interpretation, clarification, explanation, and planning when the task needs them. |
-
-An initial proposal is to try explicit command rules first, use learned interpretation when needed, and apply the same deterministic permission and execution checks to every proposed action. Unclear meaning calls for clarification; a model's confidence does not grant authority. A classifier must have a way to report that none of the supported actions fits. These are responsibilities to evaluate, not a requirement for three separate processes or models.
-
-Speech-to-text remains a separate upstream responsibility: a deterministic rule can act consistently on an incorrectly transcribed command. Evaluate the full voice-to-action path, including transcription errors, negation, paraphrases, missing targets, conflicting rules, unsupported requests, and corrections. Compare routing accuracy, erroneous actions, latency, and resource use against a generative-model-only interpretation baseline. No such comparison has run yet.
-
-### Jev as a reference to investigate
-
-Research checked September 19, 2026. Mike’s follow-up identifies **Jev from TypeSafe AI**, matching the categorization model found in the research. Its official documentation describes typed choices, scores, and probability outputs rather than generated prose. This makes it relevant to bounded intent selection, but it is a learned probabilistic decision model, not an explicit rule engine. Repeatable execution, constrained output types, and correct interpretation are different properties; one does not prove the others. [TypeSafe: introduction](https://docs.typesafe.ai/introduction)
-
-TypeSafe documents confidence-based routing and says thresholds must be tested for the intended use case. We have not verified repeatability, confidence calibration, or performance on VPLinuxAI commands. [TypeSafe: confidence](https://docs.typesafe.ai/confidence)
-
-The official quick start documents hosted API access. TypeSafe publishes MIT-licensed Python and JavaScript SDKs, but its public repositories reviewed here do not provide a Jev model release, weights, or an open-source model license. As of this review, no open-source, self-hostable Jev release was found. The SDKs are API clients, not the model. [TypeSafe: quick start](https://docs.typesafe.ai/introduction/quickstart), [TypeSafe: official repositories](https://github.com/typesafe-ai)
-
-Treat Jev as an architectural reference, not an eligible core dependency on the evidence available. Any implementation of this approach must satisfy the OS's open-source and runtime-independence requirements. No API calls, installations, or model downloads are authorized by this investigation.
+The dedicated discussion is [/home/mike/git/voicePlusLinux/docs/AI-Design/bounded-intent-classification-deterministic-or-probabilistic.md](bounded-intent-classification-deterministic-or-probabilistic.md). It covers intent selection, repeatability versus probabilities, Jev as a reference, execution boundaries, and the evidence needed before building a model. This is the primary home for that subject.
 
 ## What the AI is responsible for
 
