@@ -20,6 +20,10 @@ Start with the project map. It shows the system flow, the reading order, and whi
 
 ## Current state
 
-Detailed design and a disposable typed-request prototype with revisions, cancellation, optional confirmation, and create/search actions. An explicit loopback inference adapter and development evaluation runner are available; they have been tested with synthetic interpreters and a fake HTTP server. No real model has been evaluated. There is no installable OS, selected production model/language stack, or measured voice benchmark yet.
+We have planning documents and small experimental programs. In these experiments, a user can type a request, correct or cancel it, and try creating folders or searching filenames inside temporary test folders. Some examples ask for confirmation before acting.
 
-Design proposals are distinguished from Mike's requirements. Project licensing is a pending decision; V2T's existing license/provenance is documented in the source review. An open-source goal is not a claim that this repository already contains a complete licensing and dependency audit.
+We also wrote experimental code for connecting to an AI service running on the same computer and checking its responses. So far, it has only been tested with simulated responses, not an actual AI model. These are development experiments; they do not select the finished OS architecture, programming languages, or AI model.
+
+There is no installable VPLinuxAI OS or measured voice-quality result yet. The Linux base and production technology choices remain open for review with Mike.
+
+Licensing remains unresolved: Mike wants complete openness and protection against others repackaging the work for sale. Standard open-source licensing permits resale, so these goals need reconciliation before a license is selected. The discussion is recorded in [/home/mike/git/voicePlusLinux/docs/High-Level-Design/decisions.md](docs/High-Level-Design/decisions.md#licensing-goal-to-resolve).

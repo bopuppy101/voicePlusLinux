@@ -14,6 +14,16 @@
 | D008 | One high-level documentation map; update existing chapters instead of proliferating documents | Mike's documentation correction |
 | D009 | Conversation tracking, hand-off context, and recovery of previous conversations are critical OS capabilities; their architecture requires deliberate review | Mike's explicit OS continuity requirement; details and format deferred |
 
+## Licensing goal to resolve
+
+Mike wants VPLinuxAI completely open source, while preventing others from taking the work and repackaging it for sale. Record both intentions; no license or resale restriction has been adopted.
+
+These goals conflict under the standard Open Source Definition, which requires permission for commercial redistribution. A source-available license prohibiting resale would not satisfy that definition. [Open Source Initiative: Open Source Definition](https://opensource.org/osd)
+
+Copyleft is a possible way to protect continued openness of distributed covered code and modifications, but it does not prohibit charging for copies. GPL obligations and source availability would apply within the license's scope; this is not a promise that every separate component in a distribution must use the same license. Existing Linux and reused V2T components retain their own licensing obligations. [GNU GPL v3](https://www.gnu.org/licenses/gpl.en.html), [GNU: selling free software](https://www.gnu.org/philosophy/selling.en.html)
+
+Mike's direction on this tradeoff and a compatibility review are needed before selecting licensing terms. Do not describe the requested resale restriction as already enforceable or silently replace it with a copyleft decision.
+
 ## Experimental choices made in this design pass
 
 **E-D01 — Python for the admission reference only.** Use an already available Python interpreter and its standard library to turn message rules into executable fixtures. This keeps the experiment small and avoids installation or model dependencies. It does not choose production languages. The checker must have no action-execution path. Revisit if the contract cannot be expressed without framework-specific concepts.
