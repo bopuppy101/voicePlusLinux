@@ -98,13 +98,15 @@ The screen will be visible to other people in the room. Define user-controlled b
 
 ## Audio input and output are separate choices
 
+**A display without far-field microphones remains a valid candidate.** Connect an external microphone directly to the existing Dell/Ubuntu host. Setup and the external microphone shortlist are maintained in [/home/mike/git/voicePlusLinux/docs/V2T-Design/far-field-voice-capture-10-to-15-feet.md](../V2T-Design/far-field-voice-capture-10-to-15-feet.md#external-microphone-setup-and-shortlist--september-19-2026).
+
 **Input:** compare a far-field microphone array integrated into the display or another device with microphones positioned on a sofa table. Verify the actual microphone audio reaches Ubuntu. A product's advertised voice-control feature is not evidence that its microphones are exposed to the host computer. Inspect available channels, processing controls, mute behavior, and firmware requirements.
 
 **Output:** compare integrated speakers, an attached replaceable speaker module, and sofa-table speakers. For spoken responses, evaluate an open-source speech-synthesis engine and voice model separately for licensing, intelligibility, pronunciation, latency, and hardware needs. Keep a complete visual equivalent of spoken information.
 
 **Speech while the system is speaking:** decide whether interrupting an authorized spoken response by voice is required. If so, test recognition while output is active and provide the echo canceller with the correct playback reference. Known system playback, unrelated television sound, competing conversation, and room reflections are different acoustic problems.
 
-Wall-mounted microphone/speaker arrays with echo cancellation exist; Shure's Stem Wall specifications provide an example of the form factor. This does not establish open-source firmware, Ubuntu compatibility, or transcription quality at our target distance. [Shure: wall array speakerphone specifications](https://content-files.shure.com/publications/specSheet/en/stem-wall-spec-sheet.pdf)
+A wall-mounted microphone/speaker bar remains a possible form factor. The previously cited Stem Wall is marked discontinued by Shure and is excluded from new-purchase recommendations. [Shure product status](https://www.shure.com/en-GB/products/microphones/stem_wall).
 
 **Playback permission:** audio output is a capability to design, not permission to play anything now. Mike requires explicit authorization before audio/video playback, including test sounds and synthesized speech. The proposed interface must offer deliberate output controls, visible mute state, and an accessible stop control.
 
