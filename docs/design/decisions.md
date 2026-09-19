@@ -10,6 +10,8 @@
 | D004 | No Codex runtime dependency; OS harness is optional terminology | Mike's clarification of the reference workflow |
 | D005 | Keep language selection an explicit design subject | Mike's repeated instruction |
 | D006 | Frequent saves and handoffs; continue iterative refinement | Mike's active development instruction |
+| D007 | Distinct architectural, developer, QA, and review agents; component-level tests | Mike's explicit development-role instruction |
+| D008 | One high-level documentation map; update existing chapters instead of proliferating documents | Mike's documentation correction |
 
 ## Experimental choices made in this design pass
 

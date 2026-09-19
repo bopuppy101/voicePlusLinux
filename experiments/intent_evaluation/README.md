@@ -4,6 +4,11 @@ This public development set makes the initial interpretation task concrete. It i
 
 Each case has an ID, category, input mode, utterance, fixture context, and a list of acceptable structured outcomes. The exposed action vocabulary is deliberately limited to `directory.create` and `file.search`, matching the admission experiment. Interpretation can also request clarification or report an unsupported request. Dictation cases check routing: they should bypass command planning.
 
+The 28 public cases include short clarification replies and repeated corrections.
+They use the live coordinator's `context.pending_request.turns` shape: previous
+finalized utterances with optional sanitized interpretations. Current input stays
+separate. These are development examples, not proof that a model can handle them.
+
 An interpretation adapter should produce JSON Lines containing one object per case:
 
 ```json

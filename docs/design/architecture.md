@@ -40,7 +40,7 @@ and returns proposals. All implemented action effects stay in disposable files.
 | Component and responsibility | Input → output | Failure and authority boundary | Code and focused tests |
 | --- | --- | --- | --- |
 | **Transcript gate:** keep partial speech separate from finalized requests; preserve activation mode and correction ordering | Synthetic partial/final/error events → preview or finalized command/dictation | Gaps and conflicting events fail; stale captures are ignored. Starting a correction invalidates old planning. Recognition cannot choose permissions or change the activated mode. No audio is captured. | [Gate](../../experiments/session_coordinator/transcripts.py), [tests](../../experiments/session_coordinator/test_transcripts.py) |
-| **Session coordinator:** own request identity, revisions, state, cancellation, and optional confirmation | Final text, policy changes, correlated outcomes → request state and admitted proposal | Rejects obsolete jobs and invalid proposals; binds confirmation to the exact proposal. Cancellation stops later work and preserves known effects. This is a trusted in-process API, not an authenticated service. | [Coordinator](../../experiments/session_coordinator/coordinator.py), [tests](../../experiments/session_coordinator/test_coordinator.py) |
+| **Session coordinator:** own request identity, revisions, bounded correction context, state, cancellation, and optional confirmation | Final text, policy changes, correlated outcomes → request state and admitted proposal | Rejects obsolete jobs and invalid proposals; binds confirmation to the exact proposal. Cancellation stops later work and preserves known effects. This is a trusted in-process API, not an authenticated service. | [Coordinator](../../experiments/session_coordinator/coordinator.py), [lifecycle tests](../../experiments/session_coordinator/test_coordinator.py), [correction-context tests](../../experiments/session_coordinator/test_correction_context.py) |
 | **Inference worker:** keep interpretation off the console thread with finite capacity | Copied job → correlated outcome, error, or cancellation record | Capacity includes undrained results. Cancellation suppresses delivery; it cannot forcibly stop a running interpreter. Worker results never dispatch actions. | [Worker](../../experiments/session_coordinator/worker.py), [tests](../../experiments/session_coordinator/test_worker.py) |
 | **Inference adapter:** translate a configured model protocol into a bounded structured outcome | Mode, utterance, and scoped context → proposal, clarification, or unsupported result | Rejects malformed/truncated output; does not retry or follow redirects. Model output cannot supply grants or approvals. Numeric loopback confines the client connection, not the server's own behavior. | [Adapter](../../experiments/session_coordinator/inference.py), [fake-server tests](../../experiments/session_coordinator/test_inference.py) |
 | **Admission checker:** independently validate actions against current session and grants | Session, proposal, grants → allow/deny and reason | Rejects unknown fields, stale revisions, invalid arguments, and missing capabilities. An admitted proposal is data, not evidence that an action occurred. | [Checker](../../experiments/contract_reference/check_contracts.py), [unit tests](../../experiments/contract_reference/test_contracts.py), [fixtures](../../experiments/contract_reference/fixtures.json) |
@@ -48,9 +48,19 @@ and returns proposals. All implemented action effects stay in disposable files.
 | **Console and command-line entry:** expose sequential-key controls and show outcomes | Typed lines and worker results → coordinator calls and displayed state | Owner thread alone admits and dispatches. Dictation returns panel text; no application insertion or media playback exists. Actions remain synchronous even when inference is asynchronous. | [Console](../../experiments/session_coordinator/console.py), [entry point](../../experiments/session_coordinator/cli.py), [console tests](../../experiments/session_coordinator/test_console.py), [CLI tests](../../experiments/session_coordinator/test_cli.py) |
 | **Intent evaluator:** record model-run evidence and compare structured outcomes | Public development cases and explicit predictions/server → preserved run files and scores | Reference answers stay out of model input; errors cannot become successful unsupported answers. It never constructs an action executor. Synthetic tests do not measure a model. | [Runner](../../experiments/intent_evaluation/run_inference.py), [scorer](../../experiments/intent_evaluation/score.py), [runner tests](../../experiments/intent_evaluation/test_run_inference.py), [scorer tests](../../experiments/intent_evaluation/test_score.py) |
 
+Correction context retains at most four prior finalized turns, bounded to 16 KiB
+of ASCII-escaped JSON. It holds user text and sanitized interpretations, never
+host authority. Starting a correction invalidates the old plan before replacement
+input is final; interpretation replans under current permissions. Policy changes
+strip historical interpretations, and terminal requests clear this pending
+context. This supports clarification and correction plumbing; no real model's
+understanding has been measured.
+
 The test links identify each component's behavioral checks; fake HTTP, console
 subprocesses, and filesystem recovery are integration checks in addition to unit
-tests. [CONTRIBUTING](../../CONTRIBUTING.md) is the single place for repository
+tests. [QA boundary regressions](../../experiments/session_coordinator/test_boundary_regressions.py)
+also exercise failures across component boundaries.
+[CONTRIBUTING](../../CONTRIBUTING.md) is the single place for repository
 check commands. Test counts and execution results belong in [progress](progress.md).
 
 ### Gaps between this prototype and the proposed system

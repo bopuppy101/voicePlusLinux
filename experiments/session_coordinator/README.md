@@ -82,17 +82,34 @@ an earlier approval. Changing grants invalidates pending planning and stops
 later execution steps. Locking a session cancels pending work; unlocking does
 not revive it. Cancellation during execution preserves known completed effects.
 
-Twenty-one controller tests, nine subprocess console tests, six console-state
-tests, fifteen fake-HTTP adapter tests, and eleven worker tests cover these paths.
-Seventeen additional synthetic transcript tests cover the [voice-input boundary](../../docs/design/transcript-boundary.md),
-bringing this suite to 79 tests. `TranscriptGate` previews partials, accepts one
-final, preserves activation mode, and invalidates a pending command immediately
-when correction starts. No microphone or recognizer is connected.
-Seventeen independent [QA regression tests](test_boundary_regressions.py) bring
-the current suite to 96 tests and cover response framing, error handling, and the
-arrival of old inference results while correction text is being entered.
-No model was evaluated. The existing 11 sandbox tests still cover adapter effects
-and simulated journal recovery separately.
+Corrections and clarification replies retain bounded context for this same
+pending request. `context.pending_request.turns` contains up to four previous
+finalized user utterances and, where available, a sanitized admitted proposal or
+clarification. The current replacement remains the job's `utterance`. History
+contains no job IDs, operation IDs, grants, approvals, or execution results.
+It helps a real model interpret “Gardening instead” or an answer such as “Garden”;
+the deterministic example interpreter still recognizes only its three phrases.
+
+Starting correction captures history once; partial input and finalization do not
+duplicate it. Earlier outputs remain invalid and every new proposal is checked
+under current permissions. Policy changes remove historical model interpretations
+while retaining user text; cancellation and terminal results clear the context.
+The history envelope is limited to 16 KiB of ASCII-escaped JSON, in addition to
+the full HTTP body's 64 KiB bound. Overflow fails the request with
+`correction_context_limit` and requires a new complete request. It never truncates
+an antecedent or leaves an older plan executable. This is pending-request context,
+not general conversation memory or evidence of model comprehension.
+
+Each component has focused tests linked from the [architecture map](../../docs/design/architecture.md#implemented-prototype-map).
+They cover controller states, console controls and subprocess behavior, fake HTTP,
+worker cancellation, and the [synthetic transcript boundary](test_transcripts.py).
+Independent [QA regressions](test_boundary_regressions.py) cover response framing,
+error handling, and results arriving while correction text is being entered.
+[Correction-context tests](test_correction_context.py) cover isolation, cleanup,
+ordering, and exact turn/byte limits. Current counts and results live in
+[progress](../../docs/design/progress.md), so this README describes behavior rather
+than duplicating a changing test count. No microphone or recognizer is connected,
+and no model has been evaluated. Sandbox effect/recovery tests remain separate.
 
 ## Limits
 

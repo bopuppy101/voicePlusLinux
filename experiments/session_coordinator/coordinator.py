@@ -21,6 +21,8 @@ from experiments.intent_evaluation.score import valid_outcome
 
 TERMINAL = {"succeeded", "failed", "cancelled", "outcome_unknown"}
 EDITABLE = {"received", "interpreting", "needs_clarification", "proposed", "awaiting_confirmation", "ready"}
+MAX_PRIOR_TURNS = 4
+MAX_PRIOR_CONTEXT_BYTES = 16_384
 
 
 class TransitionError(ValueError):
@@ -44,6 +46,7 @@ class Request:
     cancel_requested: bool = False
     events: list = field(default_factory=list)
     sequence: int = 0
+    prior_turns: list = field(default_factory=list)
 
 
 class SessionCoordinator:
@@ -87,6 +90,7 @@ class SessionCoordinator:
 
     def _fail(self, request, reason):
         request.job = None
+        request.prior_turns = []
         request.result = {"status": "failed", "reason": reason, "steps": []}
         self._event(request, "failed", reason)
 
@@ -117,11 +121,32 @@ class SessionCoordinator:
             raise ValueError("input_final must be boolean")
         if request.state not in EDITABLE or not self.active:
             raise TransitionError("Only a pending request can be revised")
+        prior = copy.deepcopy(request.prior_turns)
+        if request.input_final:
+            turn = {"utterance": request.text}
+            if request.state in {"ready", "awaiting_confirmation"}:
+                # Historical interpretations describe the pending intent, not
+                # execution authority. Remove every host envelope/operation ID.
+                admission = validate(self._session(request), request.proposal, self.grants)
+                if admission["decision"] == "allow":
+                    turn["interpretation"] = {"kind": "proposal", "actions": [
+                        {"capability": step["capability"], "arguments": copy.deepcopy(step["arguments"])}
+                        for step in request.proposal["steps"]]}
+            elif request.state == "needs_clarification":
+                turn["interpretation"] = copy.deepcopy(request.result)
+            prior.append(turn)
         request.text = text
         request.input_final = input_final
         request.revision += 1
         request.job = request.proposal = request.confirmation_digest = request.approved_digest = None
         request.result = None
+        # Overflow still invalidates the old executable revision; never silently
+        # drop an antecedent or leave the prior approval usable after correction.
+        if len(prior) > MAX_PRIOR_TURNS or len(json.dumps(
+                {"turns": prior}, ensure_ascii=True, allow_nan=False).encode("utf-8")) > MAX_PRIOR_CONTEXT_BYTES:
+            self._fail(request, "correction_context_limit")
+            raise TransitionError("Correction context limit reached; start a new complete request")
+        request.prior_turns = prior
         self._event(request, "received", "revised")
 
     def finalize_input(self, request_id, text):
@@ -141,9 +166,12 @@ class SessionCoordinator:
                        "request_id": request.request_id, "request_revision": request.revision,
                        "policy_epoch": self.policy_epoch}
         self._event(request, "interpreting", "interpretation_started")
+        context = {"roots": {"documents": "Disposable Documents"},
+                   "default_root_id": "documents", "capabilities": ["directory.create", "file.search"]}
+        if request.prior_turns:
+            context["pending_request"] = {"turns": copy.deepcopy(request.prior_turns)}
         return {"ticket": copy.deepcopy(request.job), "mode": request.mode, "utterance": request.text,
-                "context": {"roots": {"documents": "Disposable Documents"},
-                            "default_root_id": "documents", "capabilities": ["directory.create", "file.search"]}}
+                "context": context}
 
     def _current_job(self, ticket):
         keys = {"job_id", "session_id", "request_id", "request_revision", "policy_epoch"}
@@ -230,6 +258,7 @@ class SessionCoordinator:
         if request.state in TERMINAL:
             return False
         request.cancel_requested = True
+        request.prior_turns = []
         request.job = None
         if request.live_session is not None:
             request.live_session["cancelled"] = True
@@ -272,6 +301,9 @@ class SessionCoordinator:
         self.grants[:] = updated
         self.policy_epoch += 1
         for request in self._requests.values():
+            # A policy change cannot preserve a model-derived action suggestion
+            # as authority. User utterances remain reference data for replanning.
+            request.prior_turns = [{"utterance": turn["utterance"]} for turn in request.prior_turns]
             if request.live_session is not None:
                 request.live_session["policy_epoch"] = self.policy_epoch
             elif request.state in EDITABLE:
@@ -317,6 +349,8 @@ class SessionCoordinator:
         finally:
             self._executing = False
             request.live_session = None
+            if request.state in TERMINAL:
+                request.prior_turns = []
         return self.snapshot(request_id)
 
     def snapshot(self, request_id):
@@ -324,5 +358,6 @@ class SessionCoordinator:
         return copy.deepcopy({"request_id": request.request_id, "revision": request.revision,
                               "mode": request.mode, "text": request.text, "state": request.state,
                               "input_final": request.input_final,
+                              "pending_context": {"turns": request.prior_turns} if request.prior_turns else None,
                               "proposal": request.proposal, "confirmation_digest": request.confirmation_digest,
                               "result": request.result, "events": request.events})

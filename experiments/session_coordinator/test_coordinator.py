@@ -180,6 +180,37 @@ class LifecycleTests(unittest.TestCase):
         self.coordinator.accept_interpretation(job["ticket"], create())
         self.assertEqual(self.coordinator.execute(request)["state"], "succeeded")
 
+    def test_short_correction_carries_old_intent_but_executes_only_new_plan(self):
+        self.coordinator = SessionCoordinator(self.sandbox, confirmation_required=True)
+        request, _ = self.pending(create())
+        old_digest = self.coordinator.snapshot(request)["confirmation_digest"]
+        self.coordinator.revise(request, "Call it Gardening instead")
+        job = self.coordinator.begin_interpretation(request)
+        self.assertEqual(job["utterance"], "Call it Gardening instead")
+        self.assertEqual(job["context"]["pending_request"], {"turns": [
+            {"utterance": "Create Garden", "interpretation": create()}]})
+        self.assertFalse(self.coordinator.approve(request, old_digest))
+        self.coordinator.accept_interpretation(job["ticket"], create("Gardening"))
+        digest = self.coordinator.snapshot(request)["confirmation_digest"]
+        self.assertTrue(self.coordinator.approve(request, digest))
+        self.coordinator.execute(request)
+        self.assertFalse((self.sandbox.documents / "Garden").exists())
+        self.assertTrue((self.sandbox.documents / "Gardening").is_dir())
+        self.assertIsNone(self.coordinator.snapshot(request)["pending_context"])
+
+    def test_clarification_answer_keeps_question_and_missing_slot_as_context(self):
+        request = self.coordinator.submit("Create a folder")
+        initial = self.coordinator.begin_interpretation(request)
+        clarification = {"kind": "clarify", "missing": ["name"]}
+        self.coordinator.accept_interpretation(initial["ticket"], clarification)
+        self.coordinator.revise(request, "Garden")
+        job = self.coordinator.begin_interpretation(request)
+        self.assertEqual(job["utterance"], "Garden")
+        self.assertEqual(job["context"]["pending_request"], {"turns": [
+            {"utterance": "Create a folder", "interpretation": clarification}]})
+        self.coordinator.accept_interpretation(job["ticket"], create())
+        self.assertEqual(self.coordinator.execute(request)["state"], "succeeded")
+
     def test_model_cannot_supply_host_permission_fields(self):
         output = create()
         output["approved"] = True
