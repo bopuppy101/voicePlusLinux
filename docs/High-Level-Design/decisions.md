@@ -13,17 +13,17 @@
 | D007 | Distinct architectural, developer, QA, and review agents; component-level tests | Mike's explicit development-role instruction |
 | D008 | One high-level documentation map; update existing chapters instead of proliferating documents | Mike's documentation correction |
 | D009 | Conversation tracking, hand-off context, and recovery of previous conversations are critical OS capabilities; their architecture requires deliberate review | Mike's explicit OS continuity requirement; details and format deferred |
-| D010 | Others may fork VPLinuxAI and resell modified versions | Mike's latest licensing clarification; no specific license selected |
+| D010 | Follow standard open-source licensing principles: allow use, modification, forking, and redistribution, including sale of unchanged and modified copies | Mike accepted the Linux Foundation approach and prioritized maximum openness; this supersedes earlier no-resale requests |
 
-## Licensing goal to resolve
+## Licensing direction
 
-Mike wants VPLinuxAI completely open source. He initially requested a prohibition on resale, then explicitly accepted that others may fork the product and resell modified versions. D010 supersedes the earlier prohibition for modified forks. His position on resale of unchanged copies still needs clarification; do not assume that this narrower permission settles it. No license or resale restriction has been adopted.
+Mike wants VPLinuxAI as open source as possible and has accepted the Linux Foundation approach after discussing resale of unchanged copies. Both unchanged copies and modified forks may be redistributed commercially, subject to the applicable licenses. The earlier no-resale requirement is superseded; no clarification about unchanged copies remains pending.
 
-The standard Open Source Definition requires permission for commercial redistribution. Any remaining restriction on resale must be resolved consistently with the open-source goal before license selection. [Open Source Initiative: Open Source Definition](https://opensource.org/osd)
+The Linux Foundation does not prescribe one universal license for all projects. Its guidance recommends standard OSI-approved software licenses, deliberate selection between permissive and copyleft terms, appropriate licenses for documentation and other materials, preservation of third-party notices, and clear license identification. Follow these practices rather than inventing a restriction on resale. [Linux Foundation: license best practices](https://www.linuxfoundation.org/licensebestpractices)
 
-Copyleft is a possible way to protect continued openness of distributed covered code and modifications, but it does not prohibit charging for copies. GPL obligations and source availability would apply within the license's scope; this is not a promise that every separate component in a distribution must use the same license. Existing Linux and reused V2T components retain their own licensing obligations. [GNU GPL v3](https://www.gnu.org/licenses/gpl.en.html), [GNU: selling free software](https://www.gnu.org/philosophy/selling.en.html)
+The policy direction is settled; exact licenses for VPLinuxAI's original code and documentation still need selection and compatibility review. A README statement is not a substitute for adopting license texts. Existing Linux and reused V2T components retain their own licensing obligations.
 
-Clarification about unchanged copies and a compatibility review are needed before selecting licensing terms. Do not treat acceptance of modified-fork resale as selection of GPL, another license, or a particular copyleft policy.
+Copyleft remains an option for preserving openness of distributed covered code and modifications. Permissive licensing remains an option for broader reuse, including proprietary derivatives. Mike's phrase “as open source as possible” does not by itself select between those approaches. Neither approach prohibits sale. [Linux Foundation: license best practices](https://www.linuxfoundation.org/licensebestpractices)
 
 ## Experimental choices made in this design pass
 

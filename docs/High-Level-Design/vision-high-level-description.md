@@ -6,6 +6,10 @@ VPLinuxAI (Voice Plus Linux and AI OS) is a completely open-source operating sys
 
 The operating system will be constructed through the combined contributions of large language models (LLMs), at least initially. Mike, a human being, supplies the initial design ideas and direction; AI will carry out the development. This is intended to be an operating system truly developed by AI, with its initial design grounded in Mike's ideas.
 
+## Open-source licensing direction
+
+Mike wants VPLinuxAI as open source as possible, following the Linux Foundation's standard open-source licensing approach. Others may use, modify, fork, and redistribute the software, including selling unchanged copies or modified versions, subject to the applicable licenses. This supersedes the earlier request to prohibit resale. Specific licenses remain to be selected; see [/home/mike/git/voicePlusLinux/docs/High-Level-Design/decisions.md](decisions.md#licensing-direction).
+
 ## Reference experience and independence
 
 Mike's current workflow demonstrates the basic experience he wants: V2T transcribes his speech into text, he supplies that text to AI through Codex Desktop, and AI interprets the request and uses tools to carry out actions.  Given this workflow, VP Linux AI, is a call that integrates this basic workflow into the operating system.
