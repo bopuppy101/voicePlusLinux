@@ -6,6 +6,14 @@ VPLinuxAI (Voice Plus Linux and AI OS) is a completely open-source operating sys
 
 The operating system will be constructed through the combined contributions of large language models (LLMs), at least initially. Mike, a human being, supplies the initial design ideas and direction; AI will carry out the development. This is intended to be an operating system truly developed by AI, with its initial design grounded in Mike's ideas.
 
+## Reference experience and independence
+
+Mike's current workflow demonstrates the basic experience he wants: V2T transcribes his speech into text, he supplies that text to AI through Codex Desktop, and AI interprets the request and uses tools to carry out actions. This is a reference for the user experience, not a prescribed implementation or a claim of an automatic V2T-to-Codex integration.
+
+VPLinuxAI must provide that voice-to-action experience through a completely open-source system, independent of Codex Desktop, any other version of Codex, or Codex itself. Using Codex or other development tools to help build the project does not make them required components of the resulting OS.
+
+If a coordinating layer is described as a harness, Mike's preferred term is **OS harness**: a layer supporting general operating-system interaction and actions. The term does not limit the project to a coding-agent harness, and adopting a harness architecture is not a requirement. The form of integration remains open.
+
 ## Voice input
 
 The system will have built-in capabilities to accept spoken input. Initially, that input will at least be transcribed into text. How the resulting text can be used throughout the operating system remains to be defined.

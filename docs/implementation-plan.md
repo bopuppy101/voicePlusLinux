@@ -8,6 +8,8 @@ VPLinuxAI is a completely open-source Linux-based operating system with voice in
 
 Mike supplies the initial ideas and design direction. LLMs carry out the development through documented, reviewable contributions.
 
+Mike's current V2T → text → AI interpretation → tool actions workflow is the reference experience. VPLinuxAI must implement this experience through a completely open-source system independent of Codex Desktop or any form of Codex. Development tools used to build it do not dictate runtime dependencies. If we use the term **OS harness**, it means coordination of general OS interactions and actions; neither a coding-agent harness nor a harness architecture is prescribed.
+
 Voice input must be at least as good as Mike's existing [V2T](v2t-source-review.md). Reusing V2T is authorized, but neither its code nor Whisper is mandatory. “B2T” in the latest dictated request is understood here as V2T.
 
 ## 1. Define the first useful experience and the V2T baseline
@@ -57,7 +59,9 @@ Keep the recognition component replaceable. Define how dictation and commands ar
 
 ## 5. Add AI interpretation and controlled system actions
 
-Evaluate AI components against ordinary English requests, paraphrases, ambiguous requests, and multi-step tasks. Select using observed interpretation quality, hardware needs, latency, openness, and integration effort. Model choice and execution location remain open; the proposed core should be usable without a mandatory proprietary service.
+Evaluate AI components against ordinary English requests, paraphrases, ambiguous requests, and multi-step tasks. Select using observed interpretation quality, hardware needs, latency, openness, and integration effort. Model choice and execution location remain open. The core voice-to-action experience must operate through open-source components without requiring Codex or a proprietary service.
+
+Discuss whether coordination belongs in a distinct OS harness, a set of cooperating system services, or another arrangement. Evaluate those options against the same user workflows before choosing the architecture.
 
 A proposed division of responsibility is:
 
@@ -69,7 +73,7 @@ Voice or typed input → Text and relevant context → AI interpretation
 
 This describes responsibilities, not a mandatory sequence: AI may also participate in transcription. Start with a small set of explicit system capabilities. Define which actions run directly, need clarification or confirmation, or can be undone. Check actual outcomes before reporting success. Treat content read from files or applications as data rather than automatically granting it authority to issue commands.
 
-**Completion:** an end-to-end demonstration of the agreed English-command tasks, including uncertainty, cancellation, failure, and recovery.
+**Completion:** an end-to-end demonstration of the agreed English-command tasks using the selected open-source components independently of Codex, including uncertainty, cancellation, failure, and recovery.
 
 ## 6. Make AI part of the operating-system experience
 
