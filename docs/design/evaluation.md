@@ -60,3 +60,7 @@ Every run records run ID, commit, fixture/corpus version, model/prompt/adapter v
 ## Initial acceptance gates
 
 G1: contract checks pass. G2: text interpretation passes the agreed held-out set. G3: measured V2T parity on declared hardware. G4: real desktop actions and recovery pass. G5: clean build/install and offline core path pass. G6: Mike's accessibility trial is accepted. Gates remain pending until their evidence exists.
+
+## Artifacts available now
+
+The [admission reference](../../experiments/contract_reference/README.md) covers a limited subset of G1; the complete production contract gate remains pending. The [intent development set and scorer](../../experiments/intent_evaluation/README.md) provide 25 synthetic text cases, not held-out model results. The [manifest template](benchmark-manifest.template.json) records required benchmark inputs without inventing values. Real audio, model predictions, and performance measurements are still absent.

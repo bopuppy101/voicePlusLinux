@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "status": "template_not_evaluated",
+  "run_id": null,
+  "project_commit": null,
+  "baseline": {
+    "source_repository": "https://github.com/bopuppy101/dbdude-v2t",
+    "reviewed_source_commit": "474a44a444d8b1140731bccd4a858d418fd3e051",
+    "measured_source_commit": null,
+    "engine_version": null,
+    "model_artifact_hash": null,
+    "mapping_hash": null,
+    "settings_hash": null,
+    "launcher_environment_record": null
+  },
+  "candidate": {
+    "engine_version": null,
+    "model_artifact_hash": null,
+    "mapping_hash": null,
+    "settings_hash": null,
+    "prompt_hash": null,
+    "adapter_version": null
+  },
+  "environment": {
+    "cpu": null,
+    "ram_bytes": null,
+    "accelerator": null,
+    "driver_runtime_versions": null,
+    "microphone": null,
+    "capture_format": null,
+    "linux_base": null,
+    "desktop_session": null,
+    "target_application": null
+  },
+  "corpus": {
+    "id": null,
+    "version": null,
+    "consent_record": null,
+    "reference_normalization": null,
+    "recording_count": null,
+    "held_out": null
+  },
+  "thresholds": {
+    "word_error_rate_margin": null,
+    "critical_entity_error_margin": null,
+    "warm_latency_p95_ms": null,
+    "cold_latency_p95_ms": null,
+    "capture_success_minimum": null,
+    "resource_limits": null,
+    "wrong_target_actions_allowed_in_suite": 0,
+    "post_cancel_actions_allowed_in_suite": 0
+  },
+  "results": {
+    "recognition": "not_evaluated",
+    "postprocessing": "not_evaluated",
+    "delivery": "not_evaluated",
+    "latency": "not_evaluated",
+    "resources": "not_evaluated",
+    "accessibility": "not_evaluated",
+    "overall": "not_evaluated"
+  }
+}

@@ -28,6 +28,11 @@ The current architecture is a proposal. “OS harness” is optional terminology
 | Distribution and maintenance | [Packaging/release](packaging-and-release.md) | Build, install, update, rollback, and provenance |
 | Work order | [Implementation backlog](implementation-backlog.md) | Bounded experiments and decision dependencies |
 | Executable message examples | [Contracts](contracts.md) | Static admission fixture checker and limits |
+| Request ordering | [Lifecycle](lifecycle.md) | Corrections, approval binding, deadlines, and cancellation |
+| Transport and failures | [Protocol/errors](protocol-and-errors.md) | Authentication, bounds, compatibility, and error handling |
+| Interrupted filesystem work | [Recovery cases](recovery-cases.md) | Observation tables and fault-injection obligations |
+| User journeys | [Workflow scenarios](workflow-scenarios.md) | Concrete sequences and failure branches |
+| Decision status | [Decision register](decisions.md) | Separate user direction, experiment choices, and proposals |
 
 The project is at design stage: no production model, language, Linux base, numeric performance target, or runtime integration has been selected. Small reference experiments may use an available language to check the design without selecting the production stack.
 
@@ -41,3 +46,11 @@ The project is at design stage: no production model, language, Linux base, numer
 6. Revisit the design using observed results before expanding scope.
 
 Each substantial increment is saved and committed. Local session context is stored separately under `.Codex/context-saves/`; it is not part of the public design specification.
+
+## Runnable reference work
+
+- [Admission contract checks](../../experiments/contract_reference/README.md): 36 fixtures and eight boundary tests.
+- [Intent evaluation scaffold](../../experiments/intent_evaluation/README.md): 25 public development cases and an offline scorer with eight integrity tests. No real model evaluated.
+- [Benchmark manifest template](benchmark-manifest.template.json): unmeasured fields remain null and results remain `not_evaluated`.
+
+See [contribution instructions](../../CONTRIBUTING.md) for reproducible check commands.
