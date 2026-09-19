@@ -16,6 +16,12 @@ For this issue, distance means **mouth to the nearest microphone**, not mouth to
 
 This issue belongs at the beginning of the voice → text → AI → action flow. Poor capture can change words, filenames, numbers, or requests before the AI receives them. AI interpretation must not be treated as a substitute for intelligible audio.
 
+## Current microphone baseline
+
+Mike reports speaking about **18 inches (1.5 feet / 0.46 metres)** from his current microphone, understood from his spoken model name as a **Sennheiser MK 4**. This is the working close-microphone baseline for comparison with the proposed 10–15-foot setup, not a far-field result. The microphone model and distance are user-reported. The host inspection separately confirmed an **Elgato Wave XLR** USB interface supplying the active Ubuntu audio input; USB enumeration identifies that interface, not the attached microphone model.
+
+Use the current microphone at this distance with V2T as the baseline when comparing external arrays. No new recording or performance measurement has been made.
+
 ## Why the microphone alone is not the whole answer
 
 Hearing that someone spoke is different from capturing the words reliably. Increasing gain raises background noise and room reflections along with speech. Walls, room furnishings, microphone placement, and the direction the speaker faces all affect the result. Shure explains that intelligibility deteriorates when reflected sound competes with direct speech; there is no universal useful pickup distance for a microphone. [Shure: critical distance and microphone placement](https://service.shure.com/articles/en_US/Knowledge/critical-distance-and-microphone-placement)
@@ -73,7 +79,7 @@ Start with existing equipment, then compare a conferencing array and an array ex
 
 Before testing, agree on acceptable error rates, latency, and noise conditions. No passing thresholds or successful results are asserted here. The decision should identify which equipment, room conditions, and distances meet the agreed target, including where they fail.
 
-Still open: actual microphone inventory, room characteristics, fixed versus moving speaker, budget, and whether suitable fully open processing/firmware is available. Capture and playback experiments are future work; creating this document does not start them.
+Still open: any additional microphones available, room characteristics, fixed versus moving speaker, budget, and whether suitable fully open processing/firmware is available. Capture and playback experiments are future work; creating this document does not start them.
 
 ## Place in the project
 
