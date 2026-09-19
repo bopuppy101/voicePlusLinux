@@ -21,6 +21,10 @@ Without `--text`, the console accepts a single letter followed by Enter for new
 command, dictation, revision, approval, cancellation, status, and quit. This is
 an experimental sequential-key console, not a validated accessible desktop UI.
 Completed requests require a new request; revision applies to pending requests.
+Only one current pending request is exposed: revise or cancel it before starting
+another. Inference runs in a worker, so the console can process these controls
+while awaiting a response. Results appear without another keypress. EOF and quit
+cancel pending requests. Input lines are bounded and invalid UTF-8 is discarded.
 `--confirm` is optional policy for testing proposal binding, not a requirement to
 confirm every ordinary granted action.
 
@@ -69,27 +73,38 @@ an earlier approval. Changing grants invalidates pending planning and stops
 later execution steps. Locking a session cancels pending work; unlocking does
 not revive it. Cancellation during execution preserves known completed effects.
 
-Twenty-one controller tests, six subprocess console tests, and fifteen fake-HTTP
-adapter tests cover these paths.
+Twenty-one controller tests, nine subprocess console tests, six console-state
+tests, fifteen fake-HTTP adapter tests, and eleven worker tests cover these paths.
 No model was evaluated. The existing 11 sandbox tests still cover adapter effects
 and simulated journal recovery separately.
 
 ## Limits
 
-This is a single-threaded, in-process trusted controller API. It is not an
-authenticated service, thread-safe event loop, production persistence layer,
-or model process supervisor. Request states are in memory; the underlying
+The controller is owned by one thread, with a separate inference worker and a
+Linux console event pump. These are trusted in-process APIs, not an authenticated
+service, general concurrent controller, production persistence layer, or model
+process supervisor. Request states are in memory; the underlying
 sandbox journal does not persist an entire session. Exceptions during dispatch
 are conservatively reported as uncertain, with known earlier effects retained.
 
-The synchronous console cannot accept a cancellation key while a blocking
-interpreter call is running. The controller APIs support invalidation of late
-responses; an event-driven UI/worker boundary remains necessary for responsive
-real inference. No microphone, audio output, desktop injection, or live user-file
-access is implemented.
+The worker receives copied bounded data, never a controller/executor reference.
+Only the console's owner thread delivers outcomes and dispatches admitted plans.
+Its default capacity is four jobs, including running calls and undrained results;
+there is one worker thread and no automatic pool expansion. Cancelling queued
+work skips inference when possible. Cancelling running work suppresses delivery,
+but cannot stop its HTTP server or forcibly terminate a Python call. Its slot is
+retained until the call settles and the result is drained. A stuck call can block
+later inference; the console remains responsive and reports saturation. Closing
+does not wait indefinitely and never turns a late result into an action.
+
+The one-shot `--text` path remains synchronous. Sandbox action dispatch also
+remains synchronous: responsive inference does not establish bounded action
+cancellation latency. A separate process supervisor and real desktop event loop
+remain production work. No microphone, audio output, desktop injection, or live
+user-file access is implemented.
 
 `--timeout` is a socket inactivity timeout (default 10 seconds, maximum 30), with
 additional elapsed-time checks while reading the body. It is not a hard total
 deadline: a server trickling HTTP headers can occupy the synchronous call longer.
-Cancellation and hard worker termination need a separate supervisor. Test timings
+Hard worker termination needs a separate process supervisor. Test timings
 describe fake-server transport only, not model speed, quality, or OS performance.
