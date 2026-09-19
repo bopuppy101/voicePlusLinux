@@ -1,18 +1,28 @@
 # Desktop interaction and accessibility
 
-Status: proposed UX and integration tests. The selected desktop/toolkit is still open.
+Status: confirmed voice-interaction requirements with proposed implementation and tests. The selected desktop/toolkit is still open.
 
 ## Interaction surface
 
-Mike's preferred interface is one large wall-mounted or projected display. Microphones and speakers may be integrated or placed separately, including on a sofa table; he favors reducing connection complexity, with the layout still undecided. The hardware and presentation options are discussed in [/home/mike/git/voicePlusLinux/docs/OS-Integration-Design/visual-and-audio-user-interface-options.md](visual-and-audio-user-interface-options.md).
+The first milestone is voice-only routine operation of Mike’s existing 27-inch monitor and Ubuntu desktop. A larger wall-mounted, projected, or sofa-table display follows after this workflow works. Microphones and speakers may be integrated or placed separately, including on a sofa table; he favors reducing connection complexity, with the layout still undecided. The hardware and presentation options are discussed in [/home/mike/git/voicePlusLinux/docs/OS-Integration-Design/visual-and-audio-user-interface-options.md](visual-and-audio-user-interface-options.md).
 
 Provide a view readable from the user's position showing mode, listening/processing state, editable transcript, pending action, and result. A compact panel remains a possible ordinary-desktop presentation, not a requirement for the wall interface. Keep the latest meaningful state visible until replaced or dismissed. Do not require the user to watch a transient notification to know whether a file moved.
 
 **Confirmed requirement:** automatically size text using the display's physical dimensions and pixel resolution, with controls and layout adapting alongside it. Viewing-distance profiles and remembered user overrides are proposed ways to accommodate close work and room viewing up to 15 feet; automatic distance sensing is not selected. The sizing behavior and validation scope are described in [/home/mike/git/voicePlusLinux/docs/OS-Integration-Design/visual-and-audio-user-interface-options.md](visual-and-audio-user-interface-options.md#hardware-shortlist-discussed-with-mike--september-19-2026).
 
-All initial operations must be reachable through single-key steps. Sequential keys are acceptable; simultaneous chords, precise mouse positioning, dragging, and text selection are not required. Large controls, stable focus order, and clear labels support Mike's stated needs.
+Routine operations must be voice-accessible. Retain single-key steps as an accessible recovery route. Sequential keys are acceptable; simultaneous chords, precise mouse positioning, dragging, and text selection are not required. Large controls, stable focus order, and clear labels support Mike's stated needs.
 
 Proposed panel actions: activate recording, change mode, review/correct, choose a candidate, confirm when needed, cancel, and inspect the last result. A dedicated configurable global activation key must coexist with ordinary typing. Inside the panel, a focused large control can use Space or Enter without making those keys global triggers.
+
+## First milestone: concise voice control on the current desktop
+
+**Confirmed by Mike:** start with the existing 27-inch monitor. Routine actions must work through voice alone, using concise commands without lengthy discussion. Complete clear, routine requests directly and show brief status; ask only a short clarification when needed. Existing authorization requirements still apply. Output remains visual initially; this does not authorize spoken playback.
+
+Proposed initial vocabulary: “Browser,” “Switch window,” “Scroll down,” “Stop,” “Bigger text,” “Select three,” “Click,” “Undo,” and “Cancel.” Exact phrases and supported applications will be refined with Mike. Prefer named controls or readable numbered targets. Voice-driven pointer movement/clicking is the worst-case software fallback for controls that cannot be reached more directly; it is not a requirement to use the physical mouse. The fallback still needs practical target selection and cancellation, rather than long sequences of tiny cursor movements.
+
+Keep the physical mouse and sequential-key controls available for recovery during development, but count their use as an intervention during normal voice-workflow evaluation. Test opening/switching applications, selecting controls, scrolling, dictation/correction, and cancellation on the current screen before moving to a 10–15-foot viewing distance. Record command count, unnecessary clarification, failures, and manual interventions. Capability is not implemented or validated merely by documenting it.
+
+**Current mouse:** Mike identifies a Logitech M720 and is concerned about distance. Logitech specifies a 10 m / 33 ft wireless range, dependent on environment, for its Bluetooth/Unifying connectivity. Ten feet is therefore within the advertised range, but actual reception here has not been tested. Radio range does not solve precise pointing, hand comfort, or distant-screen usability. [Logitech specifications](https://support.logi.com/hc/en-in/articles/360023302794-M720-Triathlon-Technical-Specifications).
 
 ## Correction examples
 
@@ -20,7 +30,7 @@ Proposed panel actions: activate recording, change mode, review/correct, choose 
 
 **After execution:** “Call it Gardening instead” can propose a rename of the just-created folder only if that context still identifies the same object. It is a new action, not a rewrite of history.
 
-**Ambiguous search:** show one candidate per navigable row with enough location/context to distinguish it. Next/previous/accept/cancel operate with individual keys. Voice selection can supplement those controls; it must not be the only escape route from a failed recognizer.
+**Ambiguous search:** show one candidate per navigable row with enough location/context to distinguish it. Next/previous/accept/cancel operate with individual keys. Voice selection is the normal route; retain those key controls as an escape route from a failed recognizer.
 
 ## Linux integration distinctions
 
