@@ -38,6 +38,23 @@ Files are read only for command interpretation, are limited to 64 KiB, and rejec
 duplicate keys/non-JSON constants. The experiment never executes supplied shell
 text. The only action adapters remain folder creation and filename search.
 
+`--endpoint http://127.0.0.1:8080/v1/chat/completions --model MODEL_ID`
+uses an explicitly configured local chat server instead of the examples. This
+does not install, download, launch, or select a model. The protocol targets the
+JSON chat interface documented by [llama.cpp's server](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md);
+compatibility with a real server remains untested. Replace `MODEL_ID` with the
+identifier configured on a server you have independently admitted. A numeric
+loopback address, exact endpoint path, and explicit model are required. The
+adapter ignores proxy environment variables and does not follow redirects.
+
+Requests and responses are bounded to 64 KiB. Responses must contain one finished
+assistant JSON outcome, with no duplicate keys, Markdown fences, authority
+fields, or tool calls. Invalid or truncated output fails without action. The
+adapter never retries. The model receives utterance/mode/context, not job tickets
+or evaluation answers. The coordinator independently validates every proposal.
+Loopback restricts this client's destination; it does not prove that the server
+keeps data local or that its model is open source. Those are admission decisions.
+
 ## Controller lifecycle
 
 `submit` returns a request ID. `begin_interpretation` produces a correlated ticket
@@ -52,7 +69,8 @@ an earlier approval. Changing grants invalidates pending planning and stops
 later execution steps. Locking a session cancels pending work; unlocking does
 not revive it. Cancellation during execution preserves known completed effects.
 
-Twenty-one controller tests and six subprocess console tests cover these paths.
+Twenty-one controller tests, six subprocess console tests, and fifteen fake-HTTP
+adapter tests cover these paths.
 No model was evaluated. The existing 11 sandbox tests still cover adapter effects
 and simulated journal recovery separately.
 
@@ -69,3 +87,9 @@ interpreter call is running. The controller APIs support invalidation of late
 responses; an event-driven UI/worker boundary remains necessary for responsive
 real inference. No microphone, audio output, desktop injection, or live user-file
 access is implemented.
+
+`--timeout` is a socket inactivity timeout (default 10 seconds, maximum 30), with
+additional elapsed-time checks while reading the body. It is not a hard total
+deadline: a server trickling HTTP headers can occupy the synchronous call longer.
+Cancellation and hard worker termination need a separate supervisor. Test timings
+describe fake-server transport only, not model speed, quality, or OS performance.

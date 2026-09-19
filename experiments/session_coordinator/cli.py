@@ -8,6 +8,7 @@ from pathlib import Path
 import sys
 
 from coordinator import Sandbox, SessionCoordinator, TransitionError
+from inference import InferenceError, LocalChatInterpreter
 from experiments.contract_reference.check_contracts import strict_object, reject_constant
 
 
@@ -47,7 +48,9 @@ def prepare(coordinator, request_id, interpreter):
     job = coordinator.begin_interpretation(request_id)
     try:
         output = interpreter.interpret(job)
-    except (OSError, ValueError) as exc:
+    except InferenceError as exc:
+        coordinator.fail_interpretation(job["ticket"], exc.code)
+    except (OSError, ValueError):
         coordinator.fail_interpretation(job["ticket"], "inference_invalid_response")
     else:
         coordinator.accept_interpretation(job["ticket"], output)
@@ -108,12 +111,22 @@ def main(argv=None):
     parser.add_argument("--text", help="A single typed request; omit for the experimental console")
     parser.add_argument("--mode", choices=("command", "dictation"), default="command")
     parser.add_argument("--response-file", type=Path, help="Supply a JSON interpretation instead of deterministic examples")
+    parser.add_argument("--endpoint", help="Explicit numeric-loopback HTTP /v1/chat/completions endpoint")
+    parser.add_argument("--model", help="Model identifier served by the configured local endpoint")
+    parser.add_argument("--timeout", type=float, default=10.0, help="Inference socket timeout in seconds (maximum 30)")
     parser.add_argument("--confirm", action="store_true", help="Require confirmation for folder creation")
     parser.add_argument("--approve", action="store_true", help="Explicitly approve this one-shot disposable proposal")
     args = parser.parse_args(argv)
     if args.approve and (args.text is None or not args.confirm):
         parser.error("--approve requires both --text and --confirm")
-    interpreter = FileInterpreter(args.response_file) if args.response_file else ExampleInterpreter()
+    if bool(args.endpoint) != bool(args.model):
+        parser.error("--endpoint and --model must be supplied together")
+    if args.endpoint and args.response_file:
+        parser.error("Choose an endpoint or a response file")
+    if args.endpoint:
+        interpreter = LocalChatInterpreter(args.endpoint, args.model, timeout=args.timeout)
+    else:
+        interpreter = FileInterpreter(args.response_file) if args.response_file else ExampleInterpreter()
     with Sandbox() as sandbox:
         coordinator = SessionCoordinator(sandbox, confirmation_required=args.confirm)
         if args.text is None:
