@@ -36,9 +36,13 @@ Compare the existing `sounddevice` path with a PipeWire integration spike only i
 
 ## Activation and mode proposal
 
+Mike named the OS voice service **Lanzo** and supplied **“Yo Lonzo”** as its spoken wake phrase. **“Yo”** is an attention cue like “Hey,” not part of the service name. Preserve the supplied phrase and service spelling separately; pronunciation and spelling normalization have not yet been specified.
+
+Wake-phrase activation is part of the intended OS experience. The detector, listening behavior, and handling of false activations remain design questions; no wake detector has been implemented or tested. Waking the voice service and resuming a suspended computer are separate capabilities; hardware-level wake from sleep has not been specified.
+
 The default prototype uses explicit single-key toggle activation, avoiding hold duration and key chords. A configurable dedicated key must not take the ordinary space key away from applications globally. In the VPLinuxAI panel, a large focused control can be activated with one key. Test accidental repeats and tremor-related double activation.
 
-Dictation and command modes have visible persistent labels. The user can change mode by a simple control before recording. Future automatic mode inference or wake-word behavior needs its own evidence and settings; it is not required for the first slice.
+Dictation and command modes have visible persistent labels. The user can change mode by a simple control before recording. Automatic mode inference and the implementation of the requested wake phrase need their own evidence and settings; they are not implemented in the current prototype.
 
 Stop/cancel must be available without depending on the speech recognizer. On lock, logout, explicit stop, permission loss, or device removal, stop capture and clear pending delivery. Whether to keep a capture stream warm while inactive is an explicit privacy/power/latency choice, not an invisible implementation detail.
 
