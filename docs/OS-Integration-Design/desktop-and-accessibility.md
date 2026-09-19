@@ -44,6 +44,16 @@ Keep the physical mouse and sequential-key controls available for recovery durin
 
 **Ambiguous search:** show one candidate per navigable row with enough location/context to distinguish it. Next/previous/accept/cancel operate with individual keys. Voice selection is the normal route; retain those key controls as an escape route from a failed recognizer.
 
+## Architectural option: voice-controlled tiling and Omarchy
+
+**Mike’s proposal — September 19:** evaluate Omarchy as a possible foundation because tiled windows address the repeated problem of one application hiding another. Mike does not want to memorize window-management keystrokes. Short spoken commands must perform the equivalent operations. This is an architectural discussion; Ubuntu remains the current development host and no migration is approved or performed.
+
+[Omarchy’s official manual](https://omarchy.org/manual/) identifies its base as **Arch Linux**, with **Hyprland** for tiling and Quickshell for its desktop shell. Distinguish the distribution from the window-management layer: tiling does not itself require changing the Linux base. [Ubuntu also supports side-by-side tiling](https://help.ubuntu.com/stable/ubuntu-help/shell-windows.html), although robust programmatic control in this current GNOME session remains unresolved.
+
+Proposed commands include “Files right,” “Chat left,” “Wider files,” “Focus chat,” and “Restore layout.” Implement recognized commands as bounded window actions; avoid making Mike recite shortcuts or relying on guessed timing. Preserve the left chat/right work arrangement rather than letting each new window unpredictably rearrange it. Application dialogs and floating windows need explicit placement rules. Window focus and focus within a text-entry field remain separate: tiling alone does not guarantee correct V2T delivery.
+
+Evaluate a Hyprland/Omarchy prototype against the current Ubuntu workflow before choosing a new base. Acceptance includes visible non-overlapping windows, verified dictation destination, concise file navigation, and the existing microphone/recording setup. Arch uses rolling releases and requires coordinated updates, an additional maintenance consideration for the OS project. [Arch maintenance guidance](https://wiki.archlinux.org/title/System_maintenance). Do not install a new desktop or replace the working OS merely to explore this option.
+
 ## Linux integration distinctions
 
 Activation and text delivery are different capabilities. The GlobalShortcuts portal provides application sessions and shortcut activation/deactivation events. Actual bindings and backend behavior need verification on the chosen desktop. [GlobalShortcuts API](https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.GlobalShortcuts.html).
