@@ -18,17 +18,36 @@ Measure V2T on agreed hardware and representative speech before selecting a repl
 
 **Completion:** a short acceptance checklist and repeatable baseline. A replacement must meet or exceed that baseline on the agreed criteria; better accuracy alone does not excuse worse usability or reliability. Numeric thresholds will follow measurement.
 
-## 2. Choose the Linux foundation and development languages
+## 2. Choose the Linux foundation
 
 Evaluate an existing Linux distribution as the foundation. Decide the desktop/input environment, initial hardware support, packaging, update approach, and how the project becomes an installable OS. First prove the experience on that base, then build the distribution image.
 
-Explicitly evaluate the language or languages for the voice service, AI coordination, system integration, and user interface. Consider existing V2T code, library availability, responsiveness, maintainability by people and LLMs, testing, and packaging. Avoid selecting languages solely because the existing application is Python.
-
 Review source availability, dependency and model licensing, and redistribution requirements as part of component selection, consistent with the completely open-source goal. Decide the project's own license and preserve the provenance of reused code.
 
-**Completion:** brief written decisions for the base, languages, and component boundaries, supported by small feasibility experiments where needed.
+**Completion:** brief written decisions for the Linux base and distribution approach, supported by small feasibility experiments where needed.
 
-## 3. Establish dependable voice input
+## 3. Discuss and select development languages
+
+Make language selection a dedicated design discussion before substantial implementation. We are building on Linux and existing components; choosing languages for new VPLinuxAI code does not require rewriting those foundations.
+
+Discuss candidates by responsibility. The following is an initial discussion agenda, not a chosen stack or an exhaustive shortlist:
+
+| Candidate | Questions to investigate |
+| --- | --- |
+| Python | How much V2T and AI integration code can we reuse? Can the resulting services meet measured responsiveness, reliability, and packaging needs? |
+| Rust | Would it suit long-running system services or the action/permission layer? What are the costs of bindings, build tooling, and integration with the selected AI components? |
+| Go | Would it simplify service development and distribution? How well would it integrate with the required desktop, audio, and inference components? |
+| C or C++ | Where would existing native libraries or measured low-level requirements justify new code in these languages? What review and maintenance burden would that introduce? |
+| TypeScript/JavaScript or a native UI language | Which approach best supports the chosen desktop interface, accessibility, resource limits, and integration with system services? |
+| Shell scripting | Which build, installation, and administrative tasks warrant small scripts, and where should logic move into a more structured component? |
+
+Compare a primarily single-language design with a small mixed-language design. Evaluate library and binding availability, performance on target hardware, memory use, maintainability by people and LLMs, testability, dependency management, open-source tooling, and reproducible packaging. For multiple languages, account for the cost of interfaces, debugging, and releases across components.
+
+Use small prototypes to resolve important uncertainties. Existing Python code is a reason to evaluate Python, not an automatic decision. Likewise, the AI model does not need to dictate the language of every OS component.
+
+**Completion:** a short language decision document mapping each major component to its chosen language, explaining alternatives and tradeoffs, and identifying evidence that would justify revisiting the choice. No language is selected by this plan.
+
+## 4. Establish dependable voice input
 
 Adapt V2T or implement an alternative that passes the baseline. Provide clear listening and processing states, reliable microphone handling, transcription, correction/mappings, and text delivery. Design controls around simple single-key interactions; existing V2T key combinations are not requirements for this OS.
 
@@ -36,7 +55,7 @@ Keep the recognition component replaceable. Define how dictation and commands ar
 
 **Completion:** dependable dictation into the initial supported applications, with measured V2T parity or improvement.
 
-## 4. Add AI interpretation and controlled system actions
+## 5. Add AI interpretation and controlled system actions
 
 Evaluate AI components against ordinary English requests, paraphrases, ambiguous requests, and multi-step tasks. Select using observed interpretation quality, hardware needs, latency, openness, and integration effort. Model choice and execution location remain open; the proposed core should be usable without a mandatory proprietary service.
 
@@ -52,7 +71,7 @@ This describes responsibilities, not a mandatory sequence: AI may also participa
 
 **Completion:** an end-to-end demonstration of the agreed English-command tasks, including uncertainty, cancellation, failure, and recovery.
 
-## 5. Make AI part of the operating-system experience
+## 6. Make AI part of the operating-system experience
 
 Integrate voice and AI into session startup, application and file workflows, settings, permissions, and status reporting. Provide a consistent way to ask, correct, cancel, and inspect what happened. Keep typed input and ordinary Linux tools usable when voice or AI is unavailable.
 
@@ -60,7 +79,7 @@ Define what context AI may access, what is retained, and how users control it. A
 
 **Completion:** the initial workflows operate consistently across the selected desktop, with accessible controls and understandable failures.
 
-## 6. Package, validate, and release an open-source OS
+## 7. Package, validate, and release an open-source OS
 
 Produce a reproducible build and bootable/installable VPLinuxAI image, including installation instructions, source, dependency/model provenance, and contributor documentation. Validate on the target hardware: boot, install, update, recovery, voice quality, English-command completion, and resource use. Establish how fixes and model changes are evaluated and delivered.
 
