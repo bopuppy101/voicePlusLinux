@@ -62,4 +62,6 @@ These existing documents explain details within the chapters above. They are **n
 
 The `experiments/` directory contains code used to test parts of these ideas. Each experiment's README explains how to run it; [CONTRIBUTING](../../CONTRIBUTING.md) collects the check commands. Experiments provide evidence for the design and do not define new product requirements.
 
+[CONTRIBUTING](../../CONTRIBUTING.md#agent-roles-and-working-flow) also defines the architectural, developer, QA, and review roles. The [architecture chapter](architecture.md#implemented-prototype-map) connects each implemented component to its responsibilities, source, and tests.
+
 Future refinement should update these existing chapters and this map, keeping implementation detail in the appendices rather than growing another layer of design documents.
