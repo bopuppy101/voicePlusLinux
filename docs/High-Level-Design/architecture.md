@@ -29,6 +29,14 @@ flowchart TD
 
 This is one candidate OS harness arrangement. A cohesive application or cooperating desktop services could implement the same responsibilities.
 
+## Critical architectural decision: conversation continuity
+
+**Confirmed requirement; architecture open.** VPLinuxAI must track conversations, preserve hand-off context, and restore previous conversations so the user and AI can continue across sessions. This is an OS responsibility. The document format, storage mechanism, save timing, and user experience remain to be defined with Mike.
+
+The architectural review must address what constitutes sufficient context, how a conversation is identified and retrieved, how saved context survives interruption, and how retention and access are controlled. It must also determine how restored context is reconciled with current system state and permissions. Restoring a conversation must not itself replay past actions or revive old approvals.
+
+The prototype's short-lived correction context and action journal do not implement this capability. Repository development hand-offs are a reference practice, not a selected production format. Record the eventual decision and its evidence in [/home/mike/git/voicePlusLinux/docs/High-Level-Design/decisions.md](decisions.md); refine this existing chapter rather than creating another design-document series.
+
 ## Implemented prototype map
 
 The table follows the request flow above, then lists the evaluation tools used
@@ -89,6 +97,7 @@ integration and evidence gaps must also be closed.
 | Session coordinator | Request lifecycle, cancellation, current mode, context references | Truth of an action outcome without evidence |
 | Inference adapter | Model-specific input/output and resource management | Its own capabilities or permissions |
 | Context providers | Bounded retrieval from selected sources | Whether retrieved text is a new user instruction |
+| Conversation continuity — architecture pending | Durable conversation context, hand-off creation, retrieval, and restoration | Automatic replay of past actions or restoration of expired authority |
 | Policy/validation | Supported action names, schema checks, permission scope, confirmation rules | The user's intended ambiguous target |
 | Action adapters | Typed operations and outcome evidence | Arbitrary model-provided shell execution |
 | Desktop interface | Listening/status display, correction, approval, results | Hidden automatic expansion of access |

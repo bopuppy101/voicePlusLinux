@@ -27,7 +27,7 @@ The scorer compares structured outcomes against the declared acceptable alternat
 
 Missing outputs, unknown IDs, duplicate IDs/keys, non-JSON numbers, malformed outcome shapes, and unsupported extra fields are not silently counted as passes. The scorer reports per-category counts plus missing/unexpected IDs and exits nonzero for an incomplete or imperfect run. All inputs are local files; it does not call a model or execute actions.
 
-No model predictions have been generated in this project. Scorer unit tests use synthetic outputs solely to verify scoring behavior. A production evaluation run must also record model, prompt, engine, artifact, hardware, and timing metadata as described in the [evaluation design](../../docs/design/evaluation.md).
+No model predictions have been generated in this project. Scorer unit tests use synthetic outputs solely to verify scoring behavior. A production evaluation run must also record model, prompt, engine, artifact, hardware, and timing metadata as described in the [evaluation design](../../docs/High-Level-Design/evaluation.md).
 
 ## Recording an explicitly configured model run
 

@@ -100,14 +100,14 @@ the full HTTP body's 64 KiB bound. Overflow fails the request with
 an antecedent or leaves an older plan executable. This is pending-request context,
 not general conversation memory or evidence of model comprehension.
 
-Each component has focused tests linked from the [architecture map](../../docs/design/architecture.md#implemented-prototype-map).
+Each component has focused tests linked from the [architecture map](../../docs/High-Level-Design/architecture.md#implemented-prototype-map).
 They cover controller states, console controls and subprocess behavior, fake HTTP,
 worker cancellation, and the [synthetic transcript boundary](test_transcripts.py).
 Independent [QA regressions](test_boundary_regressions.py) cover response framing,
 error handling, and results arriving while correction text is being entered.
 [Correction-context tests](test_correction_context.py) cover isolation, cleanup,
 ordering, and exact turn/byte limits. Current counts and results live in
-[progress](../../docs/design/progress.md), so this README describes behavior rather
+[progress](../../docs/High-Level-Design/progress.md), so this README describes behavior rather
 than duplicating a changing test count. No microphone or recognizer is connected,
 and no model has been evaluated. Sandbox effect/recovery tests remain separate.
 

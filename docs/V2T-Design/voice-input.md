@@ -8,7 +8,7 @@ synthetic events. It does not yet connect a microphone or recognizer.
 
 ## Preserve useful existing behavior
 
-V2T already has recording control, buffering, model loading, transcription, mappings, formatting, and platform-specific text delivery. Reuse should preserve attribution and isolate useful modules rather than copying an entire launcher and its environment assumptions unchanged. See the [source review](../v2t-source-review.md).
+V2T already has recording control, buffering, model loading, transcription, mappings, formatting, and platform-specific text delivery. Reuse should preserve attribution and isolate useful modules rather than copying an entire launcher and its environment assumptions unchanged. See the [source review](v2t-source-review.md).
 
 On the reviewed `develop` commit, the Ubuntu Wayland launcher disables CUDA visibility and runs as the desktop user. Its source comments describe a particular local resource-sharing reason. This illustrates why launcher behavior must be inspected separately from the Python code's CPU/CUDA autodetection. It is not a proposed VPLinuxAI device policy. [Reviewed launcher](https://github.com/bopuppy101/dbdude-v2t/blob/474a44a444d8b1140731bccd4a858d418fd3e051/ubuntu-26.04/run-dbdude-v2t.bash).
 

@@ -10,7 +10,7 @@ Mike supplies the initial ideas and design direction. LLMs carry out the develop
 
 Mike's current V2T → text → AI interpretation → tool actions workflow is the reference experience. VPLinuxAI must implement this experience through a completely open-source system independent of Codex Desktop or any form of Codex. Development tools used to build it do not dictate runtime dependencies. If we use the term **OS harness**, it means coordination of general OS interactions and actions; neither a coding-agent harness nor a harness architecture is prescribed.
 
-Voice input must be at least as good as Mike's existing [V2T](v2t-source-review.md). Reusing V2T is authorized, but neither its code nor Whisper is mandatory. “B2T” in the latest dictated request is understood here as V2T.
+Voice input must be at least as good as Mike's existing [V2T](../V2T-Design/v2t-source-review.md). Reusing V2T is authorized, but neither its code nor Whisper is mandatory. “B2T” in the latest dictated request is understood here as V2T.
 
 ## 1. Define the first useful experience and the V2T baseline
 
@@ -81,7 +81,9 @@ Integrate voice and AI into session startup, application and file workflows, set
 
 Define what context AI may access, what is retained, and how users control it. Audio or spoken feedback is a separate interface choice; Mike requires explicit permission before media playback.
 
-**Completion:** the initial workflows operate consistently across the selected desktop, with accessible controls and understandable failures.
+**Critical requirement: conversation continuity.** The OS must track conversations, save hand-off context, and enable users and AI to recover and continue previous conversations across sessions. Treat the architecture for this capability as a major design decision. Review what must be preserved, how it is retrieved and restored, and how users control it before choosing a format or implementation. The current development hand-off files illustrate the need; they do not establish the OS storage design.
+
+**Completion:** the initial workflows operate consistently across the selected desktop, with accessible controls and understandable failures. Demonstrate recovery of a previous conversation with enough context to continue; detailed acceptance criteria will follow the architectural review.
 
 ## 7. Package, validate, and release an open-source OS
 
@@ -93,4 +95,4 @@ Produce a reproducible build and bootable/installable VPLinuxAI image, including
 
 Save each meaningful planning or implementation increment to disk. Commit small, coherent project changes and push checkpoints to the project repository. Maintain local context snapshots for session handoffs, including completed work, current state, decisions, verification results, and exact next steps. Save before lengthy experiments and at session end.
 
-LLM contributions should include enough explanation and verification for another LLM or a person to continue. Mike has authorized continuing from this high-level plan into progressively refined design and bounded development experiments, with frequent saved handoffs. The [design notebook](design/README.md) tracks the detailed subjects, open decisions, and implementation backlog. The OS itself has not yet been implemented.
+LLM contributions should include enough explanation and verification for another LLM or a person to continue. Mike has authorized continuing from this high-level plan into progressively refined design and bounded development experiments, with frequent saved handoffs. The [project map](README.md) tracks the detailed subjects, open decisions, and implementation backlog. The OS itself has not yet been implemented.

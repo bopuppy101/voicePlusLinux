@@ -1,7 +1,9 @@
 # Issue: reliable voice capture from 10–15 feet
 
-**This file:** `/home/mike/git/voicePlusLinux/docs/far-field-voice-capture-10-to-15-feet.md`  
-**Status:** Open feasibility issue; no microphone selected or distance performance tested.  
+**This file:** `/home/mike/git/voicePlusLinux/docs/V2T-Design/far-field-voice-capture-10-to-15-feet.md`
+
+**Status:** Open feasibility issue; no microphone selected or distance performance tested.
+
 **Recorded:** September 19, 2026
 
 ## The issue Mike identified
@@ -67,6 +69,6 @@ Still open: actual microphone inventory, room characteristics, fixed versus movi
 
 ## Place in the project
 
-- Project map: [/home/mike/git/voicePlusLinux/docs/design/README.md](design/README.md)
-- Voice-input design: [/home/mike/git/voicePlusLinux/docs/design/voice-input.md](design/voice-input.md)
-- Existing V2T review: [/home/mike/git/voicePlusLinux/docs/v2t-source-review.md](v2t-source-review.md)
+- Project map: [/home/mike/git/voicePlusLinux/docs/High-Level-Design/README.md](../High-Level-Design/README.md)
+- Voice-input design: [/home/mike/git/voicePlusLinux/docs/V2T-Design/voice-input.md](voice-input.md)
+- Existing V2T review: [/home/mike/git/voicePlusLinux/docs/V2T-Design/v2t-source-review.md](v2t-source-review.md)

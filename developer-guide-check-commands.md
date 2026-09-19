@@ -1,6 +1,6 @@
 # Developer guide-check commands
 
-Start with the [design index](docs/design/README.md) and [decision register](docs/design/decisions.md). Mike's requirements are authoritative; proposals are not settled decisions. Existing reference experiments do not select the production language or establish model/voice quality.
+Start with the [project map](docs/High-Level-Design/README.md) and [decision register](docs/High-Level-Design/decisions.md). Mike's requirements are authoritative; proposals are not settled decisions. Existing reference experiments do not select the production language or establish model/voice quality.
 
 ## Agent roles and working flow
 
@@ -21,7 +21,7 @@ review as independent. Agents do not commit overlapping partial work or change
 another agent's files without coordination. Actual assignments and unresolved
 findings belong in local handoffs, not a new public document for each agent run.
 
-For each implemented component, the [architecture](docs/design/architecture.md)
+For each implemented component, the [architecture](docs/High-Level-Design/architecture.md)
 links its responsibilities and boundaries to its source and tests. Unit tests
 check that component's behavior; integration tests check the handoff between
 components. A component with only a proposal is marked unimplemented, not tested.
@@ -57,7 +57,7 @@ The [typed console](experiments/session_coordinator/README.md) supports sequenti
 
 ## Work in reviewable increments
 
-Mike wants a small, understandable documentation structure. Use the existing chapters before adding documents. Keep the [project map](docs/design/README.md) current, explain how each subject fits the overall flow, and keep technical appendices optional for high-level readers.
+Mike wants a small, understandable documentation structure. Use the existing chapters before adding documents. Keep the [project map](docs/High-Level-Design/README.md) current, explain how each subject fits the overall flow, and keep technical appendices optional for high-level readers.
 
 When presenting a document to Mike, display its full path and filename in the visible text. A descriptive label such as “Vision” alone, or a path visible only on hover, is insufficient. Navigation tables should keep the path visible; link targets may remain relative for repository portability.
 
@@ -67,9 +67,11 @@ Update the design when code reveals a different boundary or failure case. Preser
 
 ## Save and resume
 
-Save meaningful work frequently. Commit and push coherent project increments under the user's authorization. Before long work and every few minutes during sustained development, save a factual local handoff under `.Codex/context-saves/`. Include current commit, files, tests, unresolved issues, and exact next steps. This path is ignored by Git to keep session context out of public commits unless explicitly requested.
+Save meaningful work frequently. Commit and push coherent project increments under the user's authorization. Before long work and every few minutes during sustained development, save a factual local handoff in [/home/mike/git/voicePlusLinux/docs/hand-offs/](docs/hand-offs) named `hand-off-YYYY-MM-DD-HHMMSS.md`, using America/New_York local time. Keep each checkpoint as a historical record; do not overwrite previous handoffs. Include current commit, files, tests, unresolved issues, and exact next steps. Save snapshots locally; publish session context only when requested. Earlier snapshots have also been moved into this folder; it is the single handoff archive going forward.
 
-On resume, read the latest handoff, then reconcile it with actual Git state. Newer user instructions supersede old snapshot instructions. A completed checkpoint is not a reason to abandon an ongoing authorized task.
+Keep handoff documents confined to `/home/mike/git/voicePlusLinux/docs/hand-offs/`. Do not list individual snapshots or the handoff archive in the main README, project map, or design-document reading lists.
+
+On resume, read the latest timestamped handoff in `/home/mike/git/voicePlusLinux/docs/hand-offs/`, then reconcile it with actual Git state. Newer user instructions supersede old snapshot instructions. A completed checkpoint is not a reason to abandon an ongoing authorized task.
 
 ## Execution boundaries
 

@@ -33,7 +33,7 @@ Variations: no root grant triggers permission handling; “over there” without
 4. The executor rechecks both immediately before the effect. A stale selection prompts re-resolution, not a move of whatever now occupies the path.
 5. The same-filesystem, no-overwrite adapter executes and verifies. The UI reports the final location.
 
-If the process restarts after the effect, use the [recovery table](recovery-cases.md). If another file occupies the destination, stop with a conflict. If “the other note” arrives before execution, revise and invalidate the old proposal. If it arrives after completion, treat it as a new request with visible prior effects.
+If the process restarts after the effect, use the [recovery table](../OS-Integration-Design/recovery-cases.md). If another file occupies the destination, stop with a conflict. If “the other note” arrives before execution, revise and invalidate the old proposal. If it arrives after completion, treat it as a new request with visible prior effects.
 
 ## D. Request correction and approval binding
 

@@ -8,9 +8,9 @@ The operating system will be constructed through the combined contributions of l
 
 ## Reference experience and independence
 
-Mike's current workflow demonstrates the basic experience he wants: V2T transcribes his speech into text, he supplies that text to AI through Codex Desktop, and AI interprets the request and uses tools to carry out actions. This is a reference for the user experience, not a prescribed implementation or a claim of an automatic V2T-to-Codex integration.
+Mike's current workflow demonstrates the basic experience he wants: V2T transcribes his speech into text, he supplies that text to AI through Codex Desktop, and AI interprets the request and uses tools to carry out actions.  Given this workflow, VP Linux AI, is a call that integrates this basic workflow into the operating system.
 
-VPLinuxAI will integrate voice-to-text transcription and AI interpretation of the resulting text throughout the operating system. These capabilities become part of the operating system itself, available across its interface, applications, and system workflows.
+VPLinuxAI will integrate voice-to-text transcription and AI interpretation of the resulting text throughout the operating system. Again these capabilities become part of the operating system itself, available across its interface, applications, and system workflows.
 
 VPLinuxAI must provide that voice-to-action experience through a completely open-source system, independent of Codex Desktop, any other version of Codex, or Codex itself. Using Codex or other development tools to help build the project does not make them required components of the resulting OS.
 
@@ -20,7 +20,7 @@ If a coordinating layer is described as a harness, Mike's preferred term is **OS
 
 The system will have built-in capabilities to accept spoken input. Initially, that input will at least be transcribed into text. How the resulting text can be used throughout the operating system remains to be defined.
 
-Mike's existing open-source Python project, [dbdude-v2t](https://github.com/bopuppy101/dbdude-v2t), is available as a source of reusable transcription code. It has implementations for Windows, macOS, and Ubuntu and currently uses Whisper-family models. Mike has explicitly authorized reusing and adapting its code for this OS and is open to other transcription models. See [V2T source review and reuse direction](v2t-source-review.md) for the initial review; integration has not yet been designed.
+Mike's existing open-source Python project, [dbdude-v2t](https://github.com/bopuppy101/dbdude-v2t), is available as a source of reusable transcription code. It has implementations for Windows, macOS, and Ubuntu and currently uses Whisper-family models. Mike has explicitly authorized reusing and adapting its code for this OS and is open to other transcription models. See [V2T source review and reuse direction](../V2T-Design/v2t-source-review.md) for the initial review; integration has not yet been designed.
 
 The OS's voice input must be at least as good as V2T, whether it reuses V2T or uses an alternative. The AI model and implementation language or languages remain open choices; evaluating languages is an explicit planning topic.
 
@@ -35,6 +35,12 @@ Voice → Text → Interpretation → Action
 ```
 
 This flow is a starting point for discussion, not a fixed architecture.
+
+## Conversation continuity and hand-offs
+
+Preserving context and recovering previous conversations is a **critical operating-system capability**. VPLinuxAI must track conversations and preserve enough context for a user and AI to return to earlier discussions and continue meaningful work across sessions. Writing a hand-off is part of the OS's responsibilities, extending the practice we currently use during development.
+
+Mike's reference is the way Claude previously saved session information. This expresses the desired continuity, without prescribing a particular product, storage mechanism, or document format. The hand-off contents, format, timing, and recovery experience will be defined later. How the OS preserves and restores context is a major architectural decision requiring deliberate review.
 
 ## Linux foundations
 
@@ -55,4 +61,4 @@ These questions do not represent settled requirements or implementation choices.
 
 ## Implementation planning
 
-See the [/home/mike/git/voicePlusLinux/docs/VP-Linux-AI-high-level-implementation-plan.md](VP-Linux-AI-high-level-implementation-plan.md) for proposed phases, acceptance criteria, and the practice of saving frequent development checkpoints and session handoffs.
+See the [/home/mike/git/voicePlusLinux/docs/High-Level-Design/VP-Linux-AI-high-level-implementation-plan.md](VP-Linux-AI-high-level-implementation-plan.md) for proposed phases, acceptance criteria, and the practice of saving frequent development checkpoints and session handoffs.

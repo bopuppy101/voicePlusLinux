@@ -20,7 +20,7 @@ These roles are hypotheses. A language can serve more than one role, and a compo
 
 ## Evidence relevant to the choice
 
-V2T already uses Python for capture, processing, and platform control. Its Linux entry points call `faster-whisper`; that project implements Whisper inference using CTranslate2. Therefore Python coordination does not imply that model computation runs as Python loops. This is an architectural inference from the [V2T review](../v2t-source-review.md) and [faster-whisper upstream](https://github.com/SYSTRAN/faster-whisper).
+V2T already uses Python for capture, processing, and platform control. Its Linux entry points call `faster-whisper`; that project implements Whisper inference using CTranslate2. Therefore Python coordination does not imply that model computation runs as Python loops. This is an architectural inference from the [V2T review](../V2T-Design/v2t-source-review.md) and [faster-whisper upstream](https://github.com/SYSTRAN/faster-whisper).
 
 Python supports native extensions and embedding, so an all-or-nothing rewrite is not required to combine it with native code. Whether bindings or separate processes are better here is an experiment. [Python extension documentation](https://docs.python.org/3/extending/index.html).
 

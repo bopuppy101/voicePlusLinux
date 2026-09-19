@@ -4,7 +4,7 @@ Research date: 2026-09-18, America/New_York. This is a short investigation list,
 
 ## Speech recognition
 
-**V2T with faster-whisper** is the closest reuse path because the inspected Linux code already uses it. The faster-whisper engine is MIT-licensed and uses CTranslate2. The surrounding V2T code is separately identified as GPL-3.0-or-later. Engine, wrapper, model weights, and supporting runtimes need separate records. [faster-whisper](https://github.com/SYSTRAN/faster-whisper), [engine license](https://github.com/SYSTRAN/faster-whisper/blob/master/LICENSE), [V2T review](../v2t-source-review.md).
+**V2T with faster-whisper** is the closest reuse path because the inspected Linux code already uses it. The faster-whisper engine is MIT-licensed and uses CTranslate2. The surrounding V2T code is separately identified as GPL-3.0-or-later. Engine, wrapper, model weights, and supporting runtimes need separate records. [faster-whisper](https://github.com/SYSTRAN/faster-whisper), [engine license](https://github.com/SYSTRAN/faster-whisper/blob/master/LICENSE), [V2T review](../V2T-Design/v2t-source-review.md).
 
 **whisper.cpp** is a concrete alternative engine to compare, with a C/C++ implementation and documented CPU-only inference. Its suitability depends on the exact model conversion, capture adapter, mappings, delivery, latency, and resource results. Changing engines while using Whisper weights does not independently resolve model-training openness questions. [whisper.cpp](https://github.com/ggml-org/whisper.cpp).
 

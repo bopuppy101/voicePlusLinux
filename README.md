@@ -12,12 +12,12 @@ Start with the project map. It shows the system flow, the reading order, and whi
 
 | Document | Full path and filename |
 | --- | --- |
-| **Project map — start here** | [/home/mike/git/voicePlusLinux/docs/design/README.md](docs/design/README.md) |
-| Vision-high-level description | [/home/mike/git/voicePlusLinux/docs/vision-high-level-description.md](docs/vision-high-level-description.md) |
-| VP Linux AI-high-level implementation plan | [/home/mike/git/voicePlusLinux/docs/VP-Linux-AI-high-level-implementation-plan.md](docs/VP-Linux-AI-high-level-implementation-plan.md) |
+| **Project map — start here** | [/home/mike/git/voicePlusLinux/docs/High-Level-Design/README.md](docs/High-Level-Design/README.md) |
+| Vision-high-level description | [/home/mike/git/voicePlusLinux/docs/High-Level-Design/vision-high-level-description.md](docs/High-Level-Design/vision-high-level-description.md) |
+| VP Linux AI-high-level implementation plan | [/home/mike/git/voicePlusLinux/docs/High-Level-Design/VP-Linux-AI-high-level-implementation-plan.md](docs/High-Level-Design/VP-Linux-AI-high-level-implementation-plan.md) |
 | Developer guide-check commands | [/home/mike/git/voicePlusLinux/developer-guide-check-commands.md](developer-guide-check-commands.md) |
-| V2T source review | [/home/mike/git/voicePlusLinux/docs/v2t-source-review.md](docs/v2t-source-review.md) |
-| Open issue: voice capture from 10–15 feet | [/home/mike/git/voicePlusLinux/docs/far-field-voice-capture-10-to-15-feet.md](docs/far-field-voice-capture-10-to-15-feet.md) |
+| V2T source review | [/home/mike/git/voicePlusLinux/docs/V2T-Design/v2t-source-review.md](docs/V2T-Design/v2t-source-review.md) |
+| Open issue: voice capture from 10–15 feet | [/home/mike/git/voicePlusLinux/docs/V2T-Design/far-field-voice-capture-10-to-15-feet.md](docs/V2T-Design/far-field-voice-capture-10-to-15-feet.md) |
 
 ## Current state
 

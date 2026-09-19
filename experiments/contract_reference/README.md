@@ -1,6 +1,6 @@
 # Contract reference experiment
 
-A pure-data checker for the [initial design contract](../../docs/design/contracts.md). It cannot record audio, call a model, inject text, or execute proposed operations. Its only filesystem access is reading the fixture JSON when run as a script.
+A pure-data checker for the [initial design contract](../../docs/OS-Integration-Design/contracts.md). It cannot record audio, call a model, inject text, or execute proposed operations. Its only filesystem access is reading the fixture JSON when run as a script.
 
 Run from the repository root with Python 3.10 or later:
 

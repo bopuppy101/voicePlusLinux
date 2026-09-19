@@ -34,7 +34,8 @@ def check_files():
     paths = [Path(__file__), *(p for folder in COMPONENTS.values() for p in folder.glob("*.py"))]
     for path in paths:
         ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
-    documents = [ROOT / "README.md", ROOT / "developer-guide-check-commands.md", *sorted((ROOT / "docs").rglob("*.md")),
+    # Historical handoffs retain the paths that existed at their checkpoint.
+    documents = [ROOT / "README.md", ROOT / "developer-guide-check-commands.md", *sorted(p for p in (ROOT / "docs").rglob("*.md") if "hand-offs" not in p.relative_to(ROOT / "docs").parts),
                  *(folder / "README.md" for folder in COMPONENTS.values())]
     links = 0
     for document in documents:
