@@ -12,6 +12,10 @@ Carry forward the existing goal of normal speech pickup from **10–15 feet**, m
 
 Mike clarified that he wants a **premium television that also works well as a computer monitor**, with **touch as a possible feature**. The minimum size is 55 inches, with 65 or 75 inches preferred initially. Viewing distance will range from close enough to touch the screen out to **15 feet**. His computer is currently on the dining table, and moving the setup off that table is an immediate practical goal. Shopping location: Indian Harbour Beach, Florida 32937.
 
+**OLED is excluded, including QD-OLED.** Mike reports severe burn-in on his five- or six-year-old OLED, and expects the OS interface to retain stable patterns for long periods. He does not accept a solution with the possibility of permanent burn-in. Newer OLED mitigation features do not change this exclusion. Remove the previously suggested LG C5 from consideration.
+
+Evaluate LCD-based displays, including LED-backlit, QLED LCD, and Mini-LED LCD, for this static-content workload. These are candidates for investigation, not certified zero-risk replacements. Temporary image retention and permanent burn-in are different failures; neither should be hidden behind a generic claim that LCD cannot suffer image persistence. Samsung warns that prolonged static content can cause temporary or permanent retention on LCD TVs. Check each exact model's static-content guidance, operating limits, and warranty before recommending it. No candidate has yet been shown to satisfy Mike's absolute no-burn-in condition. [Samsung LCD guidance](https://www.samsung.com/za/support/tv-audio-video/are-lcd-tvs-subject-to-screen-burn-in/).
+
 These preferences establish the direction. Exact screen dimensions, mounting height, room layout, budget, audio placement, and the degree of physical integration remain open. The later premium-display preference supersedes treating lowest price as the main selection criterion.
 
 ## Hardware shortlist discussed with Mike — September 19, 2026
@@ -21,10 +25,9 @@ These are research candidates, not selected or tested hardware. The TV models be
 | Candidate | Reason to evaluate | Touch and limitations | Source / price snapshot |
 | --- | --- | --- | --- |
 | Samsung QN90F, 75-inch Mini-LED TV | Premium TV candidate for substantial desktop/document use; manufacturer advertises a glare-reducing screen and refresh rates up to 165 Hz. | No built-in touch. Verify readable computer text and the actual supported Ubuntu/NVIDIA display modes. | [Samsung QN90F specifications](https://www.samsung.com/us/tvs/neo-qled/75-class-neo-qled-4k-tv-qn90f-sku-qn75qn90fafxza/). Purchase price remains to be confirmed. |
-| LG C5 OLED, 65 or 77 inches | Premium mixed TV/computer candidate; manufacturer advertises OLED black levels, 144 Hz, and NVIDIA G-Sync. | No built-in touch. Prolonged static desktop content introduces an OLED image-retention/burn-in consideration. | [LG C5 listing](https://www.lg.com/us/tvs/lg-oled65c5pua-oled-4k-tv): 65-inch **$1,499.99**, 77-inch **$2,199.99** when checked. |
 | ViewSonic ViewBoard IFP6550, Gen 5, 65 inches | A 4K interactive display with touch and built-in speakers; a candidate if native touch becomes a requirement. | Interactive-display category rather than a conventional premium TV. Verify exact model, Ubuntu touch behavior, picture quality, and connection requirements before comparing it as a substitute. | [ViewSonic specifications](https://www.viewsonic.com/us/ifp6550.html); **$1,999** advertised by Full Compass, with details below. |
 
-**Provisional recommendation:** evaluate a wall-mounted 75-inch premium Mini-LED TV driven by Mike's existing computer first. A 77-inch OLED is an alternative for mixed entertainment and computer use. The Mini-LED preference is an engineering judgment for frequent static desktop content, not a measured comparison. LG describes the relationship between prolonged static images and OLED burn-in in its [OLED reliability guidance](https://www.lg.com/us/experience-tvs/oled-tv/reliability).
+**Provisional evaluation direction:** investigate a wall-mounted 75-inch premium Mini-LED LCD or an LCD interactive display driven by Mike's existing Ubuntu computer. OLED is excluded. Static-content durability must be established for the exact model; the technology label alone does not satisfy the burn-in requirement.
 
 If touch becomes essential, compare interactive displays before selecting the TV. Manufacturer-advertised refresh rates do not establish the modes available with this computer's Ubuntu/NVIDIA configuration. Neither advertised TV voice control nor built-in speakers establish host-accessible microphones.
 
@@ -51,7 +54,7 @@ For Ubuntu, evaluate these as an external screen plus input device driven by the
 
 ### Amazon voice-enabled televisions — September 19, 2026
 
-Mike suggested Amazon televisions because Amazon has its own AI assistant. **Amazon Ember Mini-LED, in 65 or 75 inches**, is a relevant display research candidate. Amazon renamed the Fire TV Omni Mini-LED line to Ember Mini-LED without changing functionality; this is a current product name, not evidence of a new hardware generation. Amazon documents built-in microphones, HDMI inputs, and hands-free Alexa use. The line advertises a 144 Hz gaming mode. [Amazon setup and naming clarification](https://digprjsurvey.amazon.com/csad/help/node/T5EjefyX7LhxLCQARN), [Amazon Mini-LED features](https://www.aboutamazon.com/news/devices/amazon-new-fire-tv-omni-soundbar-4-series).
+**Prior research; not an active recommendation.** Mike initially suggested Amazon televisions because Amazon has its own AI assistant, then rejected involving Fire TV because of its limits on our control. Amazon renamed the Fire TV Omni Mini-LED line to Ember Mini-LED without changing functionality. Amazon documents built-in microphones, HDMI inputs, hands-free Alexa use, and a 144 Hz gaming mode. [Amazon setup and naming clarification](https://digprjsurvey.amazon.com/csad/help/node/T5EjefyX7LhxLCQARN), [Amazon Mini-LED features](https://www.aboutamazon.com/news/devices/amazon-new-fire-tv-omni-soundbar-4-series).
 
 Keep three capabilities distinct:
 
@@ -59,7 +62,7 @@ Keep three capabilities distinct:
 - **Computer display:** HDMI makes the TV a candidate screen for the existing Ubuntu computer. Actual text clarity and NVIDIA display modes still need testing.
 - **Lonzo input and touch:** no documented interface was found that exposes the TV's built-in microphones to the Ubuntu host. No touchscreen capability was established for this line. Alexa support does not establish either capability. Amazon's motion-responsive “Interactive Art” uses radar, not a touch panel.
 
-Amazon's assistant is not a selected implementation for the open-source Lonzo service. An Amazon display could still be considered with host-connected microphones and VPLinuxAI running on the existing computer. Do not choose it on the assumption that its microphones, AI, or radar are available to our OS. Current price, seller stock, and delivery to 32937 were not verified, so this remains a research candidate rather than a purchase recommendation.
+Keep Lonzo's intelligence and control on the Ubuntu host. Built-in proprietary AI provides no selection advantage. Do not choose a display on the assumption that its microphones, AI, or radar are available to our OS. Current Amazon price, seller stock, and delivery to 32937 were not verified.
 
 ## Display arrangements to compare
 
@@ -132,6 +135,7 @@ Apply these acceptance gates before ranking cost or appearance:
 3. **Usable authorized audio:** spoken output is intelligible, stops predictably, and does not cause the system to act on its own voice. Test simultaneous speaking if included in the requirements.
 4. **Ubuntu and openness:** the setup integrates with Mike's existing Ubuntu computer; required display, audio, and optional touch features work without Windows or a proprietary assistant, and software, models, and firmware dependencies meet the agreed policy.
 5. **Reliable recovery:** unplug/reconnect, reboot, sleep/wake, microphone loss, and AI failure leave clear status and usable fallback controls.
+6. **Static-content durability:** exclude OLED and evaluate the exact panel for prolonged stable OS content. Resolve manufacturer warnings and warranty exclusions concerning permanent burn-in before selection; no current candidate has demonstrated zero risk.
 
 Choose numeric targets with Mike before trials. Compare a flat panel and projection using the same interface, phrases, recognizer, positions, and measured lighting/noise conditions where practical. Record which differences come from display, microphone placement, processing, or the room. Manufacturer range claims and demo videos are not acceptance results.
 
