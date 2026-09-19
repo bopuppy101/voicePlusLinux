@@ -103,6 +103,8 @@ Wall-mounted microphone/speaker arrays with echo cancellation exist; Shure's Ste
 
 ## Computer placement and connections
 
+Mike wants to evaluate integration with an existing computer running **Ubuntu**, and potentially **Windows 11**. Record display, microphone, speaker, and optional touch compatibility separately for each host OS; support for one does not establish support for the other. Windows 11 is under consideration for the display setup; VPLinuxAI's selected Linux base remains Ubuntu. Which compatibility conditions are mandatory is awaiting clarification of Mike's latest spoken instruction.
+
 The display needs a driving computer, either integrated or external. **Mike's current computer is a candidate host.** He reports powerful CPUs and GPUs, including an **NVIDIA RTX 4090**. This is user-provided hardware information, not a verified inventory or a performance result. No purchase, replacement computer, or final release hardware requirement is implied.
 
 Evaluate that computer for driving the display while running transcription, intent classification, and any larger AI models together. Check the actual CPU/GPU inventory, memory, available connections, Ubuntu driver/runtime compatibility, fan noise, heat, and responsiveness under concurrent workloads before deciding suitability. GPU model alone does not establish that a selected model stack will meet our needs.
