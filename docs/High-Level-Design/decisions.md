@@ -16,7 +16,7 @@
 | D010 | Follow standard open-source licensing principles: allow use, modification, forking, and redistribution, including sale of unchanged and modified copies | Mike accepted the Linux Foundation approach and prioritized maximum openness; this supersedes earlier no-resale requests |
 | D011 | Ubuntu is the current Linux base; release and desktop remain open | Mike's explicit platform choice; replaces the earlier Debian candidate proposal |
 | D012 | Shell execution and native Linux command-line tools are important OS capabilities | Mike's direction; exact shell, command interface, and production languages remain open |
-| D013 | Name the OS voice service **Lanzo**; Mike supplied **“Yo Lonzo”** as the wake phrase, with “Yo” acting like “Hey” | Mike's explicit naming direction; phrase spelling is preserved as supplied, and detection implementation remains open. See [voice input](../V2T-Design/voice-input.md#activation-and-mode-proposal) |
+| D013 | Name the OS voice service **Lonzo** (L-O-N-Z-O); **“Yo Lonzo”** is the wake phrase, with “Yo” acting like “Hey” | Mike's explicit naming direction and spelling correction; detection implementation remains open. See [voice input](../V2T-Design/voice-input.md#activation-and-mode-proposal) |
 
 ## Licensing direction
 

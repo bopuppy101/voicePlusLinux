@@ -36,7 +36,7 @@ Compare the existing `sounddevice` path with a PipeWire integration spike only i
 
 ## Activation and mode proposal
 
-Mike named the OS voice service **Lanzo** and supplied **“Yo Lonzo”** as its spoken wake phrase. **“Yo”** is an attention cue like “Hey,” not part of the service name. Preserve the supplied phrase and service spelling separately; pronunciation and spelling normalization have not yet been specified.
+Mike named the OS voice service **Lonzo** (L-O-N-Z-O) and supplied **“Yo Lonzo”** as its spoken wake phrase. **“Yo”** is an attention cue like “Hey,” not part of the service name.
 
 Wake-phrase activation is part of the intended OS experience. The detector, listening behavior, and handling of false activations remain design questions; no wake detector has been implemented or tested. Waking the voice service and resuming a suspended computer are separate capabilities; hardware-level wake from sleep has not been specified.
 
