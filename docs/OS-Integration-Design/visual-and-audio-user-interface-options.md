@@ -103,9 +103,9 @@ Wall-mounted microphone/speaker arrays with echo cancellation exist; Shure's Ste
 
 ## Computer placement and connections
 
-Mike wants to evaluate integration with an existing computer running **Ubuntu**, and potentially **Windows 11**. Record display, microphone, speaker, and optional touch compatibility separately for each host OS; support for one does not establish support for the other. Windows 11 is under consideration for the display setup; VPLinuxAI's selected Linux base remains Ubuntu. Which compatibility conditions are mandatory is awaiting clarification of Mike's latest spoken instruction.
+**Integration with Mike's existing Ubuntu computer is an absolute requirement. Windows, including Windows 11, is not a host option because it is not open source.** Mike explicitly clarified this; it supersedes the earlier note considering Windows 11. Verify display, microphone, speaker, and optional touch operation on Ubuntu. Hardware may also support Windows, but its required features and setup must not depend on Windows or a proprietary assistant.
 
-The display needs a driving computer, either integrated or external. **Mike's current computer is a candidate host.** He reports powerful CPUs and GPUs, including an **NVIDIA RTX 4090**. This is user-provided hardware information, not a verified inventory or a performance result. No purchase, replacement computer, or final release hardware requirement is implied.
+**Mike's current Ubuntu computer will drive the display for this setup.** He reports powerful CPUs and GPUs, including an **NVIDIA RTX 4090**. This is user-provided hardware information, not a verified inventory or a performance result. An integrated computer in a display does not replace the requirement to connect to this host. This choice does not establish minimum hardware for the eventual VPLinuxAI release.
 
 Evaluate that computer for driving the display while running transcription, intent classification, and any larger AI models together. Check the actual CPU/GPU inventory, memory, available connections, Ubuntu driver/runtime compatibility, fan noise, heat, and responsiveness under concurrent workloads before deciding suitability. GPU model alone does not establish that a selected model stack will meet our needs.
 
@@ -130,7 +130,7 @@ Apply these acceptance gates before ranking cost or appearance:
 1. **Readable and operable:** Mike can read transcripts, full paths, choices, and results from normal positions in daylight and evening lighting, without precision mouse or touch operation.
 2. **Reliable voice:** the complete audio-to-transcript path meets agreed accuracy, missed-request, and response-time targets at 10 and 15 feet, including off-axis speech and normal room noise. Evaluate sofa-table configurations at their actual microphone distances as well; do not report screen distance as microphone distance.
 3. **Usable authorized audio:** spoken output is intelligible, stops predictably, and does not cause the system to act on its own voice. Test simultaneous speaking if included in the requirements.
-4. **Ubuntu and openness:** required interfaces are accessible and the software, models, and firmware dependencies meet the agreed policy.
+4. **Ubuntu and openness:** the setup integrates with Mike's existing Ubuntu computer; required display, audio, and optional touch features work without Windows or a proprietary assistant, and software, models, and firmware dependencies meet the agreed policy.
 5. **Reliable recovery:** unplug/reconnect, reboot, sleep/wake, microphone loss, and AI failure leave clear status and usable fallback controls.
 
 Choose numeric targets with Mike before trials. Compare a flat panel and projection using the same interface, phrases, recognizer, positions, and measured lighting/noise conditions where practical. Record which differences come from display, microphone placement, processing, or the room. Manufacturer range claims and demo videos are not acceptance results.
