@@ -2,6 +2,28 @@
 
 Status: proposed behavior and evaluation design. No model has been selected, downloaded, or benchmarked.
 
+## Hybrid interpretation: deterministic logic and probabilistic models
+
+Mike proposes combining deterministic and probabilistic processing for the mission-critical voice-to-action path. Evaluate this as an architectural direction; the routing, models, and implementation languages are not yet selected.
+
+| Part | Proposed responsibility |
+| --- | --- |
+| Deterministic logic | Recognize explicitly supported commands and apply defined rules for request state, cancellation, permissions, and argument validation. |
+| Learned decision model | Interpret varied wording into a bounded set of supported intents or targets, with uncertainty reported. |
+| Generative model | Handle broader interpretation, clarification, explanation, and planning when the task needs them. |
+
+An initial proposal is to try explicit command rules first, use learned interpretation when needed, and apply the same deterministic permission and execution checks to every proposed action. Unclear meaning calls for clarification; a model's confidence does not grant authority. A classifier must have a way to report that none of the supported actions fits. These are responsibilities to evaluate, not a requirement for three separate processes or models.
+
+Speech-to-text remains a separate upstream responsibility: a deterministic rule can act consistently on an incorrectly transcribed command. Evaluate the full voice-to-action path, including transcription errors, negation, paraphrases, missing targets, conflicting rules, unsupported requests, and corrections. Compare routing accuracy, erroneous actions, latency, and resource use against a generative-model-only interpretation baseline. No such comparison has run yet.
+
+### Jev as a reference to investigate
+
+Research checked September 19, 2026. A likely match for Mike's “jev” is **Jev from TypeSafe AI**. Its official documentation describes typed choices, scores, and probability outputs rather than generated prose. This makes it relevant to bounded intent selection, but it is a learned probabilistic decision model, not an explicit rule engine. Repeatable execution, constrained output types, and correct interpretation are different properties; one does not prove the others. [TypeSafe: introduction](https://docs.typesafe.ai/introduction)
+
+TypeSafe documents confidence-based routing and says thresholds must be tested for the intended use case. We have not verified repeatability, confidence calibration, or performance on VPLinuxAI commands. [TypeSafe: confidence](https://docs.typesafe.ai/confidence)
+
+The reviewed materials do not establish an open-source, self-hostable Jev model that meets our requirements. Treat it as a reference, not a selected dependency. Any implementation of this approach must satisfy the OS's open-source and runtime-independence requirements; an open SDK alone would not establish model openness. No API calls, installations, or model downloads are authorized by this investigation.
+
 ## What the AI is responsible for
 
 Interpret English requests using the current request, explicitly relevant conversation state, and scoped context. Return either a clarification, an informational answer, an unsupported-request explanation, or a structured action proposal. The model never grants itself permission by including words such as “approved” in its answer.

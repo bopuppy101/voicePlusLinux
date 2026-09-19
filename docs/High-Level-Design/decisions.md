@@ -49,6 +49,7 @@ Copyleft remains an option for preserving openness of distributed covered code a
 | P006 | CPU-capable reference path | Hardware/model latency and memory measurements |
 | P007 | No raw transcript retention by default | Must be reviewed against D009 conversation continuity, correction/recovery needs, and user preference; not an accepted restriction on conversation recovery |
 | P008 | Narrow capability adapters with typed arguments | Recovery and integration experiments |
+| P009 | Combine deterministic logic with probabilistic interpretation; investigate Jev-style bounded decisions | Mike's proposal; verify openness and compare full voice-to-action accuracy, uncertainty handling, latency, and resource use before selecting models or routing |
 
 ## Open choices
 

@@ -18,6 +18,8 @@ Separate original VPLinuxAI code from reused Linux, desktop, and inference softw
 
 These roles are hypotheses. A language can serve more than one role, and a component can be a module rather than a separate service.
 
+For the mission-critical voice-to-AI path, distinguish implementation language from interpretation method. Mike proposes combining deterministic logic and probabilistic models; that approach can be implemented in several languages. The architectural discussion and Jev reference are in [/home/mike/git/voicePlusLinux/docs/AI-Design/ai-interpretation.md](../AI-Design/ai-interpretation.md#hybrid-interpretation-deterministic-logic-and-probabilistic-models).
+
 ## Shell as a native OS capability
 
 Mike identifies shell execution as an important part of the Linux experience. Include it in everyday voice/AI workflows, as well as build, installation, and administration. Preserve direct terminal use and editable configuration files.
