@@ -56,6 +56,7 @@ These existing documents explain details within the chapters above. They are **n
 | --- | --- |
 | Overall design | [Requirements](requirements.md), [worked user scenarios](workflow-scenarios.md), [component candidates](component-candidates.md) |
 | Voice input | [Transcript events and correction ordering](transcript-boundary.md) |
+| Voice capture — open issue | [/home/mike/git/voicePlusLinux/docs/far-field-voice-capture-10-to-15-feet.md](../far-field-voice-capture-10-to-15-feet.md) — microphone options, noise reduction, and the proposed distance evaluation. |
 | AI and actions | [Message contracts](contracts.md), [request lifecycle](lifecycle.md), [transport and errors](protocol-and-errors.md), [interrupted-action recovery](recovery-cases.md) |
 | OS integration | [Configuration and stored state](configuration-and-state.md) |
 | Evaluation | [Benchmark record template](benchmark-manifest.template.json) |

@@ -17,6 +17,7 @@ Start with the project map. It shows the system flow, the reading order, and whi
 | VP Linux AI-high-level implementation plan | [/home/mike/git/voicePlusLinux/docs/VP-Linux-AI-high-level-implementation-plan.md](docs/VP-Linux-AI-high-level-implementation-plan.md) |
 | Developer guide-check commands | [/home/mike/git/voicePlusLinux/developer-guide-check-commands.md](developer-guide-check-commands.md) |
 | V2T source review | [/home/mike/git/voicePlusLinux/docs/v2t-source-review.md](docs/v2t-source-review.md) |
+| Open issue: voice capture from 10–15 feet | [/home/mike/git/voicePlusLinux/docs/far-field-voice-capture-10-to-15-feet.md](docs/far-field-voice-capture-10-to-15-feet.md) |
 
 ## Current state
 
