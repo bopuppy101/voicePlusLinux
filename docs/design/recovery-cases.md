@@ -12,6 +12,8 @@ Linux rename interfaces document replacement behavior and `RENAME_NOREPLACE`; th
 
 Directory-relative resolution with `openat2` offers constraints such as staying beneath a root and restricting symlink resolution. It is a candidate mechanism to investigate, not a complete substitute for checking the actual source/destination used by a later operation. [openat2(2)](https://man7.org/linux/man-pages/man2/openat2.2.html).
 
+An unresolved production issue is concurrent source-name replacement: validating an object and later renaming its pathname leaves a race unless the supported environment supplies stronger control. Directory descriptors and no-overwrite flags do not by themselves prove that the source still denotes the selected object. A post-effect check may detect a wrong-object move too late. The sandbox experiment can use exclusively controlled fixture directories; production `file.move` must remain unavailable until the supported race/concurrency semantics are established. Do not advertise complete target safety based only on preflight checks.
+
 Durability is distinct from a successful syscall. `fsync` documentation notes that syncing a file does not necessarily persist the containing directory entry; a directory sync is separately needed. The executor's journal/effect ordering must be tested for the chosen filesystem. [fsync(2)](https://man7.org/linux/man-pages/man2/fsync.2.html).
 
 ## Journal ordering proposal

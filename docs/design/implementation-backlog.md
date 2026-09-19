@@ -16,6 +16,8 @@ Status: proposed sequence. The current authorization is to keep developing/refin
 
 M3 and M4 need not be sequential once contracts are stable. They may be pursued independently, but this does not authorize spawning additional agents.
 
+Current checkpoint: M0 is documented. M1 has a limited admission reference with 36 fixtures and eight tests; full lifecycle/approval transport checks are still pending. A 25-case public intent development set and offline scorer are also available, with eight scorer integrity tests. M2–M6 have not been implemented. See [progress and evidence](progress.md).
+
 ## Bounded experiments
 
 **E01 — Contract reference:** represent request, proposal, grant, result, and revision in a small set of language-neutral examples. Check rejection of stale proposals, unknown capabilities, unfinalized input, wrong session, and cancelled work. A fixture runner is a design aid, not an OS runtime.

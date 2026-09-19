@@ -33,6 +33,8 @@ The current architecture is a proposal. “OS harness” is optional terminology
 | Interrupted filesystem work | [Recovery cases](recovery-cases.md) | Observation tables and fault-injection obligations |
 | User journeys | [Workflow scenarios](workflow-scenarios.md) | Concrete sequences and failure branches |
 | Decision status | [Decision register](decisions.md) | Separate user direction, experiment choices, and proposals |
+| Concrete candidates | [Component investigation](component-candidates.md) | Artifact-level evidence and unresolved admission questions |
+| Current implementation evidence | [Progress](progress.md) | Completed checks, remaining gaps, and the next increment |
 
 The project is at design stage: no production model, language, Linux base, numeric performance target, or runtime integration has been selected. Small reference experiments may use an available language to check the design without selecting the production stack.
 

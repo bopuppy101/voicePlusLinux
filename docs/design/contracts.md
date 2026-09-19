@@ -10,7 +10,7 @@ An `allow` result from the reference checker means the proposal passes these ill
 
 ## Session object
 
-Required fields: `session_id`, `request_id`, `request_revision`, `policy_epoch`, `active`, `cancelled`, `input_final`, and `mode`. IDs are bounded ASCII identifiers; revisions and epochs are nonnegative integers. Boolean values are not accepted as integers. The only modes are `dictation` and `command`.
+Required fields: `session_id`, `request_id`, `request_revision`, `policy_epoch`, `active`, `cancelled`, `input_final`, and `mode`. IDs are bounded ASCII identifiers; revisions and epochs are integers from 0 through 2^53−1 for exact interchange with common JSON consumers. Boolean values are not accepted as integers. The only modes are `dictation` and `command`.
 
 Session state comes from the coordinator at validation time. A request is eligible only when active, not cancelled, finalized, and in command mode. This version has no execution or confirmation-state model.
 
@@ -19,6 +19,8 @@ Session state comes from the coordinator at validation time. A request is eligib
 Required fields: `schema_version`, `session_id`, `request_id`, `request_revision`, `policy_epoch`, and `steps`. Version is exactly integer 1. Session, request, revision, and epoch must match the current coordinator state. Unknown fields are rejected.
 
 `steps` contains 1–8 entries in this experiment. Each contains a unique `operation_id`, a capability name, and exact capability-specific arguments. Limits here are provisional defensive bounds, not measured product limits.
+
+Operation IDs are unique within a proposal. A future durable executor must namespace them by session/request/revision (or use globally unique IDs), preserve the same identity for a retry of the same operation, and avoid reusing it for changed arguments. The static checker implements no cross-request deduplication.
 
 Initial supported capabilities:
 
